@@ -1,0 +1,30 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "sh/fileheader.sh"
+	},
+	"error_mess": {
+		"label": "2: function error_mess エラーメッセージ",
+		"filename": "sh/error_mess.sh"
+	},
+	"_exec": {
+		"label": "3: function _exec echoして実行",
+		"filename": "sh/_exec.sh"
+	},
+	"usage_exit": {
+		"label": "4: function usage_exit 使用法を表示して終了",
+		"filename": "sh/usage_exit.sh"
+	},
+	"getopt": {
+		"label": "5: getopt",
+		"filename": "sh/getopt.sh"
+	},
+	"color_code": {
+		"label": "6: カラーコード",
+		"filename": "sh/color_code.sh"
+	},
+	"yellow": {
+		"label": "7: yellow",
+		"filename": "sh/yellow.sh"
+	}
+}

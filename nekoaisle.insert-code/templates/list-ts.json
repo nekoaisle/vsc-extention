@@ -1,0 +1,17 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "ts/fileheader.ts",
+		"method": "snippet",
+		"autoIndent": false
+	},
+	"normal-template": {
+		"label": "2: 汎用テンプレート",
+		"filename": "ts/normal-template.ts",
+		"autoIndent": false
+	},
+	"constructor": {
+		"label": "3: コンストラクター",
+		"filename": "ts/constructor.ts"
+	}
+}

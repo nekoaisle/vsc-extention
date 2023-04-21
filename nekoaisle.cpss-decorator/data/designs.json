@@ -1,0 +1,51 @@
+{
+	"black": {
+		"color": "#000000"
+	},
+	"blue": {
+		"color": "#8888FF"
+	},
+	"red": {
+		"color": "#FF0000"
+	},
+	"magenta": {
+		"color": "#FF00FF"
+	},
+	"green": {
+		"color": "#0000FF"
+	},
+	"yellow": {
+		"color": "#FFFF00"
+	},
+	"cyan": {
+		"color": "#FF00FF"
+	},
+	"white": {
+		"color": "#FFFFFF"
+	},
+	"box": {
+		"outline": "solid 1px #888888"
+	},
+	"bg-grey": {
+		"backgroundColor": "rgba(0,255,255,0.1)"
+	},
+	"bg-blue": {
+		"backgroundColor": "rgba(0,0,255,0.3)"
+	},
+	"border": {
+		"borderWidth": "1px",
+		"borderStyle": "solid",
+		"borderColor": "rgba(0,0,255,0.8)",
+		"overviewRulerColor": "rgba(0,0,255,1)",
+		"overviewRulerLane": "vscode.OverviewRulerLane.Right"
+	},
+	"border-yellow": {
+		"borderWidth": "1px",
+		"borderStyle": "solid",
+		"borderColor": "rgba(255,192,0,0.5)"
+	},
+	"ruler-yellow": {
+		"overviewRulerColor": "rgba(255,192,0,0.5)",
+		"overviewRulerLane": "vscode.OverviewRulerLane.Right"
+	}
+}

@@ -1,0 +1,147 @@
+{
+	"style for blogger": {
+		"prefix": "style blogger",
+		"body": [
+			"<style type=\"text/css\">",
+			"div.cmd {",
+			"  padding: 4px 8px;",
+			"  border-radius: 4px;",
+			"  border: 1px solid #CCC;",
+			"}",
+			"div.code {",
+			"  width: 100%;",
+			"  background-color: #000;",
+			"  padding: 4px 8px;",
+			"  border-radius: 4px;",
+			"  color: #FFF;",
+			"}",
+			"",
+			"</style>"
+		],
+		"description": "Blogger用スタイルシート"
+	},
+	"Script": {
+		"prefix": "<script",
+		"body": [
+			"<script type=\"text/javascript\">",
+			"$(function() {",
+			"});",
+			"</script>"
+		],
+		"description": "scrpt タグ"
+	},
+	"Style": {
+		"prefix": "<style",
+		"body": [
+			"<style type=\"text/css\">",
+			"${1:セレクタ} {",
+			"\t$2",
+			"}",
+			"</style>"
+		],
+		"description": "style タグ"
+	},
+	"<br />": {
+		"prefix": "<br />",
+		"body": [
+			"<br />"
+		],
+		"description": "<br />"
+	},
+	"data-cpss-": {
+		"prefix": "data-cpss-",
+		"body": [
+			"data-cpss-${1|delete,form,id,include,merge,show,strip|}=\"${2}\""
+		],
+		"description": "data-cpss-"
+	},
+	"data-cpss-merge": {
+		"prefix": "data-cpss-merge",
+		"body": [
+			"data-cpss-merge=\"${1|replace,merge,before,after,attrib,prepend,append|} ${2}\""
+		],
+		"description": "data-cpss-merge"
+	},
+	"data-cpss-delete": {
+		"prefix": "data-cpss-delete",
+		"body": [
+			"data-cpss-delete=\"${1|htmlOuter,text,html,css,class|} ${2}\""
+		],
+		"description": "data-cpss-delete"
+	},
+	"data-cpss-include": {
+		"prefix": "data-cpss-include",
+		"body": [
+			"data-cpss-include=\"${1|html,append,prepend,tag,before,after|} ${2:ファイル名} ${3:セレクタ}\""
+		],
+		"description": "data-cpss-include"
+	},
+	"data-cpss-form": {
+		"prefix": "data-cpss-form",
+		"body": [
+			"data-cpss-form=\"${1|TITLE,DESC,ERROR,HELP,LESS,VALUE,TEXT,TEMPLATE,PREFIX,SUFFIX|}\""
+		],
+		"description": "data-cpss-form"
+	},
+
+	"<ion-header>": {
+		"prefix": "<ion-header>",
+		"body": [
+			"<ion-header>",
+			"  <ion-navbar>",
+			"    <button ion-button menuToggle>",
+			"      <ion-icon name=\"menu\"></ion-icon>",
+			"    </button>",
+			"    <ion-title>$1</ion-title>",
+			"  </ion-navbar>",
+			"</ion-header>",
+		],
+		"description": "<ion-header>"
+	},
+	"<ion-header> modal": {
+		"prefix": "<ion-header>",
+		"body": [
+			"<ion-header>",
+			"  <ion-toolbar>",
+			"    <ion-title>${1:タイトル}</ion-title>",
+			"",
+			"    <ion-buttons start showWhen=\"android\">",
+			"      <button ion-button (click)=\"onSubmit()\" [disabled]=\"!formGroup.valid\">",
+			"        <ion-icon name=\"checkmark\"></ion-icon>",
+			"      </button>",
+			"",
+			"      <button ion-button (click)=\"onCancel()\">",
+			"        <ion-icon name=\"close\" showWhen=\"android\"></ion-icon>",
+			"      </button>",
+			"    </ion-buttons>",
+			"",
+			"    <ion-buttons end showWhen=\"ios\">",
+			"      <button ion-button (click)=\"onSubmit()\" [disabled]=\"!formGroup.valid\">",
+			"        <span ion-text color=\"primary\">決定</span>",
+			"      </button>",
+			"    </ion-buttons>",
+			"",
+			"    <ion-buttons start showWhen=\"ios\">",
+			"      <button ion-button (click)=\"onCancel()\">",
+			"        <span ion-text color=\"primary\">キャンセル</span>",
+			"      </button>",
+			"    </ion-buttons>",
+			"",
+			"  </ion-toolbar>",
+			"</ion-header>",
+		],
+		"description": "<ion-header> modal"
+	},
+	"<ion-grid>": {
+		"prefix": "<ion-grid>",
+		"body": [
+			"<ion-grid>",
+			"\t<ion-row>",
+			"\t\t<ion-col>$1</ion-col>",
+			"\t</ion-row>",
+			"</ion-grid>",
+		],
+		"description": "<ion-grid>"
+	},
+}
+

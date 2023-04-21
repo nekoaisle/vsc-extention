@@ -1,0 +1,77 @@
+{
+	"method": {
+		"label": "1: メソッド",
+		"filename": "php/method.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"var": {
+		"label": "2: メンバー変数",
+		"filename": "php/var.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"onEvent": {
+		"label": "3: イベントハンドラ",
+		"filename": "php/onEvent.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"onAjax": {
+		"label": "4: onAjax",
+		"filename": "php/onAjax.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"function": {
+		"label": "5: function",
+		"filename": "php/function.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"aryGetFormCommandMap": {
+		"label": "6: aryGetFormCommandMap",
+		"filename": "php/aryGetFormCommandMap.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"fileheader": {
+		"label": "7: ファイルヘッダー",
+		"filename": "php/fileheader.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"constructor": {
+		"label": "8: constructor",
+		"filename": "php/constructor.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"destractor": {
+		"label": "9: destractor",
+		"filename": "php/destractor.php",
+		"method": "snippet",
+		"autoIndent": true
+	},
+	"EchoDebug": {
+		"label": "E: EchoDebug(選択範囲)",
+		"inline": "EchoDebug( '{{clipboard}}', {{clipboard}} );"
+	},
+	"class.base": {
+		"label": "B: ベースクラス名",
+		"command": "class.base"
+	},
+	"row.name": {
+		"label": "RN: DB 列名 sql-row.name",
+		"command": "sql-row.name"
+	},
+	"row.propaty": {
+		"label": "RM: DB 列に対応するメンバー変数名 sql-row.propaty",
+		"command": "sql-row.propaty"
+	},
+	"row.comment": {
+		"label": "RC: DB 列のコメント sql-row.comment",
+		"command": "sql-row.comment"
+	}
+	
+}

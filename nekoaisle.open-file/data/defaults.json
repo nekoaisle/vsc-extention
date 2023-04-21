@@ -1,0 +1,238 @@
+{
+  "default": [
+    {
+      "label": "/",
+      "description": "ドキュメントをフォーマット",
+      "command": "editor.action.formatDocument"
+    },
+    {
+      "label": "[",
+      "description": "対応するタグにジャンプ" ,
+      "command": "editor.emmet.action.matchTag",
+      "languageID": "html"
+
+    },
+    {
+      "label": "\\",
+      "description": "文字コードを変更",
+      "command": "workbench.action.editor.changeEncoding"
+    },
+    {
+      "label": "]",
+      "description": "対応するカッコへジャンプ",
+      "command": "editor.action.jumpToBracket"
+    },
+    {
+      "label": "[",
+      "description": "矩形選択モードのトグル",
+      "command": "editor.action.toggleColumnSelection"
+    },
+    {
+      "label": "*",
+      "description": "パネル位置を右に",
+      "command": "workbench.action.positionPanelRight"
+    },
+    {
+      "label": "-",
+      "description": "マルチクリップボード",
+      "command": "nekoaisle.multiClipboard.menu"
+    },
+    {
+      "label": "B",
+      "description": "ファイルエクスプローラ折りたたみ",
+      "command": "nekoaisle.multiCommand",
+      "args": [
+        {
+          "command": "workbench.files.action.focusFilesExplorer",
+          "args": [""]
+        },
+        {
+          "command": "workbench.files.action.collapseExplorerFolders",
+          "args": [""]
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "description": "計算結果をカーソル位置に挿入",
+      "command": "nekoaisle.calc"
+    },
+    {
+      "label": "D",
+      "description": "ネーミング",
+      "command": "extension.codicTranslate"
+    },
+    {
+      "label": "E",
+      "description": "変換メニューを開く",
+      "command": "nekoaisle.encode"
+    },
+    {
+      "label": "F",
+      "description": "検索してファイルを開く",
+      "command": "nekoaisle.findOpen"
+    },
+    {
+      "label": "G",
+      "description": "英語に翻訳",
+      "command": "extension.translateTextPreferred"
+    },
+    {
+      "label": "H",
+      "description": "過去に開いことのあるファイルを開く",
+      "command": "nekoaisle.openHist"
+    },
+    {
+      "label": "I",
+      "description": "定型文を挿入",
+      "command": "nekoaisle.insertCode"
+    },
+    {
+      "label": "J",
+      "description": "マーク位置へジャンプ",
+      "command": "nekoaisle.markjumpJump"
+    },
+    {
+      "label": "K",
+      "description": "関連ファイルを開く",
+      "command": "nekoaisle.openRelated"
+    },
+    {
+      "label": "L",
+      "description": "ログファイルを開く",
+      "command": "nekoaisle.openLog"
+    },
+    {
+      "label": "M",
+      "description": "カーソル位置をマーク",
+      "command": "nekoaisle.markjumpMark"
+    },
+    {
+      "label": "N",
+      "description": "新規ファイル編集",
+      "command": "nekoaisle.openNew"
+    },
+    {
+      "label": "O",
+      "description": "ファイルを開く",
+      "command": "nekoaisle.openFile"
+    },
+    {
+      "label": "P",
+      "description": "CPSS ウィザード",
+      "command": "nekoaisle.cpssWizard"
+    },
+    {
+      "label": "Q",
+      "description": "現在のエディタを閉じる",
+      "command": "workbench.action.closeActiveEditor"
+    },
+    {
+      "label": "R",
+      "description": "直前のカーソル位置にジャンプ",
+      "command": "nekoaisle.markjumpReturn"
+    },
+    {
+      "label": "S",
+      "description": "行ソート",
+      "command": "editor.action.sortLinesAscending"
+    },
+    {
+      "label": "T",
+      "description": "タグジャンプ",
+      "command": "nekoaisle.openTag"
+    },
+    {
+      "label": "U",
+      "description": "グループ内のファイル一覧",
+      "command": "workbench.action.showEditorsInGroup"
+    },
+    {
+      "label": "V",
+      "description": "エディターグループのサイズをリセット",
+      "command": "workbench.action.evenEditorWidths"
+    },
+    {
+      "label": "W",
+      "description": "一時ファイルを開く",
+      "command": "nekoaisle.openTemp"
+    },
+    {
+      "label": "X",
+      "description": "ファイラーを開く",
+      "command": "nekoaisle.openFiler"
+    },
+    {
+      "label": "Z",
+      "description": "折返しの切り替え",
+      "command": "editor.action.toggleWordWrap"
+    },
+    {
+      "label": "1〜9",
+      "description": "行ジャンプ"
+    },
+    {
+      "label": "1",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "1" },
+      "hide": true
+    },
+    {
+      "label": "2",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "2" },
+      "hide": true
+    },
+    {
+      "label": "3",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "3" },
+      "hide": true
+    },
+    {
+      "label": "4",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "4" },
+      "hide": true
+    },
+    {
+      "label": "5",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "5" },
+      "hide": true
+    },
+    {
+      "label": "6",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "6" },
+      "hide": true
+    },
+    {
+      "label": "7",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "7" },
+      "hide": true
+    },
+    {
+      "label": "8",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "8" },
+      "hide": true
+    },
+    {
+      "label": "9",
+      "description": "行ジャンプ",
+      "command": "nekoaisle.jumpToLineNumber",
+      "args" : { "default": "9" },
+      "hide": true
+    }
+  ]
+}

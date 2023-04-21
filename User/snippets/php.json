@@ -1,0 +1,1025 @@
+{
+/*
+	// Place your snippets for PHP here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1'),",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+	"while": {
+		"prefix": "while",
+		"body": [
+			"while ($1) {",
+			"\t$2",
+			"}"
+		],
+		"description": "while"
+	},
+	"foreach": {
+		"prefix": "foreach",
+		"body": [
+			"foreach (\\$${1:配列} as \\$key => \\$val) {",
+			"\t$2",
+			"}"
+		],
+		"description": "while"
+	},
+	"do": {
+		"prefix": "do",
+		"body": [
+			"do {",
+			"\t$2",
+			"} while ($1);",
+		],
+		"description": "while"
+	},
+	"switch": {
+		"prefix": "switch",
+		"body": [
+			"switch (${1:変数}) {",
+			"\tcase '$2': {",
+			"\t\t",
+			"\t\tbreak;",
+			"\t}",
+			"\tdefault: {",
+			"\t\tbreak;",
+			"\t}",
+			"}"
+		],
+		"description": "switch"
+	},
+	"case": {
+		"prefix": "case",
+		"body": [
+			"case '$1': {",
+			"\t$2",
+			"\tbreak;",
+			"}"
+		],
+		"description": "case '': {break}"
+	},
+	"E_ERROR": {
+		"prefix": "E_ERROR",
+		"body": [
+			"E_ERROR"
+		],
+		"description": "重大な実行時エラー。これは、メモリ確保に関する問題のように復帰できないエラーを示します。スクリプトの実行は中断されます。"
+	},
+	"E_WARNING": {
+		"prefix": "E_WARNING",
+		"body": [
+			"E_WARNING"
+		],
+		"description": "実行時の警告 (致命的なエラーではない)。スクリプトの実行は中断されません。"
+	},
+	"E_PARSE": {
+		"prefix": "E_PARSE",
+		"body": [
+			"E_PARSE"
+		],
+		"description": "コンパイル時のパースエラー。パースエラーはパーサでのみ生成されます。"
+	},
+	"E_NOTICE": {
+		"prefix": "E_NOTICE",
+		"body": [
+			"E_NOTICE"
+		],
+		"description": "実行時の警告。エラーを発しうる状況に遭遇したことを示す。ただし通常のスクリプト実行の場合にもこの警告を発することがありうる。"
+	},
+	"E_CORE_ERROR": {
+		"prefix": "E_CORE_ERROR",
+		"body": [
+			"E_CORE_ERROR"
+		],
+		"description": "PHPの初期始動時点での致命的なエラー。E_ERRORに似ているがPHPのコアによって発行される点が違う。"
+	},
+	"E_CORE_WARNING": {
+		"prefix": "E_CORE_WARNING",
+		"body": [
+			"E_CORE_WARNING"
+		],
+		"description": "（致命的ではない）警告。PHPの初期始動時に発生する。E_WARNINGに似ているがPHPのコアによって発行される 点が違う。"
+	},
+	"E_COMPILE_ERROR": {
+		"prefix": "E_COMPILE_ERROR",
+		"body": [
+			"E_COMPILE_ERROR"
+		],
+		"description": "コンパイル時の致命的なエラー。E_ERRORに似ているがZendスクリプティングエンジンによって発行される点が違う。"
+	},
+	"E_COMPILE_WARNING": {
+		"prefix": "E_COMPILE_WARNING",
+		"body": [
+			"E_COMPILE_WARNING"
+		],
+		"description": "コンパイル時の警告（致命的ではない）。E_WARNINGに似ているがZendスクリプティングエンジンによって発行される点が違う。"
+	},
+	"E_USER_ERROR": {
+		"prefix": "E_USER_ERROR",
+		"body": [
+			"E_USER_ERROR"
+		],
+		"description": "ユーザーによって発行されるエラーメッセージ。E_ERRORに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_USER_WARNING": {
+		"prefix": "E_USER_WARNING",
+		"body": [
+			"E_USER_WARNING"
+		],
+		"description": "ユーザーによって発行される警告メッセージ。E_WARNINGに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_USER_NOTICE": {
+		"prefix": "E_USER_NOTICE",
+		"body": [
+			"E_USER_NOTICE"
+		],
+		"description": "ユーザーによって発行される注意メッセージ。E_NOTICEに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_STRICT": {
+		"prefix": "E_STRICT",
+		"body": [
+			"E_STRICT"
+		],
+		"description": "コードの相互運用性や互換性を維持するために PHP がコードの変更を提案する。"
+	},
+	"E_RECOVERABLE_ERROR": {
+		"prefix": "E_RECOVERABLE_ERROR",
+		"body": [
+			"E_RECOVERABLE_ERROR"
+		],
+		"description": "キャッチできる致命的なエラー。危険なエラーが発生したが、エンジンが不安定な状態になるほどではないことを表す。ユーザー定義のハンドラでエラーがキャッチされなかった場合 (set_error_handler() も参照ください) は、 E_ERRORとして異常終了する。"
+	},
+	"E_DEPRECATED": {
+		"prefix": "E_DEPRECATED",
+		"body": [
+			"E_DEPRECATED"
+		],
+		"description": "実行時の注意。これを有効にすると、将来のバージョンで動作しなくなるコードについての警告を受け取ることができる。"
+	},
+	"E_USER_DEPRECATED": {
+		"prefix": "E_USER_DEPRECATED",
+		"body": [
+			"E_USER_DEPRECATED"
+		],
+		"description": "ユーザー定義の警告メッセージ。これはE_DEPRECATEDと同等だが、 PHP のコード上で関数 trigger_error() によって作成されるという点が異なる。"
+	},
+	"E_ALL": {
+		"prefix": "E_ALL",
+		"body": [
+			"E_ALL"
+		],
+		"description": "すべてのエラー"
+	},
+	"_SERVER['DOCUMENT_ROOT']": {
+		"prefix": "$_SERVER['DOCUMENT_ROOT']",
+		"body": [
+			"$_SERVER['DOCUMENT_ROOT']"
+		],
+		"description": "現在実行されているスクリプトが存在するドキュメントルート ディレクトリ"
+	},
+	"_SERVER['GATEWAY_INTERFACE']": {
+		"prefix": "$_SERVER['GATEWAY_INTERFACE']",
+		"body": [
+			"$_SERVER['GATEWAY_INTERFACE']"
+		],
+		"description": "サーバーが使用している CGI のバージョン"
+	},
+	"_SERVER['HTTPS']": {
+		"prefix": "$_SERVER['HTTPS']",
+		"body": [
+			"$_SERVER['HTTPS']"
+		],
+		"description": "スクリプトが HTTPS プロトコルを通じて実行されている場合に 空でない値が設定されます。"
+	},
+	"_SERVER['HTTP_ACCEPT']": {
+		"prefix": "$_SERVER['HTTP_ACCEPT']",
+		"body": [
+			"$_SERVER['HTTP_ACCEPT']"
+		],
+		"description": "現在のリクエストの Accept: ヘッダがもしあれば その内容"
+	},
+	"_SERVER['HTTP_ACCEPT_CHARSET']": {
+		"prefix": "$_SERVER['HTTP_ACCEPT_CHARSET']",
+		"body": [
+			"$_SERVER['HTTP_ACCEPT_CHARSET']"
+		],
+		"description": "現在のリクエストの Accept-Charset: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_ACCEPT_ENCODING']": {
+		"prefix": "$_SERVER['HTTP_ACCEPT_ENCODING']",
+		"body": [
+			"$_SERVER['HTTP_ACCEPT_ENCODING']"
+		],
+		"description": "現在のリクエストに Accept-Encoding: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_ACCEPT_LANGUAGE']": {
+		"prefix": "$_SERVER['HTTP_ACCEPT_LANGUAGE']",
+		"body": [
+			"$_SERVER['HTTP_ACCEPT_LANGUAGE']"
+		],
+		"description": "現在のリクエストに Accept-Language: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_CONNECTION']": {
+		"prefix": "$_SERVER['HTTP_CONNECTION']",
+		"body": [
+			"$_SERVER['HTTP_CONNECTION']"
+		],
+		"description": "現在のリクエストに Connection: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_HOST']": {
+		"prefix": "$_SERVER['HTTP_HOST']",
+		"body": [
+			"$_SERVER['HTTP_HOST']"
+		],
+		"description": "現在のリクエストに Host: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_REFERER']": {
+		"prefix": "$_SERVER['HTTP_REFERER']",
+		"body": [
+			"$_SERVER['HTTP_REFERER']"
+		],
+		"description": "現在のページに遷移する前にユーザーエージェントが参照していた ページのアドレス"
+	},
+	"_SERVER['HTTP_USER_AGENT']": {
+		"prefix": "$_SERVER['HTTP_USER_AGENT']",
+		"body": [
+			"$_SERVER['HTTP_USER_AGENT']"
+		],
+		"description": "現在のリクエストに User-Agent: ヘッダが もしあればその内容"
+	},
+	"_SERVER['PATH_TRANSLATED']": {
+		"prefix": "$_SERVER['PATH_TRANSLATED']",
+		"body": [
+			"$_SERVER['PATH_TRANSLATED']"
+		],
+		"description": "バーチャルからリアルへのマッピングがなされた後の、 現在のスクリプトのファイルシステム上（ドキュメントルートではなく） でのパス"
+	},
+	"_SERVER['PHP_AUTH_DIGEST']": {
+		"prefix": "$_SERVER['PHP_AUTH_DIGEST']",
+		"body": [
+			"$_SERVER['PHP_AUTH_DIGEST']"
+		],
+		"description": "HTTP ダイジェスト認証を 行っている場合、クライアントから送られた 'Authorization' ヘッダの 内容が設定されます"
+	},
+	"_SERVER['PHP_AUTH_PW']": {
+		"prefix": "$_SERVER['PHP_AUTH_PW']",
+		"body": [
+			"$_SERVER['PHP_AUTH_PW']"
+		],
+		"description": "HTTP 認証しているときにそのユーザーの パスワードがセットされます。"
+	},
+	"_SERVER['PHP_AUTH_USER']": {
+		"prefix": "$_SERVER['PHP_AUTH_USER']",
+		"body": [
+			"$_SERVER['PHP_AUTH_USER']"
+		],
+		"description": "HTTP 認証しているときにそのユーザー名がセットされます。"
+	},
+	"_SERVER['PHP_SELF']": {
+		"prefix": "$_SERVER['PHP_SELF']",
+		"body": [
+			"$_SERVER['PHP_SELF']"
+		],
+		"description": "現在実行しているスクリプトのファイル名です。 ドキュメントルートから取得されます。"
+	},
+	"_SERVER['QUERY_STRING']": {
+		"prefix": "$_SERVER['QUERY_STRING']",
+		"body": [
+			"$_SERVER['QUERY_STRING']"
+		],
+		"description": "ページがアクセスされた際にもし検索引数があればそれが格納されます。"
+	},
+	"_SERVER['REMOTE_ADDR']": {
+		"prefix": "$_SERVER['REMOTE_ADDR']",
+		"body": [
+			"$_SERVER['REMOTE_ADDR']"
+		],
+		"description": "現在ページをみているユーザーの IP アドレス。"
+	},
+	"_SERVER['REMOTE_HOST']": {
+		"prefix": "$_SERVER['REMOTE_HOST']",
+		"body": [
+			"$_SERVER['REMOTE_HOST']"
+		],
+		"description": "現在のページにアクセスしているホスト名。DNS の逆引き検索は ユーザーの REMOTE_ADDR に基づいています。"
+	},
+	"_SERVER['REMOTE_PORT']": {
+		"prefix": "$_SERVER['REMOTE_PORT']",
+		"body": [
+			"$_SERVER['REMOTE_PORT']"
+		],
+		"description": "ユーザーのマシンから Web サーバーへの通信に使用されているポート番号"
+	},
+	"_SERVER['REQUEST_METHOD']": {
+		"prefix": "$_SERVER['REQUEST_METHOD']",
+		"body": [
+			"$_SERVER['REQUEST_METHOD']"
+		],
+		"description": "ページにアクセスする際に使用されたリクエストのメソッド名です。 'GET', 'HEAD', 'POST', 'PUT' など。"
+	},
+	"_SERVER['REQUEST_TIME']": {
+		"prefix": "$_SERVER['REQUEST_TIME']",
+		"body": [
+			"$_SERVER['REQUEST_TIME']"
+		],
+		"description": "リクエストの開始時のタイムスタンプ。"
+	},
+	"_SERVER['REQUEST_URI']": {
+		"prefix": "$_SERVER['REQUEST_URI']",
+		"body": [
+			"$_SERVER['REQUEST_URI']"
+		],
+		"description": "ページにアクセスするために指定された URI。"
+	},
+	"_SERVER['SCRIPT_FILENAME']": {
+		"prefix": "$_SERVER['SCRIPT_FILENAME']",
+		"body": [
+			"$_SERVER['SCRIPT_FILENAME']"
+		],
+		"description": "現在実行されているスクリプトの絶対パス"
+	},
+	"_SERVER['SCRIPT_NAME']": {
+		"prefix": "$_SERVER['SCRIPT_NAME']",
+		"body": [
+			"$_SERVER['SCRIPT_NAME']"
+		],
+		"description": "現在のスクリプトのパス。"
+	},
+	"_SERVER['SERVER_ADDR']": {
+		"prefix": "$_SERVER['SERVER_ADDR']",
+		"body": [
+			"$_SERVER['SERVER_ADDR']"
+		],
+		"description": "現在のスクリプトが実行されているサーバーの IP アドレスです。"
+	},
+	"_SERVER['SERVER_ADMIN']": {
+		"prefix": "$_SERVER['SERVER_ADMIN']",
+		"body": [
+			"$_SERVER['SERVER_ADMIN']"
+		],
+		"description": "Web サーバーの設定ファイルの SERVER_ADMIN (Apache の場合)ディレクティブ にセットされている値。スクリプトがバーチャルホスト上で 実行されている場合、バーチャルホストに対して値が定義されます。"
+	},
+	"_SERVER['SERVER_NAME']": {
+		"prefix": "$_SERVER['SERVER_NAME']",
+		"body": [
+			"$_SERVER['SERVER_NAME']"
+		],
+		"description": "現在のスクリプトが実行されているサーバーのホスト名です。 スクリプトがバーチャルホスト上で実行されている場合は そのバーチャルホスト名となります。"
+	},
+	"_SERVER['SERVER_PORT']": {
+		"prefix": "$_SERVER['SERVER_PORT']",
+		"body": [
+			"$_SERVER['SERVER_PORT']"
+		],
+		"description": "Web サーバーの通信ポートとして使用されているポート番号。"
+	},
+	"_SERVER['SERVER_PROTOCOL']": {
+		"prefix": "$_SERVER['SERVER_PROTOCOL']",
+		"body": [
+			"$_SERVER['SERVER_PROTOCOL']"
+		],
+		"description": "ページがリクエストされた際のプロトコル名とバージョンです。 例.'HTTP/1.0'"
+	},
+	"_SERVER['SERVER_SIGNATURE']": {
+		"prefix": "$_SERVER['SERVER_SIGNATURE']",
+		"body": [
+			"$_SERVER['SERVER_SIGNATURE']"
+		],
+		"description": "サーバー上で生成されたページに追加される、 サーバーのバージョン名とバーチャルホスト名の文字列。"
+	},
+	"_SERVER['SERVER_SOFTWARE']": {
+		"prefix": "$_SERVER['SERVER_SOFTWARE']",
+		"body": [
+			"\\$_SERVER['SERVER_SOFTWARE']"
+		],
+		"description": "レスポンスヘッダ上に書かれている、 サーバーの認識文字列です。"
+	},
+
+	/*
+		"_SERVER": {
+		"prefix": "$_SERVER",
+		"body": [
+			"$_SERVER['${1|DOCUMENT_ROOT|GATEWAY_INTERFACE|HTTP_|HTTPS|PATH_TRANSLATED|PHP_|QUERY_STRING|REMOTE_|SCRIPT_FILENAME|SCRIPT_NAME|SERVER_|}']"
+		],
+		"description": "$_SERVER['xxxxx']"
+	},
+	"_SERVER['HTTP_xxxx']": {
+		"prefix": "$_SERVER['HTTP_",
+		"body": [
+			"$_SERVER['${1|ACCEPT|ACCEPT_CHARSET|ACCEPT_ENCODING|ACCEPT_LANGUAGE|CONNECTION|HOST|REFERER|USER_AGENT|}']"
+		],
+		"description": "$_SERVER['HTTP_xxxxx']"
+	},
+	"_SERVER['PHP_xxxx']": {
+		"prefix": "$_SERVER['PHP_",
+		"body": [
+			"$_SERVER['PHP_${1|AUTH_DIGEST|AUTH_PW|AUTH_USER|SELF|}']"
+		],
+		"description": "$_SERVER['PHP_xxxxx']"
+	},
+	"_SERVER['REMOTE_xxxx']": {
+		"prefix": "$_SERVER['REMOTE_",
+		"body": [
+			"$_SERVER['REMOTE_${1|ADDR|HOST|PORT|}']"
+		],
+		"description": "$_SERVER['REMOTE_xxxxx']"
+	},
+	"_SERVER['REQUEST_xxxx']": {
+		"prefix": "$_SERVER['REQUEST_",
+		"body": [
+			"$_SERVER['REQUEST_${1|METHOD|TIME|URI|}']"
+		],
+		"description": "$_SERVER['REQUEST_xxxxx']"
+	},
+	"_SERVER['SERVER_xxxx']": {
+		"prefix": "$_SERVER['SERVER_",
+		"body": [
+			"$_SERVER['SERVER_${1|ADDR|ADMIN|NAME|PORT|PROTOCOL|SIGNATURE|SOFTWARE|}']"
+		],
+		"description": "$_SERVER['SERVER_xxxxx']"
+	},
+*/
+
+
+	"SUCCEEDED": {
+		"prefix": "SUCCEEDED",
+		"body": [
+			"SUCCEEDED"
+		],
+		"description": "SUCCEEDED"
+	},
+	"FAILED": {
+		"prefix": "FAILED",
+		"body": [
+			"FAILED"
+		],
+		"description": "FAILED"
+	},
+	"NOW_UNIXTIME": {
+		"prefix": "NOW_UNIXTIME",
+		"body": [
+			"NOW_UNIXTIME"
+		],
+		"description": ""
+	},
+	"SCRIPT_MODULE": {
+		"prefix": "SCRIPT_MODULE",
+		"body": [
+			"SCRIPT_MODULE"
+		],
+		"description": ""
+	},
+	"SCRIPT_CLASS": {
+		"prefix": "SCRIPT_CLASS",
+		"body": [
+			"SCRIPT_CLASS"
+		],
+		"description": ""
+	},
+	"DOCUMENT_ROOT": {
+		"prefix": "DOCUMENT_ROOT",
+		"body": [
+			"DOCUMENT_ROOT"
+		],
+		"description": ""
+	},
+	"MODULE_ROOT": {
+		"prefix": "MODULE_ROOT",
+		"body": [
+			"MODULE_ROOT"
+		],
+		"description": ""
+	},
+	"SCRITP_ROOT": {
+		"prefix": "SCRITP_ROOT",
+		"body": [
+			"SCRITP_ROOT"
+		],
+		"description": ""
+	},
+	"SCRIPT_DIR": {
+		"prefix": "SCRIPT_DIR",
+		"body": [
+			"SCRIPT_DIR"
+		],
+		"description": ""
+	},
+	"SCRIPT_FILENAME": {
+		"prefix": "SCRIPT_FILENAME",
+		"body": [
+			"SCRIPT_FILENAME"
+		],
+		"description": ""
+	},
+	"URL_ROOT": {
+		"prefix": "URL_ROOT",
+		"body": [
+			"URL_ROOT"
+		],
+		"description": ""
+	},
+	"URL_MODULE": {
+		"prefix": "URL_MODULE",
+		"body": [
+			"URL_MODULE"
+		],
+		"description": ""
+	},
+	"URL_CLASS": {
+		"prefix": "URL_CLASS",
+		"body": [
+			"URL_CLASS"
+		],
+		"description": ""
+	},
+	"URL_DIR": {
+		"prefix": "URL_DIR",
+		"body": [
+			"URL_DIR"
+		],
+		"description": ""
+	},
+	"PERMISSION_DELETE": {
+		"prefix": "PERMISSION_DELETE",
+		"body": [
+			"PERMISSION_DELETE"
+		],
+		"description": ""
+	},
+	"PERMISSION_MODIFY": {
+		"prefix": "PERMISSION_MODIFY",
+		"body": [
+			"PERMISSION_MODIFY"
+		],
+		"description": ""
+	},
+	"PERMISSION_READ": {
+		"prefix": "PERMISSION_READ",
+		"body": [
+			"PERMISSION_READ"
+		],
+		"description": ""
+	},
+	"PUT_DEBUGLOG(' = ' . strDebugVarDump());": {
+		"prefix": "PUT_DEBUGLOG",
+		"body": [
+			"PUT_DEBUGLOG(' = ' . strDebugVarDump());"
+		],
+		"description": ""
+	},
+	"PUT_DEBUGLOG();": {
+		"prefix": "PUT_DEBUGLOG",
+		"body": [
+			"PUT_DEBUGLOG($1);"
+		],
+		"description": ""
+	},
+	"PUT_ERRORLOG();": {
+		"prefix": "PUT_ERRORLOG",
+		"body": [
+			"PUT_ERRORLOG($1);"
+		],
+		"description": ""
+	},
+	"PUT_WARNINGLOG();": {
+		"prefix": "PUT_WARNINGLOG",
+		"body": [
+			"PUT_WARNINGLOG($1);"
+		],
+		"description": ""
+	},
+	"var_dump();": {
+		"prefix": "var_dump",
+		"body": [
+			"var_dump($1);"
+		],
+		"description": ""
+	},
+	"SERVER_PURPOSE": {
+		"prefix": "SERVER_PURPOSE",
+		"body": [
+			"SERVER_PURPOSE ${1|==,!=|} '${2|COMMERCIAL,STAGING,DEVELOPMENT|}'"
+		],
+		"description": "SERVER_PURPOSE == COMMERCIAL"
+	},
+	"V_ID"      : { "prefix": "V_ID"      , "body": ["V_ID"      ]},
+	"C_STATUS"  : { "prefix": "C_STATUS"  , "body": ["C_STATUS"  ]},
+	"D_START_DT": { "prefix": "D_START_DT", "body": ["D_START_DT"]},
+	"D_END_DT":   { "prefix": "D_END_DT"  , "body": ["D_END_DT"]},
+
+	"ACCOUNT.C_CLASS"          : {"prefix": "ACCOUNT.C_CLASS"          , "body": ["ACCOUNT.C_CLASS"          ], "description": "CHAR   ( 3) 会員区分"        },
+	"ACCOUNT.C_STATUS"         : {"prefix": "ACCOUNT.C_STATUS"         , "body": ["ACCOUNT.C_STATUS"         ], "description": "CHAR   ( 3) 状態"            },
+	"ACCOUNT.V_ACCOUNT"        : {"prefix": "ACCOUNT.V_ACCOUNT"        , "body": ["ACCOUNT.V_ACCOUNT"        ], "description": "VARCHAR(64) アカウント名"    },
+	"ACCOUNT.V_PASSWORD"       : {"prefix": "ACCOUNT.V_PASSWORD"       , "body": ["ACCOUNT.V_PASSWORD"       ], "description": "VARCHAR(64) パスワード"      },
+	"ACCOUNT.D_MOD_PASSWORD_DT": {"prefix": "ACCOUNT.D_MOD_PASSWORD_DT", "body": ["ACCOUNT.D_MOD_PASSWORD_DT"], "description": "CHAR   (14) パスワード変更日"},
+	"ACCOUNT.C_REGIST_CLASS"   : {"prefix": "ACCOUNT.C_REGIST_CLASS"   , "body": ["ACCOUNT.C_REGIST_CLASS"   ], "description": "CHAR   ( 3) 登録方法区分"    },
+	"ACCOUNT.D_ENTRY_DT"       : {"prefix": "ACCOUNT.D_ENTRY_DT"       , "body": ["ACCOUNT.D_ENTRY_DT"       ], "description": "CHAR   (14) 入会年月日"      },
+	"ACCOUNT.D_WITHDRAW_DT"    : {"prefix": "ACCOUNT.D_WITHDRAW_DT"    , "body": ["ACCOUNT.D_WITHDRAW_DT"    ], "description": "CHAR   (14) 退会年月日"      },
+	"ACCOUNT.V_COMMENT"        : {"prefix": "ACCOUNT.V_COMMENT"        , "body": ["ACCOUNT.V_COMMENT"        ], "description": "VARCHAR(255) コメント"        },
+
+	"trigger_error": {
+		"prefix": "trigger_error",
+		"body": [
+			"trigger_error(\"${1:エラー文字列}\", ${2|E_USER_ERROR,E_USER_WARNING,E_USER_NOTICE|});"
+		],
+		"description": "bool trigger_error(string $error_msg [, int $error_type = E_USER_NOTICE])"
+	},
+
+	"nekoaisle.insert-code delete line": {
+		"prefix": "nekoaisle.insert-code delete line",
+		"body": [
+			"/* nekoaisle.insert-code delete line */"
+		],
+		"description": "inser-code 行削除命令"
+	},
+	"blank array": {
+		"prefix": "['",
+		"body": [
+			"[''=>']"
+		],
+		"description": "PHP タグ"
+	},
+	"php tag for phtml": {
+		"prefix": "?>",
+		"body": [
+			"?>",
+			"<?php"
+		],
+		"description": "HTML用 PHP タグ"
+	},
+	"php tag for phtml inline": {
+		"prefix": "EchoHtml",
+		"body": [
+			"<?php EchoHtml(); ?>"
+		],
+		"description": "HTML インライン用 PHP タグ"
+	},
+	"File Headder": {
+		"prefix": "header",
+		"body": [
+			"<?php",
+			"/**",
+			" * ${1:タイトル}",
+			" * ",
+			" * filename:  $TM_FILENAME",
+			" * ",
+			" * @package   ",
+			" * @version   1.0.0",
+			" * @copyright Copyright (C) 2017 CREANSMAERD CO.,LTD.  All rights reserved.",
+			" * @date      ",
+			" * @author    木屋 善夫",
+			" */",
+			"$2",
+			"?>"
+		],
+		"description": "ファイルヘッダー"
+	},
+	"Function": {
+		"prefix": "function",
+		"body": [
+			"/**",
+			" * ${1:関数のタイトル}",
+			" * ",
+			" * @param  ",
+			" * @return ",
+			" */",
+			"function ${2:関数名}()",
+			"{",
+			"\t$3",
+			"\treturn;",
+			"}"
+		],
+		"description": "function ????()"
+	},
+	"Method": {
+		"prefix": "public function",
+		"body": [
+			"/**",
+			" * ${1:タイトル}",
+			" * ",
+			" * @access public",
+			" * @param  ",
+			" * @return ",
+			" * @author 木屋善夫",
+			" */",
+			"public function ${2:メソッド名}()",
+			"{",
+			"\t$3",
+			"\treturn;",
+			"}",
+			""
+		],
+		"description": "public function ????()"
+	},
+	"Static Method": {
+		"prefix": "static public function",
+		"body": [
+			"/**",
+			" * ${1:タイトル}",
+			" * ",
+			" * @access public",
+			" * @param  ",
+			" * @return ",
+			" * @author 木屋善夫",
+			" */",
+			"static public function ${2:メソッド名}()",
+			"{",
+			"\t$3",
+			"\treturn;",
+			"}",
+			""
+		],
+		"description": "static public function ????()"
+	},
+	"Variable": {
+		"prefix": "public $",
+		"body": [
+			"/**",
+			" * ${1:タイトル}",
+			" * @var ${2|string,int,array,boolean,float|}",
+			" */",
+			"public ${3:変数名} = '';",
+			""
+		],
+		"description": "public $????"
+	},
+	"Static Variable": {
+		"prefix": "static public $",
+		"body": [
+			"/**",
+			" * ${1:タイトル}",
+			" * @var ${2|string,int,array,boolean,float|}",
+			" */",
+			"static public ${3:変数名} = '';",
+			""
+		],
+		"description": "static public $????"
+	},
+	"Constructor": {
+		"prefix": "construct",
+		"body": [
+			"/**",
+			" * 構築",
+			" * ",
+			" * @param  ",
+			" */",
+			"public function __construct()",
+			"{",
+			"\t// デフォルトインプリメンテーションの呼び出し",
+			"\tparent::__construct(),",
+			"}",
+			""
+		],
+		"description": "構築"
+	},
+	"Destructor": {
+		"prefix": "destruct",
+		"body": [
+			"/**",
+			" * 消滅",
+			" * ",
+			" */",
+			"public function __destruct()",
+			"{",
+			"\t// デフォルトインプリメンテーションの呼び出し",
+			"\tparent::__destruct(),",
+			"}",
+			""
+		],
+		"description": "消滅"
+	},
+	"Event Handler": {
+		"prefix": "on",
+		"body": [
+			"/**",
+			" * [$1]ボタンを押した処理",
+			" * ",
+			" * @access public",
+			" * @param  string \\$value name属性値",
+			" * @return boolean コマンドディスパッチを FAILED:続行, SUCCEEDED:終了",
+			" */",
+			"protected function on${2:名前}(\\$value)",
+			"{",
+			"\t// フォームに入力された値の取得",
+			"\tif (!$this->loadFromFormOpe(false)) {",
+			"\t\treturn SUCCEEDED;",
+			"\t}",
+			"\t",
+			"\t$3",
+			"\t",
+			"\t// ページ遷移",
+			"\t$this->PageRedirect('');",
+			"",
+			"\t//",
+			"\treturn SUCCEEDED;",
+			"}"
+		],
+		"description": "イベントハンドラー"
+	},
+	"Ajax Handler": {
+		"prefix": "onAjax",
+		"body": [
+			"/**",
+			" * [GET_] 選択肢を取得するAJAX処理",
+			" * ",
+			" * @access public",
+			" * @param  string \\$val ",
+			" * @return boolean コマンドディスパッチを FAILED:継続 SUCCEEDED:終了",
+			" * @throw  ",
+			" */",
+			"public function onAjax${1:名前}($val)",
+			"{",
+			"\t// AJAX なので HTML は出力しない",
+			"\t$this->m_blUseHTML = FALSE,",
+			"",
+			"\t// 戻り値用配列",
+			"\t\\$data = [],",
+			"",
+			"\t// json を出力",
+			"\t$this->EchoJSON($data),",
+			"",
+			"\t//",
+			"\treturn SUCCEEDED;",
+			"}"
+		],
+		"description": "AJAX ハンドラ"
+	},
+
+	"@param": {
+		"prefix": "@param",
+		"body": [
+			"@param  ${1|string ,array  ,int    ,boolean,float  |} \\$$2"
+		],
+		"description": "@param string|array|int|boolean|float"
+	},
+	"@return": {
+		"prefix": "@return",
+		"body": [
+			"@return ${1|string,array,int,boolean,float,false,true,null|} $2"
+		],
+		"description": "@return string|array|int|boolean|float|false|true|null"
+	},
+	"@var": {
+		"prefix": "@var",
+		"body": "@var ${1|string,int,array,boolean|}",
+		"description": "@var string|int|boolean|array"
+	},
+
+	"_SQL_": {
+		"prefix": "_SQL_",
+		"body": [
+			"\t\t\\$tbl = ${1:DAOクラス名}::\\$tableName;",
+			"\t\t\\$sql = <<<_SQL_",
+			"select *",
+			"from \\$tbl",
+			"where  = ?",
+			"_SQL_;",
+			"\t\t\\$arg = [];",
+			"\t\t\\$rows = aryQueryDB(\\$tbl, \\$sql, \\$arg);",
+			""
+		],
+		"description": "aryQueryDB"
+	},
+	"inner join": {
+		"prefix": "inner",
+		"body": [
+			"inner join ${1:つなぐテーブル名} on \\$tbl.${2:元のカラム} = $1.${3:つなぐカラム}"
+		],
+		"description": "select文 innner join"
+	},
+	"$this->m_aryArgs": {
+		"prefix": "this->m_aryArgs",
+		"body": [
+			"\\$this-->m_aryArgs$1"
+		],
+		"description": "\\$this-m_aryArgs$1"
+	},
+	
+	"getLinkInfo": {
+		"prefix": "getLinkInfo",
+		"body": [
+			"// ",
+			"\\$ary['${1:COMMAND}'] = [",
+			"\t'Handler'    => 'on$1',",
+			"\t'Permission' => PERMISSION_${2|READ,MODIFY,DELETE|},",
+			"\t// 'RightCommand' => '',",
+			"\t// 'RightValue'   => NULL,",
+			"\t'LeftCommand' => '!@$1 delete',",
+			"\t'LeftValue'   => TRUE,",
+			"];"
+		],
+		"description": "BimmsPagePC::getLinkInfo() の要素を追加"
+	},
+	"getOption": {
+		"prefix": "getOption",
+		"body": [
+			"/**",
+			" * ${1:状態}選択肢取得",
+			" * ",
+			" * @access public",
+			" * @param  array \\$before 前に追加する選択肢",
+			" * @param  array \\$before 後に追加する選択肢",
+			" * @return array $1選択肢配列",
+			" */",
+			"static public function getOption${2:Status}(\\$before = NULL, \\$after = NULL)",
+			"{",
+			"\treturn static::mergeArray(\\$before, static::\\$option$2, \\$after);",
+			"}"
+		],
+		"description": "function CCamRow::getOption...()"
+	},
+	"getDisp": {
+		"prefix": "getDisp",
+		"body": [
+			"/**",
+			" * ${1:状態}を人の読める文字列に変換",
+			" * ",
+			" * ※通常メソッドとしても static としても呼び出し可能",
+			" * ",
+			" * @access public",
+			" * @param string  \\$str $1",
+			" * @return string $1名文字列",
+			" */",
+			"static public function getDisp${2:Status}(\\$str = NULL)",
+			"{",
+			"\t// $1名を返す",
+			"\treturn self::getDispOption(static::\\$option$2, \\$str, 'm_str$2');",
+			"}"
+		],
+		"description": "function CCamRow::getDisp...()"
+	},
+	"onEvent": {
+		"prefix": "onEvent",
+		"body": [
+			"/**",
+			" * [${1:SUBMIT}]ボタンを押した処理",
+			" * ",
+			" * @access public",
+			" * @param  string \\$value name属性値",
+			" * @return boolean コマンドディスパッチを FAILED:続行, SUCCEEDED:終了",
+			" */",
+			" protected function on${2:Submit}(\\$value)",
+			" {",
+			"\t// ページ遷移",
+			"\t\\$this->PageRedirect('');",
+			"\t//",
+			"\treturn SUCCEEDED;",
+			" }"
+ 		],
+		"description": "function CCamPage::onEvent()"
+	},
+
+	"$sql = <<<_SQL_": {
+		"prefix": "sql",
+		"body": [
+			"\t\t\\$tbl = static::\\$tableName;",
+			"\t\t\\$sql = <<<_SQL_",
+			"select ",
+			"from {\\$tbl}",
+			"where ",
+			"_SQL_;",
+			"\t\t\\$arg = [];",
+			"\t\t\\$rows = aryQueryDB(\\$tbl, \\$sql, \\$arg);"
+ 		],
+		"description": "$sql = <<<_SQL_"
+	},
+
+	"loadFromFormOpe": {
+		"prefix": "loadFromFormOpe",
+		"body": [
+			"// フォームに入力された値の取得",
+			"if (!\\$this->loadFromFormOpe(\\$this->form, SCRIPT_NAME)) {",
+			"\treturn SUCCEEDED;",
+			"}",
+		],
+		"description": "if (!$this->loadFromFormOpe($this->form, SCRIPT_NAME)) {"
+	},
+
+	"_FORM_CHECK_ERROR_": {
+		"prefix": "form_check_error",
+		"body": [
+			"if (!empty(\\$this->m_aryArgs['_FORM_CHECK_ERROR_'])) {",
+			"\t// フォームでエラーが出ているので編集画面に戻る",
+			"\t\\$this->gotoPage('EDIT');",
+			"}",
+		],
+		"description": "if (!empty($this->m_aryArgs['_FORM_CHECK_ERROR_'])) {"
+	},
+	"printVar": {
+		"prefix": "printVar",
+		"body": "printVar('${1:name}', $1);",
+		"description": "printVar(名前, 値);"
+	},
+	"EchoDebug": {
+		"prefix": "EchoDebug",
+		"body": "EchoDebug('${1:変数}', $1); die();"
+	}
+}

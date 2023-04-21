@@ -1,0 +1,164 @@
+'use strict';
+import * as vscode from 'vscode';
+import { Util, Extension, PathInfo, DateInfo } from './nekoaisle.lib/nekoaisle';
+
+// this method is called when vs code is activated
+export function activate(context: vscode.ExtensionContext) {
+    let ext = new MyExtension(context);
+}
+
+/**
+ * 強調表示情報
+ */
+interface HighlightInfo {
+    regexp: string,     // 対象を特定する正規表現
+    decoName: string,   // 装飾名
+};
+
+class MyExtension extends Extension {
+    /**
+     * 強調表示装飾情報
+     */
+    protected mDecorations = {
+        "black": vscode.window.createTextEditorDecorationType({
+            color: "#000000",
+        }),
+        "blue": vscode.window.createTextEditorDecorationType({
+            color: "#8888FF",
+        }),
+        "red": vscode.window.createTextEditorDecorationType({
+            color: "#FF0000",
+        }),
+        "magenta": vscode.window.createTextEditorDecorationType({
+            color: "#FF00FF",
+        }),
+        "green": vscode.window.createTextEditorDecorationType({
+            color: "#0000FF",
+        }),
+        "yellow": vscode.window.createTextEditorDecorationType({
+            color: "#FFFF00",
+        }),
+        "cyan": vscode.window.createTextEditorDecorationType({
+            color: "#FF00FF",
+        }),
+        "white": vscode.window.createTextEditorDecorationType({
+            color: "#FFFFFF",
+        }),
+        "black-bold": vscode.window.createTextEditorDecorationType({
+            color: "#000000",
+        }),
+        "blue-bold": vscode.window.createTextEditorDecorationType({
+            color: "#8888FF",
+        }),
+        "red-bold": vscode.window.createTextEditorDecorationType({
+            color: "#FF0000",
+        }),
+        "magenta-bold": vscode.window.createTextEditorDecorationType({
+            color: "#FF00FF",
+        }),
+        "green-blod": vscode.window.createTextEditorDecorationType({
+            color: "#0000FF",
+        }),
+        "yellow-blod": vscode.window.createTextEditorDecorationType({
+            color: "#FFFF00",
+        }),
+        "cyan-blod": vscode.window.createTextEditorDecorationType({
+            color: "#FF00FF",
+        }),
+        "white-blod": vscode.window.createTextEditorDecorationType({
+            color: "#FFFFFF",
+        }),
+    };
+
+    protected mHighlightInfos: HighlightInfo[] = [
+        {
+            regexp: "\\bSUCCEEDED\\b",
+            decoName: 'red-bold'
+        },
+        {
+            regexp: "\\bFAILED\\b",
+            decoName: 'red-bold'
+        }
+    ];
+
+    protected mActiveEditor: vscode.TextEditor;
+    protected mTimeout = null;
+
+    /**
+	 * 構築
+	 */
+    constructor(context: vscode.ExtensionContext) {
+        super(context, {
+            name: 'CPSS Decorator',
+            config: 'cpssDecorator',
+            commands: []
+        });
+
+
+        // getConfigDir
+
+        /**
+         * 最初の装飾処理
+         */
+        this.mActiveEditor = vscode.window.activeTextEditor;
+        if (this.mActiveEditor) {
+            this.triggerUpdateDecorations();
+        }
+
+        /**
+         * エディータ切り替えイベントハンドラ
+         */
+        vscode.window.onDidChangeActiveTextEditor(editor => {
+            this.mActiveEditor = editor;
+            if (editor) {
+                this.triggerUpdateDecorations();
+            }
+        }, null, context.subscriptions);
+
+        /**
+         * ドキュメント変更イベントハンドラ
+         */
+        vscode.workspace.onDidChangeTextDocument(event => {
+            if (this.mActiveEditor && event.document === this.mActiveEditor.document) {
+                this.triggerUpdateDecorations();
+            }
+        }, null, context.subscriptions);
+    }
+
+    /**
+     * 遅延装飾処理
+     * １文字ごとにやっていたのでは大量変更時に重くなるので 0.5 秒ごとに処理している
+     */
+    protected triggerUpdateDecorations() {
+        if (this.mTimeout) {
+            clearTimeout(this.mTimeout);
+        }
+        this.mTimeout = setTimeout(this.updateDecorations, 500);
+    }
+
+    /**
+     * 装飾処理
+     */
+    protected updateDecorations() {
+        if (!this.mActiveEditor) {
+            return;
+        }
+
+        for (let info of this.mHighlightInfos) {
+            // 強調する範囲を格納する配列
+            const highlights: vscode.Range[] = [];
+            // 全テキストを取得
+            const text = this.mActiveEditor.document.getText();
+            const re = new RegExp(info.regexp, 'g');
+            let match;
+            while (match = re.exec(text)) {
+                const start = this.mActiveEditor.document.positionAt(match.index);
+                const end = this.mActiveEditor.document.positionAt(match.index + match[0].length);
+                highlights.push(new vscode.Range(start, end));
+            }
+            if (highlights.length > 0) {
+                this.mActiveEditor.setDecorations(this.mDecorations[info.decoName], highlights);
+            }
+        }
+    }
+}

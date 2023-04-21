@@ -1,0 +1,15 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "php/fileheader.php",
+		"method": "snippet"
+	},
+	"function": {
+		"label": "8: function",
+		"filename": "php/function.php"
+	},
+	"EchoDebug": {
+		"label": "E: EchoDebug(選択範囲)",
+		"inline": "#EchoDebug( '{{clipboard}}', {{clipboard}} );\tbefore"
+	}
+}

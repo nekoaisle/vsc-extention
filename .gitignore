@@ -1,0 +1,6 @@
+node_modules
+/*.old
+/*.bak
+/botu
+/.vscode
+out/*

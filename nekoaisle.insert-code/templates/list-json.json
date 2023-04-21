@@ -1,0 +1,16 @@
+{
+	"keybindings": {
+		"label": "1: keybindings",
+		"filename": "json/keybindings.json"
+	},
+	"patterns": {
+		"label": "2: keywords.patterns",
+		"filename": "json/patterns.json"
+	},
+	"snippet": {
+		"label": "E: １行スニペット(クリップボード)",
+		"filename": "json/snippet.json",
+		"method": "snippet",
+		"loop": "clipboard-line"
+	}
+}

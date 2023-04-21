@@ -1,0 +1,160 @@
+{
+  "name": "open-file",
+  "displayName": "Open File Assortment",
+  "description": "ファイルを開く関連詰め合わせ",
+  "version": "0.0.1",
+  "icon": "logo.png",
+  "license": "MIT License",
+  "repository": "https://github.com/nekoaisle/vsc",
+  "publisher": "nekoaisle",
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:nekoaisle.selectOpen",
+    "onCommand:nekoaisle.openFile",
+    "onCommand:nekoaisle.openLog",
+    "onCommand:nekoaisle.openRelated",
+    "onCommand:nekoaisle.openNew",
+    "onCommand:nekoaisle.openTemp",
+    "onCommand:nekoaisle.insertFile",
+    "onCommand:nekoaisle.openHist",
+    "onCommand:nekoaisle.openHistCompensateDate",
+    "onCommand:nekoaisle.openTag",
+    "onCommand:nekoaisle.findOpen",
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nekoaisle.selectOpen",
+        "title": "nekoaisle.selectOpen 既存ファイルを開きます。"
+      },
+      {
+        "command": "nekoaisle.openFile",
+        "title": "nekoaisle.openFile 選択範囲またはカーソル位置のファイルを開きます。"
+      },
+      {
+        "command": "nekoaisle.openLog",
+        "title": "nekoaisle.openLog CPSSのログファイルを開きます。"
+      },
+      {
+        "command": "nekoaisle.openRelated",
+        "title": "nekoaisle.openRelated  関連ファイルを開きます。"
+      },
+      {
+        "command": "nekoaisle.openNew",
+        "title": "nekoaisle.openNew ファイルを新規作成して開きます。"
+      },
+      {
+        "command": "nekoaisle.openTemp",
+        "title": "nekoaisle.openTemp 一時ファイルを開きます。"
+      },
+      {
+        "command": "nekoaisle.insertFile",
+        "title": "nekoaisle.insertFile カーソル位置にファイルを挿入します。"
+      },
+      {
+        "command": "nekoaisle.openHist",
+        "title": "nekoaisle.openHist 過去に編集したことのあるファイルを選択し開きます。"
+      },
+      {
+        "command": "nekoaisle.openHistRemoveNonexistentFile",
+        "title": "nekoaisle.openHistRemoveNonexistentFile 編集履歴からすでに存在しないファイルを除去します。"
+      },
+      {
+        "command": "nekoaisle.openHistCompensateDate",
+        "title": "nekoaisle.openHistCompensateDate 日付を補完する"
+      },
+      {
+        "command": "nekoaisle.openTag",
+        "title": "nekoaisle.openTag タグジャンプ"
+      },
+      {
+        "command": "nekoaisle.findOpen",
+        "title": "nekoaisle.findOpen 検索して開く"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "nekoaisle-openLog.logDir": {
+          "type": "string",
+          "description": "ログが保管されているディレクトリ",
+          "default": "log/dbg"
+        },
+        "nekoaisle-openHist.hist-file": {
+          "type": "string",
+          "description": "履歴を保存するファイル名",
+          "default": "~/Documents/openHist.json"
+        },
+        "nekoaisle-openHist.silent": {
+          "type": "boolean",
+          "description": "保存時にメッセージをステータスバーに表示する",
+          "default": false
+        },
+        "nekoaisle-openHist.sort": {
+          "type": "string",
+          "description": "並べ替えタイプ",
+          "enum": [
+            "modtime",
+            "filename",
+            "pathname"
+          ],
+          "enumDescriptions": [
+            "最終変更日時",
+            "大文字小文字を区別せずファイル名でソート、ファイル名が同じならディレクトリー名でソート",
+            "大文字小文字を区別せずパス名でソート"
+          ]
+        },
+        "nekoaisle-openHist.sortDir": {
+          "type": "string",
+          "description": "並べ替え方向",
+          "default": "desc",
+          "enum": [
+            "desc",
+            "asc"
+          ],
+          "enumDescriptions": [
+            "降順",
+            "昇順"
+          ]
+        },
+        "nekoaisle-openTemp.dir": {
+          "type": "string",
+          "description": "一時ファイルの格納ディレクトリ名",
+          "default": "~/temp"
+        },
+        "nekoaisle-openTemp.base": {
+          "type": "string",
+          "description": "一時ファイルのベース名",
+          "default": "temp"
+        }
+      }
+    }
+  },
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.38.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	},
+  "dependencies": {
+    "iconv-lite": "^0.5.0",
+    "jschardet": "^2.1.1"
+  }
+}

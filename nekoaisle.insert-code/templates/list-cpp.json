@@ -1,0 +1,22 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "cpp/fileheader.cpp"
+	},
+	"method": {
+		"label": "2: メソッド",
+		"filename": "cpp/method.cpp"
+	},
+	"constructor": {
+		"label": "3: constructor",
+		"filename": "cpp/constructor.cpp"
+	},
+	"destractor": {
+		"label": "4: destractor",
+		"filename": "cpp/destractor.cpp"
+	},
+	"class.base": {
+		"label": "B: ベースクラス名",
+		"command": "class.base"
+	}
+}

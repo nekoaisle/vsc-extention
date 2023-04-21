@@ -1,0 +1,34 @@
+{
+	"Snippet": {
+		"prefix": "snippet",
+		"body": [
+			",",
+			"\"${1:名前}\": {",
+			"\t\"prefix\": \"${2:プレフィックス}\",",
+			"\t\"body\": [",
+			"\t\t\"$3\"",
+			"\t],",
+			"\t\"description\": \"\"",
+			"}"
+		],
+		"description": "スニペットの追加"
+	},
+	"nekoaisle.insert-code delete line": {
+		"prefix": "nekoaisle.insert-code delete line",
+		"body": [
+			"nekoaisle.insert-code delete line"
+		],
+		"description": "inser-code 行削除命令"
+	},
+	"package.json keybindings": {
+		"prefix": "keybindings",
+		"body": [
+			", {",
+			"\"command\": \"nekoaisle.$1\"",
+			"\"key\": \"escape $2\"",
+			"\"when\": \"editorTextFocus && !editorReadonly\"",
+			"}"
+		],
+		"description": "package.json の keybindings"
+	},
+}

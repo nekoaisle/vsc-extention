@@ -1,0 +1,84 @@
+{
+  "name": "cpss-wizard",
+  "displayName": "Cpss Wizard",
+  "description": "テンプレートから初期ソースを作成",
+  "version": "0.0.2",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": "https://github.com/nekoaisle/vsc",
+  "publisher": "nekoaisle",
+  "engines": {
+    "vscode": "^1.13.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:nekoaisle.cpssWizard"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nekoaisle.cpssWizard",
+        "title": "nekoaisle.cpssWizard CPSS Wizard"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "neko: CPSS Wizerd configurations",
+      "properties": {
+        "nekoaisle-cpssWizard.wizard": {
+          "type": "string",
+          "description": "Wizardファイル名"
+        },
+        "nekoaisle-cpssWizard.templateDir": {
+          "type": "string",
+          "description": "標準テンプレート格納ディレクトリ"
+        },
+        "nekoaisle-cpssWizard.sqlDir": {
+          "type": "string",
+          "default": "~/",
+          "description": "SQLファイル格納ディレクトリ"
+        },
+        "nekoaisle-cpssWizard.php": {
+          "type": "string",
+          "default": "/usr/bin/php",
+          "description": "php格納ディレクトリ"
+        },
+        "nekoaisle-cpssWizard.outFile": {
+          "type": "string",
+          "default": "php://stdout",
+          "description": "出力ファイル名"
+        },
+        "nekoaisle-cpssWizard.author": {
+          "type": "string",
+          "default": "木屋善夫",
+          "description": "著者名"
+        },
+        "nekoaisle-cpssWizard.charset": {
+          "type": "string",
+          "default": "Shift_JIS",
+          "description": "文字コード"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.40",
+    "mocha": "^6.2.1",
+    "typescript": "^2.0.3",
+    "vscode": "^1.1.36"
+  },
+  "dependencies": {
+    "iconv-lite": "^0.5.0",
+    "jschardet": "^2.1.0"
+  }
+}

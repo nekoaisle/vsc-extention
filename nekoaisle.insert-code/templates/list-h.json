@@ -1,0 +1,18 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename":	"h/fileheader.h"
+	},
+	"method": {
+		"label": "2: メソッド",
+		"filename":	"h/method.h"
+	},
+	"constructor": {
+		"label": "4: コンストラクタ",
+		"filename":	"h/constructor.h"
+	},
+	"destractor": {
+		"label": "5: デストラクタ",
+		"filename":	"h/destractor.h"
+	}
+}

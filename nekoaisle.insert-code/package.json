@@ -1,0 +1,77 @@
+{
+    "name": "insert-code",
+    "displayName": "Insert Code",
+    "description": "拡張子ごとのメニューから選択してテンプレートを挿入する",
+    "version": "0.0.1",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": "https://github.com/nekoaisle/vsc",
+	"publisher": "nekoaisle",
+    "engines": {
+        "vscode": "^1.13.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:nekoaisle.insertCode",
+        "onCommand:nekoaisle.insertCode.pinfoBase",
+        "onCommand:nekoaisle.insertCode.cmd"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "nekoaisle.insertCode",
+                "title": "nekoaisle.insertCode テンプレートを選んでコードを挿入"
+            },
+            {
+                "command": "nekoaisle.insertCode.pinfoBase",
+                "title": "nekoaisle.insertCode.pinfoBase 現在編集中のファイルのベース名をカーソル位置に挿入"
+            },
+            {
+                "command": "nekoaisle.insertCode.cmd",
+                "title": "nekoaisle.insertCode.cmd 現在のカーソル位置に引数で指定したコマンドの戻値を挿入します。"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "neko: Insert Code configuration",
+            "properties": {
+                "nekoaisle-insertCode.tempDir": {
+                    "type": "string",
+                    "default": "",
+                    "description": "テンプレートファイルが格納されているディレクトリを指定してください。"
+                },
+                "nekoaisle-insertCode.author": {
+                    "type": "string",
+                    "default": "",
+                    "description": "ファイルを作成する人の名前を指定してください。"
+                },
+                "nekoaisle-insertCode.copyright": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Copyrigths表記を指定してください。"
+                },
+                "nekoaisle-insertCode.autoIndent": {
+                    "type": "boolean",
+                    "default": "",
+                    "description": "オートインデントのデフォル値を指定してください。"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^6.2.1",
+        "typescript": "^2.0.3",
+        "vscode": "^1.1.36"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "disp-char-code",
+    "displayName": "Disp Char Code",
+    "description": "カーソル位置の文字コードをステータバーに表示",
+    "version": "0.0.1",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": "https://github.com/nekoaisle/vsc",
+	"publisher": "nekoaisle",
+    "engines": {
+        "vscode": "^1.14.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:nekoaisle.dispCharCode",
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "nekoaisle.dispCharCode",
+                "title": "nekoaisle.dispCharCode カーソル位置の文字コードをステータバーに表示"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^6.2.1",
+        "typescript": "^2.0.3",
+        "vscode": "^1.1.36"
+    }
+}

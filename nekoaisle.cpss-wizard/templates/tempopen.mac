@@ -1,0 +1,7 @@
+//=== C:\Temp.txt ‚ðŠJ‚­ =============================================
+$f = getenv( "TEMP" ) + "\\Temp.txt";
+#n = findhidemaru( $f );
+if ( #n == -1 )
+  openfile $f;
+else
+  setactivehidemaru #n;

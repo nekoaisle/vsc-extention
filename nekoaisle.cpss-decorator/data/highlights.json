@@ -1,0 +1,12 @@
+[
+	{
+		"regexp": ",",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"magenta",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	}	
+]

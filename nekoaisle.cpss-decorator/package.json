@@ -1,0 +1,52 @@
+{
+    "name": "cpss-decorator",
+    "displayName": "CPSS Decorator",
+    "description": "Highlight for CPSS",
+    "version": "0.0.1",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": "https://github.com/nekoaisle/vsc",
+    "publisher": "nekoaisle",
+    "engines": {
+        "vscode": "^1.14.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "nekoaisle.cpssDecoratorRefresh",
+                "title": "nekoaisle.cpssDecoratorRefresh デザインのリロード"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "CPSS用HTMLデコレータ",
+            "properties": {
+                "cpssDecorator.dataDir": {
+                    "type": "string",
+                    "default": "",
+                    "description": "デザイン/ハイライトファイルが格納されているディレクトリを指定してください。"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^6.2.1",
+        "typescript": "^2.0.3",
+        "vscode": "^1.1.36"
+    }
+}

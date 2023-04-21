@@ -1,0 +1,26 @@
+{
+	"arduino": {
+		"label": "1: Arduino",
+		"filename": "cpp/arduino.ino"
+	},
+	"fileheader": {
+		"label": "2: ファイルヘッダー",
+		"filename": "cpp/fileheader.cpp"
+	},
+	"method": {
+		"label": "3: メソッド",
+		"filename": "cpp/method.cpp"
+	},
+	"constructor": {
+		"label": "4: constructor",
+		"filename": "cpp/constructor.cpp"
+	},
+	"destractor": {
+		"label": "5: destractor",
+		"filename": "cpp/destractor.cpp"
+	},
+	"class.base": {
+		"label": "B: ベースクラス名",
+		"command": "class.base"
+	}
+}

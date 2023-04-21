@@ -1,0 +1,11 @@
+{
+  "bash": {
+		"label": "b: ```bash",
+		"filename": "md/bash.md"
+  },
+  "console": {
+		"label": "b: ```console",
+		"filename": "md/console.md"
+  }
+
+}

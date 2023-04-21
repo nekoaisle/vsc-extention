@@ -1,0 +1,12 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "sql/fileheader.sql",
+		"method": "snippet"
+	},
+	"alter table": {
+		"label": "2: alter table",
+		"inline": "alter table {{class.sql}} add {{clipboard}} after ",
+		"description": "SQL文をクリップボードに入れてから実行してください。"
+	}
+}

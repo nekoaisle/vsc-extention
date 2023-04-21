@@ -1,0 +1,156 @@
+{
+	"Header": {
+		"prefix": "#!",
+		"body": [
+			"#!/bin/bash",
+			"# $1",
+			"# Copyrights 2019 Creansmaerd.Co.,Ltd."
+		],
+		"description": "ヘッダーを挿入する"
+	},
+	"if 単項": {
+		"prefix": "if",
+		"body": [
+			"if [[ ${1|-z,-n,-d,-f,-s,-e,-r,-w,-x|} \\$${2:変数1} ]];then",
+			"\t",
+			"fi"
+		],
+		"description": "単項のif文"
+	},
+	"if ２項": {
+		"prefix": "if",
+		"body": [
+			"if [[ \\${${1:変数1}} ${2|=,!=,-nt,-ot,-eq,-ne,-lt,-le,-gt,-ge|} \\${${3:変数2}} ]];then",
+			"\t",
+			"fi"
+		],
+		"description": "２項のif文"
+	},
+	"case": {
+		"prefix": "case",
+		"body": [
+			"case ${1:変数} in",
+			"\t)",
+			"\t\t;;",
+			"\t*)",
+			"\t\t;;",
+			"esac"
+		],
+		"description": "case 文"
+	},
+	"while": {
+		"prefix": "while",
+		"body": [
+			"while [ 条件 ]; do",
+			"\t",
+			"done"
+		],
+		"description": "while 文"
+	},
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for ${1:変数} in ${2:引数}; do",
+			"\t",
+			"done"
+		],
+		"description": "for 文"
+	},
+	"select": {
+		"prefix": "select",
+		"body": [
+			"select ${1:変数} in \"${2:配列}\"; do",
+			"done"
+		],
+		"description": "select var in \"${array[@\"; do"
+	},
+	"function": {
+		"prefix": "function",
+		"body": [
+			"#==========================================================",
+			"# ${1:タイトル}",
+			"# @param \\$1 ",
+			"# @return ",
+			"#==========================================================",
+			"function ${2:関数名}() {",
+			"}",
+		],
+		"description": "関数宣言"
+	},
+	"rem": {
+		"prefix": "#===",
+		"body": "#=========================================================="
+	},
+	"Here document": {
+		"prefix": "<<",
+		"body": [
+			"<< EOS",
+			"$1",
+			"EOS",
+		],
+		"description": "ヒアドキュメント"
+	},
+	"echo Black": {
+		"prefix": "echo Black",
+		"body": "echo -e \"\\e[30;1m${1:文字列}\\e[m\"",
+		"description": "echo Black"
+	},
+	"echo Red": {
+		"prefix": "echo Red",
+		"body": "echo -e \"\\e[31;1m${1:文字列}\\e[m\"",
+		"description": "echo Red"
+	},
+	"echo Green": {
+		"prefix": "echo Green",
+		"body": "echo -e \"\\e[32;1m${1:文字列}\\e[m\"",
+		"description": "echo Green"
+	},
+	"echo Yello": {
+		"prefix": "echo Yellow",
+		"body": "echo -e \"\\e[33;1m${1:文字列}\\e[m\"",
+		"description": "echo Yellow"
+	},
+	"echo Blue": {
+		"prefix": "echo Blue",
+		"body": "echo -e \"\\e[34;1m${1:文字列}\\e[m\"",
+		"description": "echo Blue"
+	},
+	"echo Magenta": {
+		"prefix": "echo Magenta",
+		"body": "echo -e \"\\e[35;1m${1:文字列}\\e[m\"",
+		"description": "echo Magenta"
+	},
+	"echo Cyan": {
+		"prefix": "echo Cyan",
+		"body": "echo -e \"\\e[36;1m${1:文字列}\\e[m\"",
+		"description": "echo Cyan"
+	},
+	"echo White": {
+		"prefix": "echo White",
+		"body": "echo -e \"\\e[37;1m${1:文字列}\\e[m\"",
+		"description": "echo White"
+	},
+	"function _exec": {
+		"prefix": "_exec",
+		"body": [
+			"# コマンドをエコーして実行",
+			"# $DEBUG が TRUE のときは実行しない",
+			"# ",
+			"# @param $1 コマンド",
+			"# @param $2〜$9 引数",
+			"function _exec {",
+			"  local cmd=$1",
+			"  local res=0;",
+			"  shift",
+			"  echo -e \"\\e[33;1m\\\\$ \\${cmd}\" \"\\$@\" \"\\e[m\"",
+			"  if [ ! \"\\$DEBUG\" ]; then",
+			"    # \\$DEBUG が空なのでコマンドを実行",
+			"    \\$cmd \"\\$@\"",
+			"    res=\\$?",
+			"  fi",
+			"  return \\$res",
+			"}",
+		],
+		"description": "function _exec {}"
+	}
+}

@@ -1,0 +1,130 @@
+{
+	"char(   3)": {
+		"prefix": "char   (   3) not null default '' -- ",
+		"body": [
+			"char   (   3) not null default '' -- $1"
+		],
+		"description": "char   (   3) not null default '' -- "
+	},
+	"char(  14)": {
+		"prefix": "char   (  14) not null default '' -- ",
+		"body": [
+			"char   (  14) not null default '' -- $1"
+		],
+		"description": "char   (  14) not null default '' -- "
+	},
+	"varchar(  64) not null default '' --": {
+		"prefix": "varchar(  64) not null default '' --",
+		"body": [
+			"varchar(  64) not null default '' -- $1"
+		],
+		"description": "varchar(  64) not null default '' --"
+	},
+	"varchar( 255) not null default '' -- ": {
+		"prefix": "varchar( 255) not null default '' -- ",
+		"body": [
+			"varchar( 255) not null default '' -- $1"
+		],
+		"description": "varchar( 255) not null default '' -- "
+	},
+	"numeric(   9) not null default 0  --": {
+		"prefix": "numeric(   9) not null default 0  -- ",
+		"body": [
+			"numeric(   9) not null default 0  -- $1"
+		],
+		"description": "numeric(   9) not null default 0  --"
+	},
+	"unique": {
+		"prefix": "unique",
+		"body": [
+			"unique "
+		],
+		"description": "unique"
+	},
+
+
+	"V_ACCOUNT_ID": {
+		"prefix": "V_ACCOUNT_ID",
+		"body": [
+			"V_ACCOUNT_ID      varchar(  64) not null default '' -- アカウントID ACCOUNT.VID"
+		],
+		"description": "V_ACCOUNT_ID    varchar(  64) not null default '' -- アカウントID ACCOUNT.VID"
+	},
+	"C_STATUS": {
+		"prefix": "C_STATUS",
+		"body": [
+			"C_STATUS          char   (   3) not null default '' -- 状態"
+		],
+		"description": "C_STATUS      char   (   3) not null default '' -- 状態"
+	},
+	"V_SITE_ID": {
+		"prefix": "V_SITE_ID",
+		"body": [
+			"V_SITE_ID         varchar(  64) not null default '' -- サイトID"
+		],
+		"description": "V_SITE_ID     varchar(  64) not null default '' -- サイトID"
+	},
+	"V_NAME": {
+		"prefix": "V_NAME",
+		"body": [
+			"V_NAME            varchar( 255) not null default '' -- 名称"
+		],
+		"description": "V_NAME        varchar( 255) not null default '' -- 名称"
+	},
+	"V_COMMENT": {
+		"prefix": "V_COMMENT",
+		"body": [
+			"V_COMMENT         varchar( 255) not null default '' -- コメント"
+		],
+		"description": "V_COMMENT       varchar( 255) not null default '' -- コメント"
+	},
+	"V_IMAGE": {
+		"prefix": "V_IMAGE",
+		"body": [
+			"V_IMAGE           varchar( 255) not null default '' -- 画像ID|URL"
+		],
+		"description": "V_IMAGE         varchar( 255) not null default '' -- 画像ID|URL"
+	},
+	"V_LINK": {
+		"prefix": "V_LINK",
+		"body": [
+			"V_LINK            varchar( 255) not null default '' -- リンク先"
+		],
+		"description": "V_LINK          varchar( 255) not null default '' -- リンク先"
+	},
+	"V_DESC": {
+		"prefix": "V_DESC",
+		"body": [
+			"V_DESC            varchar( 255) not null default '' -- 説明文"
+		],
+		"description": "V_DESC          varchar( 255) not null default '' -- 説明文"
+	},
+	"alter table add": {
+		"prefix": "alter table",
+		"body": [
+			"alter table ${1:テーブル名} add ${2:列定義} after ${3:列名}"
+		],
+		"description": "alter table {テーブル名} add {列定義} after {列名}"
+	},
+	"alter table modify": {
+		"prefix": "alter table",
+		"body": [
+			"alter table ${1:テーブル名} modify ${2:列定義}"
+		],
+		"description": "alter table {テーブル名} modify {列定義}"
+	},
+	"alter table drop": {
+		"prefix": "alter table",
+		"body": [
+			"alter table ${1:テーブル名} drop ${2:列名}"
+		],
+		"description": "alter table {テーブル名} drop {列名}"
+	},
+	"alter table change": {
+		"prefix": "alter table",
+		"body": [
+			"alter table ${1:テーブル名} change ${2:旧列名} ${3:列定義}"
+		],
+		"description": "alter table {テーブル名} change {旧列名} {列定義}"
+	}
+}

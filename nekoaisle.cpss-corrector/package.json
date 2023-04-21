@@ -1,0 +1,66 @@
+{
+	"name": "nekoaisle-cpss-corrector",
+	"displayName": "CPSSソース訂正",
+	"description": "CPSSソースのコメントを訂正します",
+	"version": "0.0.1",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": "https://github.com/nekoaisle/vsc",
+	"publisher": "nekoaisle",
+	"engines": {
+		"vscode": "^1.40.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:nekoaisle.cpssCorrector",
+		"onCommand:nekoaisle.cpssCorrector-header",
+		"onCommand:nekoaisle.cpssCorrector-control",
+		"onCommand:nekoaisle.cpssCorrector-paren",
+		"onCommand:nekoaisle.cpssCorrector-mulrem"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "nekoaisle.cpssCorrector",
+				"title": "nekoaisle.cpssCorrector 旧書式のCPSSソースを校正"
+			},
+			{
+				"command": "nekoaisle.cpssCorrector-header",
+				"title": "nekoaisle.cpssCorrector-header 関数ヘッダー修正"
+			},
+			{
+				"command": "nekoaisle.cpssCorrector-control",
+				"title": "nekoaisle.cpssCorrector-control 制御構造修正"
+			},
+			{
+				"command": "nekoaisle.cpssCorrector-paren",
+				"title": "nekoaisle.cpssCorrector-paren 丸括弧の前後のスペースを除去"
+			},
+			{
+				"command": "nekoaisle.cpssCorrector-mulrem",
+				"title": "nekoaisle.cpssCorrector-mulrem 複数行 // を /** */ に変換"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.40.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2"
+	}
+}

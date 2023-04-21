@@ -1,0 +1,22 @@
+{
+	"fileheader": {
+		"label": "1: ファイルヘッダー",
+		"filename": "html/fileheader.html"
+	},
+	"style": {
+		"label": "2: style タグ",
+		"filename": "html/style.html"
+	},
+	"script": {
+		"label": "3: script タグ",
+		"filename": "html/script.html"
+	},
+	"code": {
+		"label": "4: ソースコード用スタイル",
+		"filename": "html/code.html"
+	},
+	"standard": {
+		"label": "5: 標準雛形",
+		"filename": "html/standard.html"
+	}
+}

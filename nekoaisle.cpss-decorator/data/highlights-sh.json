@@ -1,0 +1,6 @@
+[
+	{
+		"regexp": "#.*?\\r?\\n",
+		"design": "bg-grey"
+	}
+]

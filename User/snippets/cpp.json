@@ -1,0 +1,12 @@
+{
+	"case": {
+		"prefix": "case",
+		"body": [
+			"case $1: {",
+			"\t$2",
+			"\tbreak;",
+			"}"
+		],
+		"description": "case : {\n\tbreak;\n}"
+	}
+}

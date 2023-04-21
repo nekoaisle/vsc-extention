@@ -1,0 +1,1 @@
+alter table {{pinfo.name}} add 列情報 after 列名

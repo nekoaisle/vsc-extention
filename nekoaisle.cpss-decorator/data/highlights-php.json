@@ -1,0 +1,62 @@
+[
+	{
+		"regexp": "\\bSUCCEEDED\\b",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"red",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	},
+	{
+		"regexp": "\\bFAILED\\b",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"red",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	},
+	{
+		"regexp": "\\bNULL\\b",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"red",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	},
+	{
+		"regexp": "\\bTRUE\\b",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"red",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	},
+	{
+		"regexp": "\\bFALSE\\b",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"red",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	},
+	{
+		"regexp": "( |\\t)*/\\*([\\r\\n]|.)*?\\*/",
+		"exclusion": "/\\*[\\s\\S]*?\\*/|//.*",
+		"design": [
+			"bg-grey",
+			{
+				"rangeBehavior": "ClosedClosed"
+			}
+		]
+	}
+]

@@ -1,0 +1,40 @@
+{
+	"typescript": {
+		"method": "chrome", 
+		"path": "https://developer.mozilla.org/ja/search",
+		"options": {
+			"locale": "ja",
+			"q": "{{word}}"
+		}
+	},
+	"javascript": {
+		"inherit": "typescript"
+	},
+	"php": {
+		"method": "chrome", 
+		"path": "http://jp2.php.net/manual-lookup.php",
+		"options": {
+			"lang": "ja",
+			"function": "{{word}}"
+		}
+	},
+	"sql": {
+		"method": "chrome", 
+		"path": "https://dev.mysql.com/doc/search/",
+		"options": {
+			"d": 171,
+			"q": "{{word}}"
+		}
+	},
+	"shellscript": {
+		"method": "chrome", 
+		"path": "http://shellscript.sunone.me/#index"
+	},
+	"default": {
+		"method": "chrome",
+		"path": "http://www.google.co.jp/search",
+		"options": {
+			"q": "{{word}}"
+		}
+	}
+}
