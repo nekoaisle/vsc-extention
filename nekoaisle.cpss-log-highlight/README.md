@@ -22,3 +22,6 @@ comment.block.cpsslog
 ```js
 /¥/var¥/www¥/ragdoll¥/.*?\(\d+\)/
 ```
+
+### 命名規則
+[公式ページ](https://macromates.com/manual/en/language_grammars)

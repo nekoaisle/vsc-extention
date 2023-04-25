@@ -190,5 +190,4 @@
 		"command": "nekoaisle.enclose",
 		"args": {"start": "<span>", "end": "</span"}
 	}
-
 ]

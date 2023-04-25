@@ -6,6 +6,8 @@ import * as path from 'path';
 import * as url from 'url';
 // import { Extension } from './Extension';
 import { PathInfo } from './PathInfo';
+import * as crypto from 'crypto';
+const { decycle, encycle } = require('json-cyclic');
 
 export module Util {
   // 言語タイプごとの拡張子一覧
@@ -997,6 +999,47 @@ export module Util {
 
     // 今回設定した装飾タイプを返す
     return deco;
+  }
+
+  /**
+   * md5 ハッシュ値を取得
+   * @param src ハッシュ値を取得したい対象
+   */
+  export function md5(src: any): string {
+    const json = JSON.stringify(decycle(src));
+    const md5 = crypto.createHash('md5');
+    return md5.update(json, 'binary').digest('hex');
+  }
+
+  /**
+   * 指定ファイルが開かれているタブを探す
+   */
+  export function findTab(fullpath: string): vscode.Tab | null {
+    for (let group of vscode.window.tabGroups.all) {
+      for (let tab of group.tabs) {
+        const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
+        if (uri.fsPath) {
+          if (uri.fsPath === fullpath) {
+            return tab;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * すでにファイルが開かれているか調べる
+   */
+  export function closeEditor(fullpath: string) {
+    for (let group of vscode.window.tabGroups.all) {
+      for (let tab of group.tabs) {
+        const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
+        if (uri.fsPath === fullpath) {
+          vscode.window.tabGroups.close(tab);
+        }
+      }
+    }
   }
 
 }

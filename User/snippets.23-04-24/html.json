@@ -48,10 +48,6 @@
 		],
 		"description": "<br />"
 	},
-
-	//====================================
-	// HtmlView 用
-	//====================================
 	"data-cpss-": {
 		"prefix": "data-cpss-",
 		"body": [
@@ -59,40 +55,35 @@
 		],
 		"description": "data-cpss-"
 	},
-	"data-cpss-id": {
-		"prefix": "data-cpss-id=",
-		"body": [
-			"data-cpss-id=\"$1\""
-		],
-	},
 	"data-cpss-merge": {
 		"prefix": "data-cpss-merge",
 		"body": [
 			"data-cpss-merge=\"${1|replace,merge,before,after,attrib,prepend,append|} ${2}\""
 		],
+		"description": "data-cpss-merge"
 	},
 	"data-cpss-delete": {
 		"prefix": "data-cpss-delete",
 		"body": [
 			"data-cpss-delete=\"${1|htmlOuter,text,html,css,class|} ${2}\""
 		],
+		"description": "data-cpss-delete"
 	},
 	"data-cpss-include": {
 		"prefix": "data-cpss-include",
 		"body": [
 			"data-cpss-include=\"${1|html,append,prepend,tag,before,after|} ${2:ファイル名} ${3:セレクタ}\""
 		],
+		"description": "data-cpss-include"
 	},
 	"data-cpss-form": {
 		"prefix": "data-cpss-form",
 		"body": [
-			"data-cpss-form=\"${1|DESC,ERROR,HELP,LESS,PREFIX,SUFFIX,TEMPLATE,TEXT,TITLE,VALUE|}\""
+			"data-cpss-form=\"${1|TITLE,DESC,ERROR,HELP,LESS,VALUE,TEXT,TEMPLATE,PREFIX,SUFFIX|}\""
 		],
+		"description": "data-cpss-form"
 	},
 
-	//====================================
-	// IONIC 用
-	//====================================
 	"<ion-header>": {
 		"prefix": "<ion-header>",
 		"body": [

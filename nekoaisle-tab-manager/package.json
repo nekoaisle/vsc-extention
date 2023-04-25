@@ -2,7 +2,7 @@
 	"name": "nekoaisle-tab-manager",
 	"displayName": "Nekoaisle Tab Group Manager",
 	"description": "現在のタブグループにて開いているファイルを記憶/復元",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "logo.png",
 	"publisher": "Yoshio Kiya",
 	"repository": "https://github.com/nekoaisle/vsc-extention.git",
@@ -17,12 +17,16 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "nekoaisle-tab-manager.saveTabFilenames",
+				"command": "nekoaisle-tab-manager.saveTabGroup",
 				"title": "Nekoaisle タブグループを記録"
 			},
 			{
 				"command": "nekoaisle-tab-manager.restoreTabGroup",
 				"title": "Nekoaisle タブグループを復元"
+			},
+			{
+				"command": "nekoaisle-tab-manager.undoTabGroup",
+				"title": "Nekoaisle タブグループを復元前に戻す"
 			},
 			{
 				"command": "nekoaisle-tab-manager.editSaveFile",
@@ -59,5 +63,8 @@
 		"@typescript-eslint/parser": "^5.42.0",
 		"eslint": "^8.26.0",
 		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
 	}
 }

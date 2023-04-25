@@ -1,0 +1,279 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+  "update.mode": "start",
+
+  "window.enableMenuBarMnemonics": false,
+  "window.restoreFullscreen": true,
+  "window.title": "${dirty}${activeEditorShort}${separator}${activeEditorMedium}${separator}${rootName}",
+  "window.restoreWindows": "all",
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+  "window.newWindowDimensions": "inherit",
+  "window.zoomLevel": 1,
+
+  "workbench.startupEditor": "none",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.centeredLayoutAutoResize": false,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.list.horizontalScrolling": true,
+  "workbench.tree.indent": 16,
+
+  // https://code.visualstudio.com/api/references/theme-color
+  "workbench.colorCustomizations": {
+      "editor.background": "#000000",
+      "editor.lineHighlightBackground": "#3333FF66",
+      // "editor.lineHighlightBorder": "#FFFFFF88",
+      "editorWhitespace.foreground": "#00FFFF55",
+      "editor": "",
+
+      "titleBar.activeBackground": "#000000",
+      // "titleBar.border": "#000000",
+
+      "panel.background": "#220000",
+      "panel.border": "#888888",
+
+      "tab.activeBackground": "#000000FF",
+      "tab.activeBorderTop": "#FFFFFFCC",
+      "tab.activeBorder": "#FFFFFFCC",
+
+      "terminal.background": "#000022",
+      "terminal.foreground": "#FFFFFF",
+      "terminal.border": "#888888",
+      "terminal.ansiBlack":  "#000000",
+      "terminal.ansiRed":    "#FF0000",
+      "terminal.ansiGreen":  "#009900",
+      "terminal.ansiYellow": "#CC9900",
+      "terminal.ansiBlue":   "#4488FF",
+      "terminal.ansiMagenta":"#FF00FF",
+      "terminal.ansiCyan":   "#00FFFF",
+      "terminal.ansiWhite":  "#FFFFFF",
+      "terminal.ansiBrightBlack":   "#333333",
+      "terminal.ansiBrightRed":     "#FF0000",
+      "terminal.ansiBrightGreen":   "#00FF00",
+      "terminal.ansiBrightYellow":  "#FFFF00",
+      "terminal.ansiBrightBlue":    "#4488FF",
+      "terminal.ansiBrightMagenta": "#FF00FF",
+      "terminal.ansiBrightCyan":    "#88FFFF",
+      "terminal.ansiBrightWhite":   "#888888",
+      "terminal.selectionBackground": "#FFFFFF44",
+  },
+
+  "files.autoGuessEncoding": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 10000,
+  "files.associations": {
+    "/home/kiya/network/campt-kiya/libcam/*.php": "php",
+    "ここで Terminal を開く": "shellscript",
+    "hosts": "plaintext"
+  },
+
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.minimap.enabled": false,
+  "editor.formatOnType": true,
+  "editor.fontFamily": "Ricty Diminished",
+  "editor.fontSize": 15,
+  "editor.lineHeight": 17,
+  "editor.insertSpaces": false,
+  "editor.wrappingIndent": "same",
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "all",
+  "editor.parameterHints.cycle": true,
+  "editor.renderLineHighlight": "all",
+  "editor.dragAndDrop": false,
+  "editor.showFoldingControls": "always",
+  "editor.snippetSuggestions": "top",
+  "editor.mouseWheelZoom": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 1000,
+  "editor.unfoldOnClickAfterEndOfLine": false,
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.linkedEditing": true,
+  // "editor.columnSelection": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "entry.title1.mem",
+        "settings": {
+          "foreground": "#0000FF",
+          "fontStyle": "bold"
+        }
+      },{
+        "scope": "entry.title2.mem",
+        "settings": {
+          "foreground": "#0080C0",
+          "fontStyle": "bold"
+        }
+      },{
+        "scope": "entry.title3.mem",
+        "settings": {
+          "foreground": "#8080C0",
+          "fontStyle": "bold"
+        }
+      },{
+        "scope": "entry.title4.mem",
+        "settings": {
+          "foreground": "#C0C0C0",
+          "fontStyle": "bold"
+        }
+      }
+    ]
+  },
+
+  "search.showLineNumbers": true,
+  "search.followSymlinks": false,
+  "search.defaultViewMode": "tree",
+
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.lineHeight": 1.1,
+  "terminal.integrated.fontFamily": "Ricty Diminished",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.tabs.enabled": false,
+
+  "debug.toolBarLocation": "docked",
+  "debug.console.fontSize": 15,
+  "debug.console.fontFamily": "Ricty Diminished",
+
+  "explorer.openEditors.visible": 99,
+  "explorer.compactFolders": false,
+  // "explorer.autoReveal": false,
+
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  "outline.showVariables": false,
+
+  // C++
+  "[cpp]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  // HTML
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+  },
+  // PHP
+  "[php]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+  },
+  "[sql]": {
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  },
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": false
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[csv]": {
+    "files.autoGuessEncoding": false
+  },
+  "[cpsslog]": {
+    "files.autoGuessEncoding": false,
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[plaintext]": {
+    // "editor.wordWrap": "wordWrapColumn",
+    // "editor.wordWrapColumn": 40,
+    "editor.fontFamily": "MeiryoKe_Gothic",
+    // "editor.fontSize": 14,
+    // "editor.lineHeight": 22,
+  },
+  "[asm]": {
+    "editor.tabSize": 8,
+    "editor.insertSpaces": false
+  },
+  "[vue]": {
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+
+  "extensions.ignoreRecommendations": false,
+  "extensions.closeExtensionDetailsOnViewChange": true,
+
+  "C_Cpp.intelliSenseEngine": "Tag Parser",
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+
+  "breadcrumbs.symbolPath": "last",
+
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "gitlens.views.branches.branches.layout": "list",
+  "gitlens.views.formats.commits.description": "${author, }${date}",
+  "gitlens.defaultDateFormat": "YY-MM-DD",
+  "gitlens.views.commits.avatars": false,
+  "gitlens.advanced.fileHistoryShowAllBranches": true,
+
+  "markdown.preview.fontSize": 16,
+  "markdown.preview.lineHeight": 1.2,
+  "markdown.preview.fontFamily": "'Noto Sans JP'",
+  "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+
+  "nekoaisle-openFiler.filer": "nautilus",
+  "nekoaisle-insertCode.copyright": "Creansmaerd Co.,LTD.", 
+  "nekoaisle-insertCode.author": "木屋 善夫",
+  "nekoaisle-cpssWizard.charset": "UTF-8",
+  "nekoaisle-cpssWizard.php": "/usr/bin/php",
+  "nekoaisle-cpssWizard.sqlDir": "/home/kiya/network/campt-kiya/var/www/ragdoll/Installer/CREATE_TABLE/ver3/custom/pbox",
+
+  // "sync.gist": "2cb5b383f82fb5e55c6764985be413ee",
+  // "sync.lastUpload": "2017-07-31T09:05:17.016Z",
+  // "sync.lastUpload": false,
+  // "sync.autoUpload": false,
+  // "sync.lastDownload": "",
+  // "sync.forceDownload": false,
+  // "sync.anonymousGist": false,
+  // "sync.host": "",
+  // "sync.pathPrefix": "",
+  // "sync.quietSync": false,
+  // "sync.askGistName": false,
+
+  "intelephense.diagnostics.undefinedConstants": false,
+  "intelephense.diagnostics.undefinedTypes": false,
+  "intelephense.diagnostics.undefinedClassConstants": false,
+  "intelephense.diagnostics.undefinedProperties": false,
+  "intelephense.environment.phpVersion": "5.4",
+
+  "php.validate.enable": false,
+  "php.suggest.basic": false,
+
+  "outline.showConstants": false,
+  "outline.showProperties": false,
+
+  "security.workspace.trust.untrustedFiles": "open",
+
+  "breadcrumbs.enabled": false,
+
+  "code-eol.crlfCharacter": "↲",
+  "code-eol.newlineCharacter": "↓",
+  "code-eol.returnCharacter": "←",
+  "code-eol.style": {
+    "color": "#00ffff88",
+  },
+}
+ 

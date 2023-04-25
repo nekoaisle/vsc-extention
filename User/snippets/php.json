@@ -66,389 +66,13 @@
 		],
 		"description": "case '': {break}"
 	},
-	"E_ERROR": {
-		"prefix": "E_ERROR",
+	"require_once": {
+		"prefix": "require_once",
 		"body": [
-			"E_ERROR"
+			"require_once(${1|DOCUMENT_ROOT,__DIR__|} . '$2');"
 		],
-		"description": "重大な実行時エラー。これは、メモリ確保に関する問題のように復帰できないエラーを示します。スクリプトの実行は中断されます。"
+		"description": "__DIR__|DOCUMENT_ROOT"
 	},
-	"E_WARNING": {
-		"prefix": "E_WARNING",
-		"body": [
-			"E_WARNING"
-		],
-		"description": "実行時の警告 (致命的なエラーではない)。スクリプトの実行は中断されません。"
-	},
-	"E_PARSE": {
-		"prefix": "E_PARSE",
-		"body": [
-			"E_PARSE"
-		],
-		"description": "コンパイル時のパースエラー。パースエラーはパーサでのみ生成されます。"
-	},
-	"E_NOTICE": {
-		"prefix": "E_NOTICE",
-		"body": [
-			"E_NOTICE"
-		],
-		"description": "実行時の警告。エラーを発しうる状況に遭遇したことを示す。ただし通常のスクリプト実行の場合にもこの警告を発することがありうる。"
-	},
-	"E_CORE_ERROR": {
-		"prefix": "E_CORE_ERROR",
-		"body": [
-			"E_CORE_ERROR"
-		],
-		"description": "PHPの初期始動時点での致命的なエラー。E_ERRORに似ているがPHPのコアによって発行される点が違う。"
-	},
-	"E_CORE_WARNING": {
-		"prefix": "E_CORE_WARNING",
-		"body": [
-			"E_CORE_WARNING"
-		],
-		"description": "（致命的ではない）警告。PHPの初期始動時に発生する。E_WARNINGに似ているがPHPのコアによって発行される 点が違う。"
-	},
-	"E_COMPILE_ERROR": {
-		"prefix": "E_COMPILE_ERROR",
-		"body": [
-			"E_COMPILE_ERROR"
-		],
-		"description": "コンパイル時の致命的なエラー。E_ERRORに似ているがZendスクリプティングエンジンによって発行される点が違う。"
-	},
-	"E_COMPILE_WARNING": {
-		"prefix": "E_COMPILE_WARNING",
-		"body": [
-			"E_COMPILE_WARNING"
-		],
-		"description": "コンパイル時の警告（致命的ではない）。E_WARNINGに似ているがZendスクリプティングエンジンによって発行される点が違う。"
-	},
-	"E_USER_ERROR": {
-		"prefix": "E_USER_ERROR",
-		"body": [
-			"E_USER_ERROR"
-		],
-		"description": "ユーザーによって発行されるエラーメッセージ。E_ERRORに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
-	},
-	"E_USER_WARNING": {
-		"prefix": "E_USER_WARNING",
-		"body": [
-			"E_USER_WARNING"
-		],
-		"description": "ユーザーによって発行される警告メッセージ。E_WARNINGに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
-	},
-	"E_USER_NOTICE": {
-		"prefix": "E_USER_NOTICE",
-		"body": [
-			"E_USER_NOTICE"
-		],
-		"description": "ユーザーによって発行される注意メッセージ。E_NOTICEに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
-	},
-	"E_STRICT": {
-		"prefix": "E_STRICT",
-		"body": [
-			"E_STRICT"
-		],
-		"description": "コードの相互運用性や互換性を維持するために PHP がコードの変更を提案する。"
-	},
-	"E_RECOVERABLE_ERROR": {
-		"prefix": "E_RECOVERABLE_ERROR",
-		"body": [
-			"E_RECOVERABLE_ERROR"
-		],
-		"description": "キャッチできる致命的なエラー。危険なエラーが発生したが、エンジンが不安定な状態になるほどではないことを表す。ユーザー定義のハンドラでエラーがキャッチされなかった場合 (set_error_handler() も参照ください) は、 E_ERRORとして異常終了する。"
-	},
-	"E_DEPRECATED": {
-		"prefix": "E_DEPRECATED",
-		"body": [
-			"E_DEPRECATED"
-		],
-		"description": "実行時の注意。これを有効にすると、将来のバージョンで動作しなくなるコードについての警告を受け取ることができる。"
-	},
-	"E_USER_DEPRECATED": {
-		"prefix": "E_USER_DEPRECATED",
-		"body": [
-			"E_USER_DEPRECATED"
-		],
-		"description": "ユーザー定義の警告メッセージ。これはE_DEPRECATEDと同等だが、 PHP のコード上で関数 trigger_error() によって作成されるという点が異なる。"
-	},
-	"E_ALL": {
-		"prefix": "E_ALL",
-		"body": [
-			"E_ALL"
-		],
-		"description": "すべてのエラー"
-	},
-	"_SERVER['DOCUMENT_ROOT']": {
-		"prefix": "$_SERVER['DOCUMENT_ROOT']",
-		"body": [
-			"$_SERVER['DOCUMENT_ROOT']"
-		],
-		"description": "現在実行されているスクリプトが存在するドキュメントルート ディレクトリ"
-	},
-	"_SERVER['GATEWAY_INTERFACE']": {
-		"prefix": "$_SERVER['GATEWAY_INTERFACE']",
-		"body": [
-			"$_SERVER['GATEWAY_INTERFACE']"
-		],
-		"description": "サーバーが使用している CGI のバージョン"
-	},
-	"_SERVER['HTTPS']": {
-		"prefix": "$_SERVER['HTTPS']",
-		"body": [
-			"$_SERVER['HTTPS']"
-		],
-		"description": "スクリプトが HTTPS プロトコルを通じて実行されている場合に 空でない値が設定されます。"
-	},
-	"_SERVER['HTTP_ACCEPT']": {
-		"prefix": "$_SERVER['HTTP_ACCEPT']",
-		"body": [
-			"$_SERVER['HTTP_ACCEPT']"
-		],
-		"description": "現在のリクエストの Accept: ヘッダがもしあれば その内容"
-	},
-	"_SERVER['HTTP_ACCEPT_CHARSET']": {
-		"prefix": "$_SERVER['HTTP_ACCEPT_CHARSET']",
-		"body": [
-			"$_SERVER['HTTP_ACCEPT_CHARSET']"
-		],
-		"description": "現在のリクエストの Accept-Charset: ヘッダが もしあればその内容"
-	},
-	"_SERVER['HTTP_ACCEPT_ENCODING']": {
-		"prefix": "$_SERVER['HTTP_ACCEPT_ENCODING']",
-		"body": [
-			"$_SERVER['HTTP_ACCEPT_ENCODING']"
-		],
-		"description": "現在のリクエストに Accept-Encoding: ヘッダが もしあればその内容"
-	},
-	"_SERVER['HTTP_ACCEPT_LANGUAGE']": {
-		"prefix": "$_SERVER['HTTP_ACCEPT_LANGUAGE']",
-		"body": [
-			"$_SERVER['HTTP_ACCEPT_LANGUAGE']"
-		],
-		"description": "現在のリクエストに Accept-Language: ヘッダが もしあればその内容"
-	},
-	"_SERVER['HTTP_CONNECTION']": {
-		"prefix": "$_SERVER['HTTP_CONNECTION']",
-		"body": [
-			"$_SERVER['HTTP_CONNECTION']"
-		],
-		"description": "現在のリクエストに Connection: ヘッダが もしあればその内容"
-	},
-	"_SERVER['HTTP_HOST']": {
-		"prefix": "$_SERVER['HTTP_HOST']",
-		"body": [
-			"$_SERVER['HTTP_HOST']"
-		],
-		"description": "現在のリクエストに Host: ヘッダが もしあればその内容"
-	},
-	"_SERVER['HTTP_REFERER']": {
-		"prefix": "$_SERVER['HTTP_REFERER']",
-		"body": [
-			"$_SERVER['HTTP_REFERER']"
-		],
-		"description": "現在のページに遷移する前にユーザーエージェントが参照していた ページのアドレス"
-	},
-	"_SERVER['HTTP_USER_AGENT']": {
-		"prefix": "$_SERVER['HTTP_USER_AGENT']",
-		"body": [
-			"$_SERVER['HTTP_USER_AGENT']"
-		],
-		"description": "現在のリクエストに User-Agent: ヘッダが もしあればその内容"
-	},
-	"_SERVER['PATH_TRANSLATED']": {
-		"prefix": "$_SERVER['PATH_TRANSLATED']",
-		"body": [
-			"$_SERVER['PATH_TRANSLATED']"
-		],
-		"description": "バーチャルからリアルへのマッピングがなされた後の、 現在のスクリプトのファイルシステム上（ドキュメントルートではなく） でのパス"
-	},
-	"_SERVER['PHP_AUTH_DIGEST']": {
-		"prefix": "$_SERVER['PHP_AUTH_DIGEST']",
-		"body": [
-			"$_SERVER['PHP_AUTH_DIGEST']"
-		],
-		"description": "HTTP ダイジェスト認証を 行っている場合、クライアントから送られた 'Authorization' ヘッダの 内容が設定されます"
-	},
-	"_SERVER['PHP_AUTH_PW']": {
-		"prefix": "$_SERVER['PHP_AUTH_PW']",
-		"body": [
-			"$_SERVER['PHP_AUTH_PW']"
-		],
-		"description": "HTTP 認証しているときにそのユーザーの パスワードがセットされます。"
-	},
-	"_SERVER['PHP_AUTH_USER']": {
-		"prefix": "$_SERVER['PHP_AUTH_USER']",
-		"body": [
-			"$_SERVER['PHP_AUTH_USER']"
-		],
-		"description": "HTTP 認証しているときにそのユーザー名がセットされます。"
-	},
-	"_SERVER['PHP_SELF']": {
-		"prefix": "$_SERVER['PHP_SELF']",
-		"body": [
-			"$_SERVER['PHP_SELF']"
-		],
-		"description": "現在実行しているスクリプトのファイル名です。 ドキュメントルートから取得されます。"
-	},
-	"_SERVER['QUERY_STRING']": {
-		"prefix": "$_SERVER['QUERY_STRING']",
-		"body": [
-			"$_SERVER['QUERY_STRING']"
-		],
-		"description": "ページがアクセスされた際にもし検索引数があればそれが格納されます。"
-	},
-	"_SERVER['REMOTE_ADDR']": {
-		"prefix": "$_SERVER['REMOTE_ADDR']",
-		"body": [
-			"$_SERVER['REMOTE_ADDR']"
-		],
-		"description": "現在ページをみているユーザーの IP アドレス。"
-	},
-	"_SERVER['REMOTE_HOST']": {
-		"prefix": "$_SERVER['REMOTE_HOST']",
-		"body": [
-			"$_SERVER['REMOTE_HOST']"
-		],
-		"description": "現在のページにアクセスしているホスト名。DNS の逆引き検索は ユーザーの REMOTE_ADDR に基づいています。"
-	},
-	"_SERVER['REMOTE_PORT']": {
-		"prefix": "$_SERVER['REMOTE_PORT']",
-		"body": [
-			"$_SERVER['REMOTE_PORT']"
-		],
-		"description": "ユーザーのマシンから Web サーバーへの通信に使用されているポート番号"
-	},
-	"_SERVER['REQUEST_METHOD']": {
-		"prefix": "$_SERVER['REQUEST_METHOD']",
-		"body": [
-			"$_SERVER['REQUEST_METHOD']"
-		],
-		"description": "ページにアクセスする際に使用されたリクエストのメソッド名です。 'GET', 'HEAD', 'POST', 'PUT' など。"
-	},
-	"_SERVER['REQUEST_TIME']": {
-		"prefix": "$_SERVER['REQUEST_TIME']",
-		"body": [
-			"$_SERVER['REQUEST_TIME']"
-		],
-		"description": "リクエストの開始時のタイムスタンプ。"
-	},
-	"_SERVER['REQUEST_URI']": {
-		"prefix": "$_SERVER['REQUEST_URI']",
-		"body": [
-			"$_SERVER['REQUEST_URI']"
-		],
-		"description": "ページにアクセスするために指定された URI。"
-	},
-	"_SERVER['SCRIPT_FILENAME']": {
-		"prefix": "$_SERVER['SCRIPT_FILENAME']",
-		"body": [
-			"$_SERVER['SCRIPT_FILENAME']"
-		],
-		"description": "現在実行されているスクリプトの絶対パス"
-	},
-	"_SERVER['SCRIPT_NAME']": {
-		"prefix": "$_SERVER['SCRIPT_NAME']",
-		"body": [
-			"$_SERVER['SCRIPT_NAME']"
-		],
-		"description": "現在のスクリプトのパス。"
-	},
-	"_SERVER['SERVER_ADDR']": {
-		"prefix": "$_SERVER['SERVER_ADDR']",
-		"body": [
-			"$_SERVER['SERVER_ADDR']"
-		],
-		"description": "現在のスクリプトが実行されているサーバーの IP アドレスです。"
-	},
-	"_SERVER['SERVER_ADMIN']": {
-		"prefix": "$_SERVER['SERVER_ADMIN']",
-		"body": [
-			"$_SERVER['SERVER_ADMIN']"
-		],
-		"description": "Web サーバーの設定ファイルの SERVER_ADMIN (Apache の場合)ディレクティブ にセットされている値。スクリプトがバーチャルホスト上で 実行されている場合、バーチャルホストに対して値が定義されます。"
-	},
-	"_SERVER['SERVER_NAME']": {
-		"prefix": "$_SERVER['SERVER_NAME']",
-		"body": [
-			"$_SERVER['SERVER_NAME']"
-		],
-		"description": "現在のスクリプトが実行されているサーバーのホスト名です。 スクリプトがバーチャルホスト上で実行されている場合は そのバーチャルホスト名となります。"
-	},
-	"_SERVER['SERVER_PORT']": {
-		"prefix": "$_SERVER['SERVER_PORT']",
-		"body": [
-			"$_SERVER['SERVER_PORT']"
-		],
-		"description": "Web サーバーの通信ポートとして使用されているポート番号。"
-	},
-	"_SERVER['SERVER_PROTOCOL']": {
-		"prefix": "$_SERVER['SERVER_PROTOCOL']",
-		"body": [
-			"$_SERVER['SERVER_PROTOCOL']"
-		],
-		"description": "ページがリクエストされた際のプロトコル名とバージョンです。 例.'HTTP/1.0'"
-	},
-	"_SERVER['SERVER_SIGNATURE']": {
-		"prefix": "$_SERVER['SERVER_SIGNATURE']",
-		"body": [
-			"$_SERVER['SERVER_SIGNATURE']"
-		],
-		"description": "サーバー上で生成されたページに追加される、 サーバーのバージョン名とバーチャルホスト名の文字列。"
-	},
-	"_SERVER['SERVER_SOFTWARE']": {
-		"prefix": "$_SERVER['SERVER_SOFTWARE']",
-		"body": [
-			"\\$_SERVER['SERVER_SOFTWARE']"
-		],
-		"description": "レスポンスヘッダ上に書かれている、 サーバーの認識文字列です。"
-	},
-
-	/*
-		"_SERVER": {
-		"prefix": "$_SERVER",
-		"body": [
-			"$_SERVER['${1|DOCUMENT_ROOT|GATEWAY_INTERFACE|HTTP_|HTTPS|PATH_TRANSLATED|PHP_|QUERY_STRING|REMOTE_|SCRIPT_FILENAME|SCRIPT_NAME|SERVER_|}']"
-		],
-		"description": "$_SERVER['xxxxx']"
-	},
-	"_SERVER['HTTP_xxxx']": {
-		"prefix": "$_SERVER['HTTP_",
-		"body": [
-			"$_SERVER['${1|ACCEPT|ACCEPT_CHARSET|ACCEPT_ENCODING|ACCEPT_LANGUAGE|CONNECTION|HOST|REFERER|USER_AGENT|}']"
-		],
-		"description": "$_SERVER['HTTP_xxxxx']"
-	},
-	"_SERVER['PHP_xxxx']": {
-		"prefix": "$_SERVER['PHP_",
-		"body": [
-			"$_SERVER['PHP_${1|AUTH_DIGEST|AUTH_PW|AUTH_USER|SELF|}']"
-		],
-		"description": "$_SERVER['PHP_xxxxx']"
-	},
-	"_SERVER['REMOTE_xxxx']": {
-		"prefix": "$_SERVER['REMOTE_",
-		"body": [
-			"$_SERVER['REMOTE_${1|ADDR|HOST|PORT|}']"
-		],
-		"description": "$_SERVER['REMOTE_xxxxx']"
-	},
-	"_SERVER['REQUEST_xxxx']": {
-		"prefix": "$_SERVER['REQUEST_",
-		"body": [
-			"$_SERVER['REQUEST_${1|METHOD|TIME|URI|}']"
-		],
-		"description": "$_SERVER['REQUEST_xxxxx']"
-	},
-	"_SERVER['SERVER_xxxx']": {
-		"prefix": "$_SERVER['SERVER_",
-		"body": [
-			"$_SERVER['SERVER_${1|ADDR|ADMIN|NAME|PORT|PROTOCOL|SIGNATURE|SOFTWARE|}']"
-		],
-		"description": "$_SERVER['SERVER_xxxxx']"
-	},
-*/
-
-
 	"SUCCEEDED": {
 		"prefix": "SUCCEEDED",
 		"body": [
@@ -610,10 +234,10 @@
 		],
 		"description": "SERVER_PURPOSE == COMMERCIAL"
 	},
-	"V_ID"      : { "prefix": "V_ID"      , "body": ["V_ID"      ]},
-	"C_STATUS"  : { "prefix": "C_STATUS"  , "body": ["C_STATUS"  ]},
-	"D_START_DT": { "prefix": "D_START_DT", "body": ["D_START_DT"]},
-	"D_END_DT":   { "prefix": "D_END_DT"  , "body": ["D_END_DT"]},
+	"V_ID"    : { "prefix": "V_ID"    , "body": ["V_ID"    ]},
+	"C_STATUS": { "prefix": "C_STATUS", "body": ["C_STATUS"]},
+	"D_START" : { "prefix": "D_START" , "body": ["D_START" ]},
+	"D_END"   : { "prefix": "D_END"   , "body": ["D_END"   ]},
 
 	"ACCOUNT.C_CLASS"          : {"prefix": "ACCOUNT.C_CLASS"          , "body": ["ACCOUNT.C_CLASS"          ], "description": "CHAR   ( 3) 会員区分"        },
 	"ACCOUNT.C_STATUS"         : {"prefix": "ACCOUNT.C_STATUS"         , "body": ["ACCOUNT.C_STATUS"         ], "description": "CHAR   ( 3) 状態"            },
@@ -643,9 +267,9 @@
 	"blank array": {
 		"prefix": "['",
 		"body": [
-			"[''=>']"
+			"[''=>'"
 		],
-		"description": "PHP タグ"
+		"description": "[''=>'']"
 	},
 	"php tag for phtml": {
 		"prefix": "?>",
@@ -780,6 +404,19 @@
 		],
 		"description": "構築"
 	},
+	"linkinfo": {
+		"prefix": "linkinfo",
+		"body": [
+			"\\$ary['${1:キー}'] = [",
+			"\t'Handler' => '${2:関数名}',",
+			"\t'Permission'   => ${3|PERMISSION_MODIFY,PERMISSION_READ,PERMISSION_DELETE|},",
+			"\t'RightCommand' => ['${4:権利があるときのHtmlViewコマンド配列}' => ],",
+			"\t'LeftCommand'  => ['${5:権利がないときのHtmlViewコマンド配列}' => ],",
+			"\t'Page'         => '${6:遷移先のページ(省略するとこのページ)}'",
+			"];",
+	 ],
+		"description": "linkinfo"
+	},
 	"Destructor": {
 		"prefix": "destruct",
 		"body": [
@@ -809,14 +446,14 @@
 			"protected function on${2:名前}(\\$value)",
 			"{",
 			"\t// フォームに入力された値の取得",
-			"\tif (!$this->loadFromFormOpe(false)) {",
+			"\tif (!\\$this->loadFromFormOpe(false)) {",
 			"\t\treturn SUCCEEDED;",
 			"\t}",
 			"\t",
 			"\t$3",
 			"\t",
 			"\t// ページ遷移",
-			"\t$this->PageRedirect('');",
+			"\t\\$this->PageRedirect('');",
 			"",
 			"\t//",
 			"\treturn SUCCEEDED;",
@@ -828,23 +465,25 @@
 		"prefix": "onAjax",
 		"body": [
 			"/**",
-			" * [GET_] 選択肢を取得するAJAX処理",
+			" * [${1:コマンド}] Ajax処理",
 			" * ",
 			" * @access public",
 			" * @param  string \\$val ",
 			" * @return boolean コマンドディスパッチを FAILED:継続 SUCCEEDED:終了",
-			" * @throw  ",
 			" */",
-			"public function onAjax${1:名前}($val)",
+			"public function onAjax${2:名前}(\\$val)",
 			"{",
 			"\t// AJAX なので HTML は出力しない",
-			"\t$this->m_blUseHTML = FALSE,",
+			"\t\\$this->m_blUseHTML = false;",
+			"\t\\$this->useHtmlView = false;",
 			"",
 			"\t// 戻り値用配列",
-			"\t\\$data = [],",
+			"\t\\$data = [",
+			"\t\t'' => ,",
+			"\t];",
 			"",
 			"\t// json を出力",
-			"\t$this->EchoJSON($data),",
+			"\t\\$this->echoJSON(\\$data);",
 			"",
 			"\t//",
 			"\treturn SUCCEEDED;",
@@ -888,12 +527,12 @@
 		],
 		"description": "aryQueryDB"
 	},
-	"inner join": {
-		"prefix": "inner",
+	"from inner join": {
+		"prefix": "from",
 		"body": [
-			"inner join ${1:つなぐテーブル名} on \\$tbl.${2:元のカラム} = $1.${3:つなぐカラム}"
+			"from ${1:元のテーブル} inner join ${2:つなぐテーブル} on $1.${3:元のカラム} = $2.${4:つなぐカラム}"
 		],
-		"description": "select文 innner join"
+		"description": "inner join"
 	},
 	"$this->m_aryArgs": {
 		"prefix": "this->m_aryArgs",
@@ -917,6 +556,37 @@
 			"];"
 		],
 		"description": "BimmsPagePC::getLinkInfo() の要素を追加"
+	},
+	"addViewData": {
+		"prefix": "addViewData",
+		"body": [
+			"/**",
+			" * View に与えるデータを作成",
+			" *",
+			" * ※派生クラスにて実装",
+			" *",
+			" * @access public",
+			" * @param  array& \\$data データー配列(デフォルトの表示データが格納されている)",
+			" */",
+			"public function addViewData(&\\$data)",
+			"{",
+			"\tparent::addViewData(\\$data);",
+			"}",
+		],
+		"description": "public function addViewData(&$data)"
+	 },
+	 "$option": {
+		"prefix": "option",
+		"description": "$optionHoge = [",
+		"body": [
+			"/**",
+			" * ${1:名前}の選択肢",
+			" * @var array",
+			" */",
+			"\tstatic public \\$option${2:変数名} = [",
+			"\t'$3' => '',",
+			"];",
+		],
 	},
 	"getOption": {
 		"prefix": "getOption",
@@ -980,18 +650,27 @@
 	"$sql = <<<_SQL_": {
 		"prefix": "sql",
 		"body": [
-			"\t\t\\$tbl = static::\\$tableName;",
-			"\t\t\\$sql = <<<_SQL_",
+			"\\$tbl = static::\\$tableName;",
+			"\\$sql = <<<_SQL_",
 			"select ",
 			"from {\\$tbl}",
 			"where ",
 			"_SQL_;",
-			"\t\t\\$arg = [];",
-			"\t\t\\$rows = aryQueryDB(\\$tbl, \\$sql, \\$arg);"
+			"\\$arg = [];",
+			"\\$rows = aryQueryDB(\\$tbl, \\$sql, \\$arg);"
  		],
-		"description": "$sql = <<<_SQL_"
+		"description": "aryQueryDB()"
 	},
-
+	"loafFromDB": {
+		"prefix": "loadFromDB",
+		"description": "$where = ''",
+		"body": [
+			"\\$where = '$1';",
+			"\\$args  = [$2];",
+			"\\$other = '$3';",
+			"\\$rows = self::loadFromDB(\\$where, \\$args, \\$other);",
+		]
+	},
 	"loadFromFormOpe": {
 		"prefix": "loadFromFormOpe",
 		"body": [
@@ -1001,6 +680,60 @@
 			"}",
 		],
 		"description": "if (!$this->loadFromFormOpe($this->form, SCRIPT_NAME)) {"
+	},
+	"getColValue": {
+		"prefix": "getColValue",
+		"description": "$val = getColValue",
+		"body": [
+			"\\$where = '';",
+			"\\$args  = [];",
+			"\\$val = ${1:クラス名}::getColValue(\\$where, \\$args, '${2:値の列}');",
+		]
+	},
+	"getColValues": {
+		"prefix": "getColValues",
+		"description": "$dic = getColValues",
+		"body": [
+			"\\$where = '';",
+			"\\$args  = [];",
+			"\\$dic = ${1:クラス名}::getColValues(\\$where, \\$args, '${2:値の列}', '${3:キーの列}')",
+		]
+	},
+	"cmsfunc": {
+		"prefix": "cmsFunc",
+		"body": [
+			"\t/**",
+			"\t * $1の処理",
+			"\t * ",
+			"\t * @access public",
+			"\t * @param  array  &\\$data  \\HtmlView に渡すデータ",
+			"\t * @param  string &\\$cmd   HtmlView用コマンド",
+			"\t * @param  string $\\del    HtmlView用削除コマンド",
+			"\t * @param  string &\\$value 管理画面にて入力された値",
+			"\t * @return array CMS データの引数",
+			"\t */",
+			"\tpublic function cmsFunc$2(&\\$data, \\$info, &\\$cmd, \\$del, &\\$value)",
+			"\t{",
+			"\t}",
+		],
+		"description": "TraitHtmlView"
+	},
+	"addViewData???": {
+		"prefix": "addViewData",
+		"body": [
+			"/**",
+			" * ${1:タイトル}",
+			" * ",
+			" * @access public",
+			" * @param  array& \\$data HtmlView データ",
+			" * @author 木屋善夫",
+			" */",
+			"public function addViewData$2(&\\$data)",
+			"{",
+			"\t$3",
+			"}",
+ 		],
+		"description": "共通機能実装"
 	},
 
 	"_FORM_CHECK_ERROR_": {
@@ -1021,5 +754,395 @@
 	"EchoDebug": {
 		"prefix": "EchoDebug",
 		"body": "EchoDebug('${1:変数}', $1); die();"
+	},
+	"E_ERROR": {
+		"prefix": "E_ERROR",
+		"body": [
+			"E_ERROR"
+		],
+		"description": "重大な実行時エラー。これは、メモリ確保に関する問題のように復帰できないエラーを示します。スクリプトの実行は中断されます。"
+	},
+	"E_WARNING": {
+		"prefix": "E_WARNING",
+		"body": [
+			"E_WARNING"
+		],
+		"description": "実行時の警告 (致命的なエラーではない)。スクリプトの実行は中断されません。"
+	},
+	"E_PARSE": {
+		"prefix": "E_PARSE",
+		"body": [
+			"E_PARSE"
+		],
+		"description": "コンパイル時のパースエラー。パースエラーはパーサでのみ生成されます。"
+	},
+	"E_NOTICE": {
+		"prefix": "E_NOTICE",
+		"body": [
+			"E_NOTICE"
+		],
+		"description": "実行時の警告。エラーを発しうる状況に遭遇したことを示す。ただし通常のスクリプト実行の場合にもこの警告を発することがありうる。"
+	},
+	"E_CORE_ERROR": {
+		"prefix": "E_CORE_ERROR",
+		"body": [
+			"E_CORE_ERROR"
+		],
+		"description": "PHPの初期始動時点での致命的なエラー。E_ERRORに似ているがPHPのコアによって発行される点が違う。"
+	},
+	"E_CORE_WARNING": {
+		"prefix": "E_CORE_WARNING",
+		"body": [
+			"E_CORE_WARNING"
+		],
+		"description": "（致命的ではない）警告。PHPの初期始動時に発生する。E_WARNINGに似ているがPHPのコアによって発行される 点が違う。"
+	},
+	"E_COMPILE_ERROR": {
+		"prefix": "E_COMPILE_ERROR",
+		"body": [
+			"E_COMPILE_ERROR"
+		],
+		"description": "コンパイル時の致命的なエラー。E_ERRORに似ているがZendスクリプティングエンジンによって発行される点が違う。"
+	},
+	"E_COMPILE_WARNING": {
+		"prefix": "E_COMPILE_WARNING",
+		"body": [
+			"E_COMPILE_WARNING"
+		],
+		"description": "コンパイル時の警告（致命的ではない）。E_WARNINGに似ているがZendスクリプティングエンジンによって発行される点が違う。"
+	},
+	"E_USER_ERROR": {
+		"prefix": "E_USER_ERROR",
+		"body": [
+			"E_USER_ERROR"
+		],
+		"description": "ユーザーによって発行されるエラーメッセージ。E_ERRORに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_USER_WARNING": {
+		"prefix": "E_USER_WARNING",
+		"body": [
+			"E_USER_WARNING"
+		],
+		"description": "ユーザーによって発行される警告メッセージ。E_WARNINGに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_USER_NOTICE": {
+		"prefix": "E_USER_NOTICE",
+		"body": [
+			"E_USER_NOTICE"
+		],
+		"description": "ユーザーによって発行される注意メッセージ。E_NOTICEに似ているがPHPコード上でtrigger_error()関数を 使用した場合に発行される点が違う。"
+	},
+	"E_STRICT": {
+		"prefix": "E_STRICT",
+		"body": [
+			"E_STRICT"
+		],
+		"description": "コードの相互運用性や互換性を維持するために PHP がコードの変更を提案する。"
+	},
+	"E_RECOVERABLE_ERROR": {
+		"prefix": "E_RECOVERABLE_ERROR",
+		"body": [
+			"E_RECOVERABLE_ERROR"
+		],
+		"description": "キャッチできる致命的なエラー。危険なエラーが発生したが、エンジンが不安定な状態になるほどではないことを表す。ユーザー定義のハンドラでエラーがキャッチされなかった場合 (set_error_handler() も参照ください) は、 E_ERRORとして異常終了する。"
+	},
+	"E_DEPRECATED": {
+		"prefix": "E_DEPRECATED",
+		"body": [
+			"E_DEPRECATED"
+		],
+		"description": "実行時の注意。これを有効にすると、将来のバージョンで動作しなくなるコードについての警告を受け取ることができる。"
+	},
+	"E_USER_DEPRECATED": {
+		"prefix": "E_USER_DEPRECATED",
+		"body": [
+			"E_USER_DEPRECATED"
+		],
+		"description": "ユーザー定義の警告メッセージ。これはE_DEPRECATEDと同等だが、 PHP のコード上で関数 trigger_error() によって作成されるという点が異なる。"
+	},
+	"E_ALL": {
+		"prefix": "E_ALL",
+		"body": [
+			"E_ALL"
+		],
+		"description": "すべてのエラー"
+	},
+	"$_REQUEST": {
+		"prefix": "$_REQUES",
+		"body": "\\$_REQUEST['$1']",
+		"description": "$_REQUEST['']"
+	},
+	"$_SERVER": {
+		"prefix": "$_SERVER",
+		"body": [
+		"\\$_SERVER['${1|DOCUMENT_ROOT,GATEWAY_INTERFACE,HTTPS,HTTP_ACCEPT,HTTP_ACCEPT_CHARSET,HTTP_ACCEPT_ENCODING,HTTP_ACCEPT_LANGUAGE,HTTP_CONNECTION,HTTP_HOST,HTTP_REFERER,HTTP_USER_AGENT,PATH_TRANSLATED,PHP_AUTH_DIGEST,PHP_AUTH_PW,PHP_AUTH_USER,PHP_SELF,QUERY_STRING,REMOTE_ADDR,REMOTE_HOST,REMOTE_PORT,REQUEST_METHOD,REQUEST_TIME,REQUEST_URI,SCRIPT_FILENAME,SCRIPT_NAME,SERVER_ADDR,SERVER_ADMIN,SERVER_NAME,SERVER_PORT,SERVER_PROTOCOL,SERVER_SIGNATURE,SERVER_SOFTWARE|}']"
+		],
+		"description": "$_SERVER['xxxxx']"
+	},
+
+/*
+	"_SERVER['DOCUMENT_ROOT']": {
+		"prefix": "_SERVER['DOCUMENT_ROOT']",
+		"body": [
+			"\\$_SERVER['DOCUMENT_ROOT']"
+		],
+		"description": "現在実行されているスクリプトが存在するドキュメントルート ディレクトリ"
+	},
+	"_SERVER['GATEWAY_INTERFACE']": {
+		"prefix": "_SERVER['GATEWAY_INTERFACE']",
+		"body": [
+		"\\$_SERVER['GATEWAY_INTERFACE']"
+		],
+		"description": "サーバーが使用している CGI のバージョン"
+	},
+	"_SERVER['HTTPS']": {
+		"prefix": "_SERVER['HTTPS']",
+		"body": [
+		"\\$_SERVER['HTTPS']"
+		],
+		"description": "スクリプトが HTTPS プロトコルを通じて実行されている場合に 空でない値が設定されます。"
+	},
+	"_SERVER['HTTP_ACCEPT']": {
+		"prefix": "_SERVER['HTTP_ACCEPT']",
+		"body": [
+		"\\$_SERVER['HTTP_ACCEPT']"
+		],
+		"description": "現在のリクエストの Accept: ヘッダがもしあれば その内容"
+	},
+	"_SERVER['HTTP_ACCEPT_CHARSET']": {
+		"prefix": "_SERVER['HTTP_ACCEPT_CHARSET']",
+		"body": [
+		"\\$_SERVER['HTTP_ACCEPT_CHARSET']"
+		],
+		"description": "現在のリクエストの Accept-Charset: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_ACCEPT_ENCODING']": {
+		"prefix": "_SERVER['HTTP_ACCEPT_ENCODING']",
+		"body": [
+		"\\$_SERVER['HTTP_ACCEPT_ENCODING']"
+		],
+		"description": "現在のリクエストに Accept-Encoding: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_ACCEPT_LANGUAGE']": {
+		"prefix": "_SERVER['HTTP_ACCEPT_LANGUAGE']",
+		"body": [
+		"\\$_SERVER['HTTP_ACCEPT_LANGUAGE']"
+		],
+		"description": "現在のリクエストに Accept-Language: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_CONNECTION']": {
+		"prefix": "_SERVER['HTTP_CONNECTION']",
+		"body": [
+		"\\$_SERVER['HTTP_CONNECTION']"
+		],
+		"description": "現在のリクエストに Connection: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_HOST']": {
+		"prefix": "_SERVER['HTTP_HOST']",
+		"body": [
+		"\\$_SERVER['HTTP_HOST']"
+		],
+		"description": "現在のリクエストに Host: ヘッダが もしあればその内容"
+	},
+	"_SERVER['HTTP_REFERER']": {
+		"prefix": "_SERVER['HTTP_REFERER']",
+		"body": [
+		"\\$_SERVER['HTTP_REFERER']"
+		],
+		"description": "現在のページに遷移する前にユーザーエージェントが参照していた ページのアドレス"
+	},
+	"_SERVER['HTTP_USER_AGENT']": {
+		"prefix": "_SERVER['HTTP_USER_AGENT']",
+		"body": [
+		"\\$_SERVER['HTTP_USER_AGENT']"
+		],
+		"description": "現在のリクエストに User-Agent: ヘッダが もしあればその内容"
+	},
+	"_SERVER['PATH_TRANSLATED']": {
+		"prefix": "_SERVER['PATH_TRANSLATED']",
+		"body": [
+		"\\$_SERVER['PATH_TRANSLATED']"
+		],
+		"description": "バーチャルからリアルへのマッピングがなされた後の、 現在のスクリプトのファイルシステム上（ドキュメントルートではなく） でのパス"
+	},
+	"_SERVER['PHP_AUTH_DIGEST']": {
+		"prefix": "_SERVER['PHP_AUTH_DIGEST']",
+		"body": [
+		"\\$_SERVER['PHP_AUTH_DIGEST']"
+		],
+		"description": "HTTP ダイジェスト認証を 行っている場合、クライアントから送られた 'Authorization' ヘッダの 内容が設定されます"
+	},
+	"_SERVER['PHP_AUTH_PW']": {
+		"prefix": "_SERVER['PHP_AUTH_PW']",
+		"body": [
+		"\\$_SERVER['PHP_AUTH_PW']"
+		],
+		"description": "HTTP 認証しているときにそのユーザーの パスワードがセットされます。"
+	},
+	"_SERVER['PHP_AUTH_USER']": {
+		"prefix": "_SERVER['PHP_AUTH_USER']",
+		"body": [
+		"\\$_SERVER['PHP_AUTH_USER']"
+		],
+		"description": "HTTP 認証しているときにそのユーザー名がセットされます。"
+	},
+	"_SERVER['PHP_SELF']": {
+		"prefix": "_SERVER['PHP_SELF']",
+		"body": [
+		"\\$_SERVER['PHP_SELF']"
+		],
+		"description": "現在実行しているスクリプトのファイル名です。 ドキュメントルートから取得されます。"
+	},
+	"_SERVER['QUERY_STRING']": {
+		"prefix": "_SERVER['QUERY_STRING']",
+		"body": [
+		"\\$_SERVER['QUERY_STRING']"
+		],
+		"description": "ページがアクセスされた際にもし検索引数があればそれが格納されます。"
+	},
+	"_SERVER['REMOTE_ADDR']": {
+		"prefix": "_SERVER['REMOTE_ADDR']",
+		"body": [
+		"\\$_SERVER['REMOTE_ADDR']"
+		],
+		"description": "現在ページをみているユーザーの IP アドレス。"
+	},
+	"_SERVER['REMOTE_HOST']": {
+		"prefix": "_SERVER['REMOTE_HOST']",
+		"body": [
+		"\\$_SERVER['REMOTE_HOST']"
+		],
+		"description": "現在のページにアクセスしているホスト名。DNS の逆引き検索は ユーザーの REMOTE_ADDR に基づいています。"
+	},
+	"_SERVER['REMOTE_PORT']": {
+		"prefix": "_SERVER['REMOTE_PORT']",
+		"body": [
+		"\\$_SERVER['REMOTE_PORT']"
+		],
+		"description": "ユーザーのマシンから Web サーバーへの通信に使用されているポート番号"
+	},
+	"_SERVER['REQUEST_METHOD']": {
+		"prefix": "_SERVER['REQUEST_METHOD']",
+		"body": [
+		"\\$_SERVER['REQUEST_METHOD']"
+		],
+		"description": "ページにアクセスする際に使用されたリクエストのメソッド名です。 'GET', 'HEAD', 'POST', 'PUT' など。"
+	},
+	"_SERVER['REQUEST_TIME']": {
+		"prefix": "_SERVER['REQUEST_TIME']",
+		"body": [
+		"\\$_SERVER['REQUEST_TIME']"
+		],
+		"description": "リクエストの開始時のタイムスタンプ。"
+	},
+	"_SERVER['REQUEST_URI']": {
+		"prefix": "_SERVER['REQUEST_URI']",
+		"body": [
+		"\\$_SERVER['REQUEST_URI']"
+		],
+		"description": "ページにアクセスするために指定された URI。"
+	},
+	"_SERVER['SCRIPT_FILENAME']": {
+		"prefix": "_SERVER['SCRIPT_FILENAME']",
+		"body": [
+		"\\$_SERVER['SCRIPT_FILENAME']"
+		],
+		"description": "現在実行されているスクリプトの絶対パス"
+	},
+	"_SERVER['SCRIPT_NAME']": {
+		"prefix": "_SERVER['SCRIPT_NAME']",
+		"body": [
+		"\\$_SERVER['SCRIPT_NAME']"
+		],
+		"description": "現在のスクリプトのパス。"
+	},
+	"_SERVER['SERVER_ADDR']": {
+		"prefix": "_SERVER['SERVER_ADDR']",
+		"body": [
+		"\\$_SERVER['SERVER_ADDR']"
+		],
+		"description": "現在のスクリプトが実行されているサーバーの IP アドレスです。"
+	},
+	"_SERVER['SERVER_ADMIN']": {
+		"prefix": "_SERVER['SERVER_ADMIN']",
+		"body": [
+		"\\$_SERVER['SERVER_ADMIN']"
+		],
+		"description": "Web サーバーの設定ファイルの SERVER_ADMIN (Apache の場合)ディレクティブ にセットされている値。スクリプトがバーチャルホスト上で 実行されている場合、バーチャルホストに対して値が定義されます。"
+	},
+	"_SERVER['SERVER_NAME']": {
+		"prefix": "_SERVER['SERVER_NAME']",
+		"body": [
+		"\\$_SERVER['SERVER_NAME']"
+		],
+		"description": "現在のスクリプトが実行されているサーバーのホスト名です。 スクリプトがバーチャルホスト上で実行されている場合は そのバーチャルホスト名となります。"
+	},
+	"_SERVER['SERVER_PORT']": {
+		"prefix": "_SERVER['SERVER_PORT']",
+		"body": [
+		"\\$_SERVER['SERVER_PORT']"
+		],
+		"description": "Web サーバーの通信ポートとして使用されているポート番号。"
+	},
+	"_SERVER['SERVER_PROTOCOL']": {
+		"prefix": "_SERVER['SERVER_PROTOCOL']",
+		"body": [
+		"\\$_SERVER['SERVER_PROTOCOL']"
+		],
+		"description": "ページがリクエストされた際のプロトコル名とバージョンです。 例.'HTTP/1.0'"
+	},
+	"_SERVER['SERVER_SIGNATURE']": {
+		"prefix": "_SERVER['SERVER_SIGNATURE']",
+		"body": [
+		"\\$_SERVER['SERVER_SIGNATURE']"
+		],
+		"description": "サーバー上で生成されたページに追加される、 サーバーのバージョン名とバーチャルホスト名の文字列。"
+	},
+	"_SERVER['SERVER_SOFTWARE']": {
+		"prefix": "_SERVER['SERVER_SOFTWARE']",
+		"body": [
+			"\\$_SERVER['SERVER_SOFTWARE']"
+		],
+		"description": "レスポンスヘッダ上に書かれている、 サーバーの認識文字列です。"
 	}
+*/
+
+/*
+	"_SERVER['HTTP_xxxx']": {
+		"prefix": "_SERVER['HTTP_",
+		"body": [
+		"\\$_SERVER['${1|ACCEPT|ACCEPT_CHARSET|ACCEPT_ENCODING|ACCEPT_LANGUAGE|CONNECTION|HOST|REFERER|USER_AGENT|}']"
+		],
+		"description": "$_SERVER['HTTP_xxxxx']"
+	},
+	"_SERVER['PHP_xxxx']": {
+		"prefix": "_SERVER['PHP_",
+		"body": [
+		"\\$_SERVER['PHP_${1|AUTH_DIGEST|AUTH_PW|AUTH_USER|SELF|}']"
+		],
+		"description": "$_SERVER['PHP_xxxxx']"
+	},
+	"_SERVER['REMOTE_xxxx']": {
+		"prefix": "_SERVER['REMOTE_",
+		"body": [
+		"\\$_SERVER['REMOTE_${1|ADDR|HOST|PORT|}']"
+		],
+		"description": "$_SERVER['REMOTE_xxxxx']"
+	},
+	"_SERVER['REQUEST_xxxx']": {
+		"prefix": "_SERVER['REQUEST_",
+		"body": [
+		"\\$_SERVER['REQUEST_${1|METHOD|TIME|URI|}']"
+		],
+		"description": "$_SERVER['REQUEST_xxxxx']"
+	},
+	"_SERVER['SERVER_xxxx']": {
+		"prefix": "_SERVER['SERVER_",
+		"body": [
+		"\\$_SERVER['SERVER_${1|ADDR|ADMIN|NAME|PORT|PROTOCOL|SIGNATURE|SOFTWARE|}']"
+		],
+		"description": "$_SERVER['SERVER_xxxxx']"
+	},
+*/
+
 }

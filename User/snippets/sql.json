@@ -1,38 +1,45 @@
 {
 	"char(   3)": {
-		"prefix": "char   (   3) not null default '' -- ",
+		"prefix": "char   (   3) not null default '', -- ",
 		"body": [
-			"char   (   3) not null default '' -- $1"
+			"char   (   3) not null default '', -- $1"
 		],
-		"description": "char   (   3) not null default '' -- "
+		"description": "char   (   3) not null default '', -- "
 	},
 	"char(  14)": {
-		"prefix": "char   (  14) not null default '' -- ",
+		"prefix": "char   (  14) not null default '', -- ",
 		"body": [
-			"char   (  14) not null default '' -- $1"
+			"char   (  14) not null default '', -- $1"
 		],
-		"description": "char   (  14) not null default '' -- "
+		"description": "char   (  14) not null default '', -- "
 	},
-	"varchar(  64) not null default '' --": {
-		"prefix": "varchar(  64) not null default '' --",
+	"varchar(  64) not null default '', --": {
+		"prefix": "varchar(  64) not null default '', --",
 		"body": [
-			"varchar(  64) not null default '' -- $1"
+			"varchar(  64) not null default '', -- $1"
 		],
-		"description": "varchar(  64) not null default '' --"
+		"description": "varchar(  64) not null default '', --"
 	},
-	"varchar( 255) not null default '' -- ": {
-		"prefix": "varchar( 255) not null default '' -- ",
+	"varchar( 255) not null default '', -- ": {
+		"prefix": "varchar( 255) not null default '', -- ",
 		"body": [
-			"varchar( 255) not null default '' -- $1"
+			"varchar( 255) not null default '', -- $1"
 		],
-		"description": "varchar( 255) not null default '' -- "
+		"description": "varchar( 255) not null default '', -- "
+	},
+	"varchar(4096) not null default '', -- ": {
+		"prefix": "varchar(4096) not null default '', -- ",
+		"body": [
+			"varchar(4096) not null default '', -- $1"
+		],
+		"description": "varchar( 255) not null default '', -- "
 	},
 	"numeric(   9) not null default 0  --": {
-		"prefix": "numeric(   9) not null default 0  -- ",
+		"prefix": "numeric(   9) not null default 0,  -- ",
 		"body": [
-			"numeric(   9) not null default 0  -- $1"
+			"numeric(   9) not null default 0,  -- $1"
 		],
-		"description": "numeric(   9) not null default 0  --"
+		"description": "numeric(   9) not null default 0,  --"
 	},
 	"unique": {
 		"prefix": "unique",
@@ -46,85 +53,120 @@
 	"V_ACCOUNT_ID": {
 		"prefix": "V_ACCOUNT_ID",
 		"body": [
-			"V_ACCOUNT_ID      varchar(  64) not null default '' -- アカウントID ACCOUNT.VID"
+			"V_ACCOUNT_ID      varchar(  64) not null default '', -- アカウントID ACCOUNT.VID"
 		],
-		"description": "V_ACCOUNT_ID    varchar(  64) not null default '' -- アカウントID ACCOUNT.VID"
+		"description": "varchar(64)"
 	},
 	"C_STATUS": {
 		"prefix": "C_STATUS",
 		"body": [
-			"C_STATUS          char   (   3) not null default '' -- 状態"
+			"C_STATUS          char   (   3) not null default '', -- 状態"
 		],
-		"description": "C_STATUS      char   (   3) not null default '' -- 状態"
+		"description": "char(3)"
 	},
 	"V_SITE_ID": {
 		"prefix": "V_SITE_ID",
 		"body": [
-			"V_SITE_ID         varchar(  64) not null default '' -- サイトID"
+			"V_SITE_ID         varchar(  64) not null default '', -- サイトID"
 		],
-		"description": "V_SITE_ID     varchar(  64) not null default '' -- サイトID"
+		"description": "varchar(64)"
 	},
 	"V_NAME": {
 		"prefix": "V_NAME",
 		"body": [
-			"V_NAME            varchar( 255) not null default '' -- 名称"
+			"V_NAME            varchar( 255) not null default '', -- 名称"
 		],
-		"description": "V_NAME        varchar( 255) not null default '' -- 名称"
+		"description": "varchar(255)"
 	},
 	"V_COMMENT": {
 		"prefix": "V_COMMENT",
 		"body": [
-			"V_COMMENT         varchar( 255) not null default '' -- コメント"
+			"V_COMMENT         varchar( 255) not null default '', -- コメント"
 		],
-		"description": "V_COMMENT       varchar( 255) not null default '' -- コメント"
+		"description": "varchar(255)"
 	},
 	"V_IMAGE": {
 		"prefix": "V_IMAGE",
 		"body": [
-			"V_IMAGE           varchar( 255) not null default '' -- 画像ID|URL"
+			"V_IMAGE           varchar( 255) not null default '', -- 画像ID|URL"
 		],
-		"description": "V_IMAGE         varchar( 255) not null default '' -- 画像ID|URL"
+		"description": "varchar(255)"
+	},
+	"V_THUMBNAIL": {
+		"prefix": "V_THUMBNAIL",
+		"body": [
+			"V_THUMBNAIL       varchar( 255) not null default '', -- サムネイル"
+		],
+		"description": "varchar(255)"
 	},
 	"V_LINK": {
 		"prefix": "V_LINK",
 		"body": [
-			"V_LINK            varchar( 255) not null default '' -- リンク先"
+			"V_LINK            varchar( 255) not null default '', -- リンク先URL"
 		],
-		"description": "V_LINK          varchar( 255) not null default '' -- リンク先"
+		"description": "varchar(255)"
 	},
 	"V_DESC": {
 		"prefix": "V_DESC",
 		"body": [
-			"V_DESC            varchar( 255) not null default '' -- 説明文"
+			"V_DESC            varchar( 255) not null default '', -- 説明文"
 		],
-		"description": "V_DESC          varchar( 255) not null default '' -- 説明文"
+		"description": "varchar(255)"
+	},
+	"V_TITLE": {
+		"prefix": "V_TITLE",
+		"body": [
+			"V_TITLE           varchar( 255) not null default '', -- タイトル"
+		],
+		"description": "varchar(255)"
+	},
+	"D_START": {
+		"prefix": "D_START",
+		"body": [
+			"D_START           char   (  14) not null default '', -- 開始日時"
+		],
+		"description": "char(14)"
+	},
+	"D_END": {
+		"prefix": "D_END",
+		"body": [
+			"D_END             char   (  14) not null default '', -- 終了日時"
+		],
+		"description": "char(14)"
+	},
+	"N_PRIORITY": {
+		"prefix": "N_PRIORITY",
+		"body": [
+			"N_PRIORITY        numeric(   9) not null default 0,  -- 優先度"
+		],
+		"description": "numeric(9)"
 	},
 	"alter table add": {
 		"prefix": "alter table",
 		"body": [
 			"alter table ${1:テーブル名} add ${2:列定義} after ${3:列名}"
 		],
-		"description": "alter table {テーブル名} add {列定義} after {列名}"
+		"description": "add"
 	},
 	"alter table modify": {
 		"prefix": "alter table",
 		"body": [
 			"alter table ${1:テーブル名} modify ${2:列定義}"
 		],
-		"description": "alter table {テーブル名} modify {列定義}"
+		"description": "modify"
 	},
 	"alter table drop": {
 		"prefix": "alter table",
 		"body": [
 			"alter table ${1:テーブル名} drop ${2:列名}"
 		],
-		"description": "alter table {テーブル名} drop {列名}"
+		"description": "drop"
 	},
 	"alter table change": {
 		"prefix": "alter table",
 		"body": [
 			"alter table ${1:テーブル名} change ${2:旧列名} ${3:列定義}"
 		],
-		"description": "alter table {テーブル名} change {旧列名} {列定義}"
+		"description": "change"
 	}
 }

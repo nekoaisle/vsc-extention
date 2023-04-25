@@ -25,6 +25,8 @@ class TabManager extends Extension {
 
   // タブ情報
   protected tabGroups: TabGroups = {};
+  // undo のためのスロット
+  protected undoSlot: TabGroups = {};
 
   /**
    * 構築
@@ -35,12 +37,16 @@ class TabManager extends Extension {
       config: 'nekoaisle-tab-manager',
       commands: [
         {
-          command: 'nekoaisle-tab-manager.saveTabFilenames',
-          callback: () => { this.saveTabFilenames(); }
+          command: 'nekoaisle-tab-manager.saveTabGroup',
+          callback: () => { this.saveTabGroup(); }
         },
         {
           command: 'nekoaisle-tab-manager.restoreTabGroup',
           callback: () => { this.restoreTabGroup(); }
+        },
+        {
+          command: 'nekoaisle-tab-manager.undoTabGroup',
+          callback: () => { this.undoTabGroup(); }
         },
         {
           command: 'nekoaisle-tab-manager.editSaveFile',
@@ -58,6 +64,14 @@ class TabManager extends Extension {
   }
 
   /**
+   * タブグループのユニークIDを作成
+   */
+  public genUniqueTabGroupID(): string {
+    // return Util.md5(vscode.window.tabGroups.activeTabGroup.viewColumn);
+    return '' + vscode.window.tabGroups.activeTabGroup.viewColumn;
+  }
+
+  /**
    * 履歴ファイルのファイル名取得
    * @return ファイル名
    */
@@ -67,7 +81,6 @@ class TabManager extends Extension {
 
     // 先頭の ~ を置換
     fn = Util.normalizePath(fn);
-
     //
     return fn;
   }
@@ -141,6 +154,92 @@ class TabManager extends Extension {
     return name;
   }
 
+
+  /**
+   * 現在アクティブなタブグループのファイル情報を取得
+   */
+  public async getActiveTabGroupFileInfos(): Promise<TabInfo[]> {
+    // タブ情報保存配列
+    const tabGroup: TabInfo[] = [];
+
+    // 現在のアクティブエディターを記憶
+    const lastEditor = vscode.window.activeTextEditor;
+    const showOptions = {
+      preview: false,
+    };
+
+    // 現在のタブグループの全タブを取得
+    const tabs = vscode.window.tabGroups.activeTabGroup.tabs;
+    for (let tab of tabs) {
+      const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
+      if (uri.fsPath) {
+        const fullPath = uri.fsPath;
+        let topNo = 0;
+        let lineNo = 0;
+
+        /* 残念ながら非アクティブなエディターのカーソル位置などは
+         * await vscode.window.showTextDocument() しても取れないようです。
+         */
+
+        // アクティブにしないとカーソル位置などが取れない？
+        await vscode.window.showTextDocument(uri, showOptions);
+        // このファイルを開いているエディタを探す
+        const editors = vscode.window.visibleTextEditors;
+        for (let editor of editors) {
+          if (editor.document.fileName === fullPath) {
+            // カーソル行とスクロール位置を取得
+            lineNo = editor.selection.start.line;
+            topNo = editor.visibleRanges[0]?.start?.line;
+            break;
+          }
+        }
+
+        // グループにファイル情報を追加
+        tabGroup.push({
+          fullPath: fullPath,
+          topNo: topNo,
+          lineNo: lineNo,
+        });
+
+        Util.putLog(`${fullPath}: ${lineNo} ${topNo}`);
+      }
+    }
+    if (lastEditor) {
+      vscode.window.showTextDocument(lastEditor.document);
+    }
+
+    //
+    return tabGroup;
+  }
+
+  /**
+   * タブグループを復元
+   */
+  public async setActiveTabGroupInfos(tabInfos: TabInfo[]) {
+    // 現在のタブグループの全タブを取得
+    const tabs = vscode.window.tabGroups.activeTabGroup.tabs;
+    // 現在のタブグループのタブを全部閉じる
+    vscode.window.tabGroups.close(tabs);
+
+    // 記憶したファイルを開く
+    for (let id in tabInfos) {
+      const info = tabInfos[id];
+      const filename = info.fullPath;
+      // もしファイルが開かれていたら閉じる
+      const tab = Util.findTab(filename);
+      if (tab) {
+        vscode.window.tabGroups.close(tab);
+      }
+      // ファイルを開く
+      const doc = await vscode.workspace.openTextDocument(filename);
+      // ファイルが開いた
+      const editor = await vscode.window.showTextDocument(doc);
+      // 表示された
+      // // カーソル位置を復元
+      // let pos = new vscode.Position(info.lineNo, 0);
+      // editor.selection = new vscode.Selection(pos, pos);
+    }
+  }
 
   /**
    * タブグループ保存スロットの選択
@@ -232,64 +331,15 @@ class TabManager extends Extension {
   /**
    * 現在のエディタグループにて開かれているすべてのファイル名を保存
    */
-  public async saveTabFilenames() {
+  public async saveTabGroup() {
     // セーブスロットを選択
     let slot = await this.selectSaveSlot(true);
     if (!slot) {
       return;
     }
 
-    // タブ情報保存配列
-    const tabGroup: TabInfo[] = [];
-
-    // 現在のアクティブエディターを記憶
-    const lastEditor = vscode.window.activeTextEditor;
-    const showOptions = {
-      preview: false,
-    };
-
-    // 現在のタブグループの全タブを取得
-    const tabs = vscode.window.tabGroups.activeTabGroup.tabs;
-    for (let tab of tabs) {
-      const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
-      if (uri.fsPath) {
-        const fullPath = uri.fsPath;
-        let topNo = 0;
-        let lineNo = 0;
-
-        /* 残念ながら非アクティブなエディターのカーソル位置などは
-         * await vscode.window.showTextDocument() しても取れないようです。
-         */
-
-        // アクティブにしないとカーソル位置などが取れない？
-        await vscode.window.showTextDocument(uri, showOptions);
-        // このファイルを開いているエディタを探す
-        const editors = vscode.window.visibleTextEditors;
-        for (let editor of editors) {
-          if (editor.document.fileName === fullPath) {
-            // カーソル行とスクロール位置を取得
-            lineNo = editor.selection.start.line;
-            topNo = editor.visibleRanges[0]?.start?.line;
-            break;
-          }
-        }
-
-        // グループにファイル情報を追加
-        tabGroup.push({
-          fullPath: fullPath,
-          topNo: topNo,
-          lineNo: lineNo,
-        });
-
-        Util.putLog(`${fullPath}: ${lineNo} ${topNo}`);
-      }
-    }
-    if (lastEditor) {
-      vscode.window.showTextDocument(lastEditor.document);
-    }
-
-    // メンバーに記憶
-    this.tabGroups[slot] = tabGroup;
+    // 現在アクティブなタブグループの情報を記憶
+    this.tabGroups[slot] = await this.getActiveTabGroupFileInfos();
 
     // 保存
     this.saveTabInfo();
@@ -313,30 +363,27 @@ class TabManager extends Extension {
       return;
     }
 
-    // 現在のタブグループの全タブを取得
-    const tabs = vscode.window.tabGroups.activeTabGroup.tabs;
+    // 現在のタブグループのmd5値を取得
+    const tabGroupID = this.genUniqueTabGroupID();
+    // undo 用に現在のタブグループ情報を保管
+    this.undoSlot[tabGroupID] = await this.getActiveTabGroupFileInfos();
 
-    // 現在のタブグループのタブを全部閉じる
-    vscode.window.tabGroups.close(tabs);
-
-    // 記憶したファイルを開く
-    const tabGroup = this.tabGroups[slot];
-    if (tabGroup) {
-      for (let id in tabGroup) {
-        const info = tabGroup[id];
-        const file = info.fullPath;
-        // ファイルを開く
-        vscode.workspace.openTextDocument(info.fullPath).then((doc: vscode.TextDocument) => {
-          // ファイルが開いた
-          vscode.window.showTextDocument(doc).then((editor: vscode.TextEditor) => {
-            // 表示された
-            // // カーソル位置を復元
-            // let pos = new vscode.Position(info.lineNo, 0);
-            // editor.selection = new vscode.Selection(pos, pos);
-          });
-        });
-      }
+    // タブグループの復元
+    const tabInfos = this.tabGroups[slot];
+    if (tabInfos) {
+      this.setActiveTabGroupInfos(tabInfos);
     }
+
+  }
+
+  /**
+   * 現在のタブグループを以前の状態に戻す
+   */
+  public async undoTabGroup() {
+    // 現在のタブグループのmd5値を取得
+    const tabGroupID = this.genUniqueTabGroupID();
+    // undo 用に現在のタブグループ情報を復元
+   await this.setActiveTabGroupInfos(this.undoSlot[tabGroupID]);
   }
 
   /**

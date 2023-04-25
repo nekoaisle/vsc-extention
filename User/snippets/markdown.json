@@ -14,54 +14,27 @@
 		"description": "Log output to console"
 	}
 */
-	"Ubuntu comand prompt": {
-		"prefix": "$",
+	// "Ubuntu comand prompt": {
+	// 	"prefix": "$",
+	// 	"body": [
+	// 		"`kiya@kiya-ubuntu:~$` "
+	// 	],
+	// 	"description": "`kiya@kiya-ubuntu:~$` "
+	// },
+	"apt install": {
+		"prefix": "sudo apt",
 		"body": [
-			"`kiya@kiya-ubuntu:~$` "
+			"sudo apt install "
 		],
-		"description": "`kiya@kiya-ubuntu:~$` "
-	},
-	"apt-get install": {
-		"prefix": "sudo apt-get",
-		"body": [
-			"sudo apt-get install "
-		],
-		"description": "apt-get install"
+		"description": "apt install"
 	},
 	"bash": {
-		"prefix": "```bash",
+		"prefix": "```",
 		"body": [
-			"```bash",
-			"$1",
+			"```${1|bash,console,javascript,sql|}",
+			"$2",
 			"```"
 		],
-		"description": "bash"
+		"description": "Source code"
 	},
-	"console": {
-		"prefix": "```console",
-		"body": [
-			"```console",
-			"$1",
-			"```"
-		],
-		"description": "console"
-	},
-	"typescript": {
-		"prefix": "```typescript",
-		"body": [
-			"```typescript",
-			"$1",
-			"```"
-		],
-		"description": "typescript"
-	},
-	"markdown": {
-		"prefix": "```markdown",
-		"body": [
-			"```markdown",
-			"$1",
-			"```"
-		],
-		"description": "markdown"
-	}
 }

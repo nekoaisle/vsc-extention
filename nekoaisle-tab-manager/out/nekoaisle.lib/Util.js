@@ -9,6 +9,8 @@ const path = require("path");
 const url = require("url");
 // import { Extension } from './Extension';
 const PathInfo_1 = require("./PathInfo");
+const crypto = require("crypto");
+const { decycle, encycle } = require('json-cyclic');
 var Util;
 (function (Util) {
     // 言語タイプごとの拡張子一覧
@@ -968,5 +970,46 @@ var Util;
         return deco;
     }
     Util.setRuler = setRuler;
+    /**
+     * md5 ハッシュ値を取得
+     * @param src ハッシュ値を取得したい対象
+     */
+    function md5(src) {
+        const json = JSON.stringify(decycle(src));
+        const md5 = crypto.createHash('md5');
+        return md5.update(json, 'binary').digest('hex');
+    }
+    Util.md5 = md5;
+    /**
+     * 指定ファイルが開かれているタブを探す
+     */
+    function findTab(fullpath) {
+        for (let group of vscode.window.tabGroups.all) {
+            for (let tab of group.tabs) {
+                const uri = tab?.input?.uri ?? {};
+                if (uri.fsPath) {
+                    if (uri.fsPath === fullpath) {
+                        return tab;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    Util.findTab = findTab;
+    /**
+     * すでにファイルが開かれているか調べる
+     */
+    function closeEditor(fullpath) {
+        for (let group of vscode.window.tabGroups.all) {
+            for (let tab of group.tabs) {
+                const uri = tab?.input?.uri ?? {};
+                if (uri.fsPath === fullpath) {
+                    vscode.window.tabGroups.close(tab);
+                }
+            }
+        }
+    }
+    Util.closeEditor = closeEditor;
 })(Util = exports.Util || (exports.Util = {}));
 //# sourceMappingURL=Util.js.map
