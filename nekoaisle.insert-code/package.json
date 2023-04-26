@@ -5,7 +5,10 @@
     "version": "0.0.1",
 	"icon": "logo.png",
 	"license": "MIT License",
-	"repository": "https://github.com/nekoaisle/vsc",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
 	"publisher": "nekoaisle",
     "engines": {
         "vscode": "^1.13.0"

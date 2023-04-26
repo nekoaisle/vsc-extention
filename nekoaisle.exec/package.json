@@ -4,6 +4,10 @@
 	"description": "任意のシェルコマンドを実行",
 	"version": "0.0.1",
 	"icon": "logo.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
 	"engines": {
 		"vscode": "^1.43.0"
 	},
@@ -11,7 +15,6 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:nekoaisle.exec"
 	],
 	"main": "./out/extension.js",
 	"contributes": {

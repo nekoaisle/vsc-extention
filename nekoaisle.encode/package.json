@@ -5,7 +5,10 @@
     "version": "0.0.2",
     "icon": "logo.png",
     "publisher": "nekoaisle",
-	"repository": "https://github.com/nekoaisle/vsc-extention.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
 	"engines": {
 		"vscode": "^1.74.0"
 	},
