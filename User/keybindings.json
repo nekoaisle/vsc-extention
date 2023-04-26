@@ -173,8 +173,8 @@
 	{"key": "ctrl+shift+l","command": "editor.action.selectHighlights", "when": "editorFocus"},
 	{"key": "ctrl+shift+r","command": "workbench.action.reloadWindow",},
 	{"key": "ctrl+shift+t", "command": "-workbench.action.reopenClosedEditor"},
-	{"key": "ctrl+shift+t", "command": "workbench.action.showAllSymbols"},
-	// {"key": "ctrl+k k", "command": "nekoaisle.exec", "arg": "yomu.sh"},
+	{"key": "ctrl+shift+t", "command": "-workbench.action.reopenClosedEditor"},
+	{"key": "ctrl+shift+t", "command": "workbench.action.createTerminalEditor"},
 
 	{"key": "ctrl+alt+p", "command": "-kb-macro.playback"},
 	{"key": "ctrl+alt+r", "command": "-kb-macro.startRecording"},
@@ -182,12 +182,15 @@
 
 	// 以下はエクスプローラ
 	{"key": "shift+delete" ,"command": "-deleteFile","when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"},
-	{"key": "ctrl+v", "command": "filesExplorer.paste", "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus" },
+	{
+		"key": "ctrl+v",
+		"command": "filesExplorer.paste",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "ctrl+k t",
+		"command": "workbench.action.terminal.moveToEditor"
+	},
 
 	// 以下自動挿入（最初の1つは挿入時に壊される…）
-	{
-		"key": "ctrl+k ctrl+e",
-		"command": "nekoaisle.enclose",
-		"args": {"start": "<span>", "end": "</span"}
-	}
 ]

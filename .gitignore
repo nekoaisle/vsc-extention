@@ -3,4 +3,4 @@ node_modules
 /*.bak
 /botu
 /.vscode
-out/*
+/*/out/**/*

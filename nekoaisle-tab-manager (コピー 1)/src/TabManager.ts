@@ -256,35 +256,30 @@ class TabManager extends Extension {
     for (let id in tabInfos) {
       const info = tabInfos[id];
       const filename = info.fullPath;
-      let open = true;
-
       // もしファイルが開かれていたら閉じる
       const tab = Util.findTab(filename);
       if (tab) {
-        const action = await this.getActionAlreadyOpened(filename);
-        switch (action) {
-          // 閉じて開く(閉じても何故かundoが効く…)
-          case 'reopen': await vscode.window.tabGroups.close(tab); break;
-          // そのまま
-          case 'ignore': open = false; break;;
-          // タブを移動(やり方がわからない…)
-          case 'move': {
-            break;
-          }
-        }
-        // vscode.window.tabGroups.close(tab);
+        // const action = await this.getActionAlreadyOpened(filename);
+        // switch (action) {
+        //   // 閉じて開く
+        //   case 'reopen': vscode.window.tabGroups.close(tab); break;
+        //   // そのまま
+        //   case 'ignore': break;
+        //   // タブを移動(やり方がわからない…)
+        //   case 'move': {
+        //     break;
+        //   }
+        // }
+        vscode.window.tabGroups.close(tab);
       }
-
       // ファイルを開く
-      if (open) {
-        const doc = await vscode.workspace.openTextDocument(filename);
-        // ファイルが開いた
-        const editor = await vscode.window.showTextDocument(doc);
-        // 表示された
-        // // カーソル位置を復元
-        // let pos = new vscode.Position(info.lineNo, 0);
-        // editor.selection = new vscode.Selection(pos, pos);
-      }
+      const doc = await vscode.workspace.openTextDocument(filename);
+      // ファイルが開いた
+      const editor = await vscode.window.showTextDocument(doc);
+      // 表示された
+      // // カーソル位置を復元
+      // let pos = new vscode.Position(info.lineNo, 0);
+      // editor.selection = new vscode.Selection(pos, pos);
     }
   }
 

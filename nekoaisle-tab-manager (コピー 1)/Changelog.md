@@ -25,5 +25,3 @@
 ### nekoaisle-tab-manager.openMenu
 「タブグループ管理メニューからコマンドを選んで実行」を実装
 
-### nekoaisle-tab-manager.restoreTabGroup
-復元時に他のタブグループにてファイルが開かれている際に「閉じて開く」「そのまま」の選択肢を表示するようにした。
