@@ -1,0 +1,66 @@
+{
+    "name": "nekoaisle-mark-jump",
+    "displayName": "Nekoaisle Mark Jump",
+    "description": "カーソル位置をマークしマークした位置にジャンプします",
+    "version": "0.1.3",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
+	"publisher": "nekoaisle",
+    "engines": {
+		"vscode": "^1.74.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "nekoaisle.markjumpMark",
+                "title": "Nekoaisle mark-jump マーク"
+            },
+            {
+                "command": "nekoaisle.markjumpJump",
+                "title": "Nekoaisle mark-jump ジャンプ"
+            },
+            {
+                "command": "nekoaisle.markjumpReturn",
+                "title": "Nekoaisle mark-jump 最後のカーソル位置に"
+            }
+        ],
+		"configuration": {
+			"type": "object",
+			"title": "neko: ジャンプ閾値(行数)",
+			"properties": {
+				"nekoaisle-mark-jump.jump-threshold": {
+					"type": "string",
+					"default": "10",
+					"description": "ジャンプと記録する行数を指定します。"
+				}
+			}
+		}
+    },
+    "scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./",
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+    },
+    "devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
+    },
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
+   }
+}
