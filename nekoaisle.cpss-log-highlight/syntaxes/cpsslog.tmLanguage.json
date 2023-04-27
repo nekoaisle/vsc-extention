@@ -1,6 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "CPSS-log",
+	"foldingStartMarker": "^[([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\])",
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -11,29 +12,66 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "storage.type.function.cpsslog",
-				"match": "^\\[\\d{2}:\\d{2}:\\d{2}\\]"
-			},{
-				"name": "keyword.control.cpsslog",
-				"match": "\\b(SELECT|FROM|WHERE|GROUP BY|ORDER BY|INSERT|INTO|VALUES|UPDATE)\\b"
-			},{
-				"name": "keyword.control.cpsslog",
-				"match": "\\b(select|from|where|group by|order by|insert|into|values|update)\\b"
-			},{
-				"name": "comment.block.cpsslog",
-				"match": "/var/www/ragdoll/.*?\\(\\d+\\)"
-			}
-		]
-		},
-		"strings": {
-			"name": "string.quoted.double.cpsslog",
-			"begin": "\"",
-			"end": "\"",
 			"patterns": [
 				{
-					"name": "constant.character.escape.cpsslog",
-					"match": "\\\\."
+					"name": "markup.heading.1.cpsslog",
+					"match": "^\\[\\d{2}:\\d{2}:\\d{2}\\]"
+				},
+				{
+					"name": "keyword.control.cpsslog",
+					"match": "\\b(SELECT|FROM|WHERE|GROUP BY|ORDER BY|INSERT|INTO|VALUES|UPDATE|AND)\\b"
+				},
+				{
+					"name": "keyword.control.cpsslog",
+					"match": "\\b(select|from|where|group by|order by|insert|into|values|update|and)\\b"
+				},
+				{
+					"name": "comment.block.cpsslog",
+					"match": "/var/www/ragdoll/.*?\\(\\d+\\)"
+				},
+				{
+					"name": "entity.name.type.cpsslog",
+					"match": "^.*所要時間:.*msec$"
+				},
+				{
+					"name": "constant.character.cpsslog",
+					"match": "\\b[1-9][0-9]{0,2}\\.[1-9][0-9]{0,2}\\.[1-9][0-9]{0,2}\\.[1-9][0-9]{0,2}\\b"
+				},
+				{
+					"name": "constant.numeric.cpsslog",
+					"match": "[12][0-9]{3}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])([01][0-9]|2[0-3])[0-5][0-9][0-5][0-9]"
+				},
+				{
+					"name": "invalid.illegal.cpsslog",
+					"match": "^PageRedirect -> .*$"
+				},
+				{
+					"name": "invalid.illegal.cpsslog",
+					"match": "^Record not found."
+				},
+				{
+					"name": "markup.italic",
+					"match": "^--- .* [-]+$"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.cpsslog",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.cpsslog",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.cpsslog",
+					"begin": "'",
+					"end": "'"
 				}
 			]
 		}
