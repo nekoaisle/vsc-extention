@@ -1,0 +1,82 @@
+{
+	"name": "nekoaisle-insert-code",
+	"displayName": "Nekoaisle Insert Code",
+	"description": "拡張子ごとのメニューから選択してテンプレートを挿入する",
+	"version": "0.0.2",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
+	"publisher": "nekoaisle",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "nekoaisle.insertCode",
+				"title": "nekoaisle.insertCode テンプレートを選んでコードを挿入"
+			},
+			{
+				"command": "nekoaisle.insertCode.pinfoBase",
+				"title": "nekoaisle.insertCode.pinfoBase 現在編集中のファイルのベース名をカーソル位置に挿入"
+			},
+			{
+				"command": "nekoaisle.insertCode.cmd",
+				"title": "nekoaisle.insertCode.cmd 現在のカーソル位置に引数で指定したコマンドの戻値を挿入します。"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "neko: Insert Code configuration",
+			"properties": {
+				"nekoaisle-insertCode.tempDir": {
+					"type": "string",
+					"default": "",
+					"description": "テンプレートファイルが格納されているディレクトリを指定してください。"
+				},
+				"nekoaisle-insertCode.author": {
+					"type": "string",
+					"default": "",
+					"description": "ファイルを作成する人の名前を指定してください。"
+				},
+				"nekoaisle-insertCode.copyright": {
+					"type": "string",
+					"default": "",
+					"description": "Copyrigths表記を指定してください。"
+				},
+				"nekoaisle-insertCode.autoIndent": {
+					"type": "boolean",
+					"default": "",
+					"description": "オートインデントのデフォル値を指定してください。"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./",
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
+	}
+}

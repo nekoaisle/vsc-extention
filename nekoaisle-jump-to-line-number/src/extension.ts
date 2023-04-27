@@ -1,6 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
-import {Util, Extension, ExtensionCommand} from './nekoaisle.lib/nekoaisle';
+import { Extension } from './nekoaisle.lib/nekoaisle';
 
 /**
  * エクステンション活性化
@@ -35,7 +35,7 @@ class MyExtention extends Extension {
       config: 'jumpToLineNumber',
       commands: [
         {
-          command: `nekoaisle.jumpToLineNumber`,
+          command: 'nekoaisle.jumpToLineNumber',
           callback: (options: Options) => {
             this.jumpAfterInput(options)
           }
