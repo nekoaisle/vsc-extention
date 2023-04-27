@@ -1,7 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
 import { Util, Extension, EditInsert } from './nekoaisle.lib/nekoaisle';
-import { isArray } from 'util';
 import { sprintf } from 'sprintf-js';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -39,15 +38,6 @@ class MyExtension extends Extension {
       // キャンセルされた
       return;
     }
-
-    // // 数式チェック
-    // const re = /^[0-9-+*/&|^()]+$/;
-    // let res = re.exec(exp);
-    // if (!isArray(res)) {
-    //   // 計算できない文字列だった
-    //   Util.putMess(`数式に使えない文字が含まれています。 ${exp}`);
-    //   return;
-    // }
 
     // 計算
     let ev;
