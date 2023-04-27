@@ -1,8 +1,8 @@
 {
-    "name": "select-word",
-    "displayName": "Select Word",
+    "name": "nekoaisle-select-word",
+    "displayName": "Nekoaisle Select word",
     "description": "単語選択, 矩形選択",
-    "version": "0.0.1",
+    "version": "0.0.2",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -11,15 +11,12 @@
 	},
     "publisher": "nekoaisle",
     "engines": {
-        "vscode": "^1.13.0"
+		"vscode": "^1.74.0"
     },
     "categories": [
         "Other"
     ],
     "activationEvents": [
-        "onCommand:nekoaisle.selectWord",
-        "onCommand:nekoaisle.addCursor",
-        "onCommand:nekoaisle.delCursor"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -38,17 +35,22 @@
             }
         ]
     },
-    "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.32",
-        "@types/node": "^6.0.40",
-        "mocha": "^6.2.1",
-        "typescript": "^2.0.3",
-        "vscode": "^1.1.36"
-    }
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./",
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
+	}
 }
