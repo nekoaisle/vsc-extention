@@ -22,12 +22,13 @@ export function deactivate() {
 class MyExtention extends Extension {
 	private disposable: vscode.Disposable;
 	private statusBarItem: vscode.StatusBarItem;
+	private format: string;
 	/**
 	 * 構築
 	 */
 	constructor(context: vscode.ExtensionContext) {
 		super(context, {
-			name: 'Disp Char Code',
+			name: 'nekoaisle-disp-char-code',
 			commands: []
 		});
 
@@ -41,6 +42,9 @@ class MyExtention extends Extension {
 
 		// create a combined disposable from both event subscriptions
 		this.disposable = vscode.Disposable.from(...subscriptions);
+
+		// 表示フォーマット取得
+		this.format = this.getConfig('format', '%c %h (%d)');
 
 		// 初期表示
 		this.dispCharCode();
@@ -71,10 +75,16 @@ class MyExtention extends Extension {
         // カーソルの行の内容を取得
         let line = doc.lineAt(cursor.line).text;
 		// カーソル位置の文字コードを取得
-		let str;
+		let str: string;
 		if ( line.length > cursor.character ) {
-			let c = line.charCodeAt(cursor.character);
-			str = `0x${(c).toString(16)} (${c})`
+			const c = line.charAt(cursor.character);
+			const n = line.charCodeAt(cursor.character);
+			const h = n.toString(16);
+
+			str = this.format;
+			str = str.replace('%c', c);
+			str = str.replace('%n', '' + n);
+			str = str.replace('%h', h);
 		} else {
 			str = (doc.eol == vscode.EndOfLine.LF) ? 'LF' : 'CRLF';
 		}

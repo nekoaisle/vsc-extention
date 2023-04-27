@@ -1,0 +1,60 @@
+{
+    "name": "nekoaisle-disp-char-code",
+    "displayName": "Nekoaisle Disp char code",
+    "description": "カーソル位置の文字コードをステータバーに表示",
+    "version": "0.0.3",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
+	"publisher": "nekoaisle",
+    "engines": {
+		"vscode": "^1.74.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+	"main": "./out/src/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "nekoaisle.dispCharCode",
+                "title": "nekoaisle.dispCharCode カーソル位置の文字コードをステータバーに表示"
+            }
+        ]
+    },
+    "configuration": {
+        "type": "object",
+        "title": "neko: 文字コード表示",
+        "properties": {
+            "nekoaisle-disp-char-code.format": {
+                "type": "string",
+                "default": "%c %h (%d)",
+                "description": "タブグループ情報保存ファイル名"
+            }
+        }
+    },
+    "scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./",
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+    },
+    "devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
+    }
+}

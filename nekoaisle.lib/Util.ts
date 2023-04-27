@@ -1017,11 +1017,9 @@ export module Util {
   export function findTab(fullpath: string): vscode.Tab | null {
     for (let group of vscode.window.tabGroups.all) {
       for (let tab of group.tabs) {
-        const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
-        if (uri.fsPath) {
-          if (uri.fsPath === fullpath) {
-            return tab;
-          }
+        const fsPath = (<vscode.TabInputText><unknown>tab.input).uri?.fsPath;
+        if (fsPath === fullpath) {
+          return tab;
         }
       }
     }
@@ -1029,13 +1027,13 @@ export module Util {
   }
 
   /**
-   * すでにファイルが開かれているか調べる
+   * 指定ファイル名のタブを閉じる
    */
   export function closeEditor(fullpath: string) {
     for (let group of vscode.window.tabGroups.all) {
       for (let tab of group.tabs) {
-        const uri = (<vscode.TabInputText><unknown>tab?.input)?.uri ?? {};
-        if (uri.fsPath === fullpath) {
+        const fsPath = (<vscode.TabInputText><unknown>tab.input).uri?.fsPath;
+        if (fsPath === fullpath) {
           vscode.window.tabGroups.close(tab);
         }
       }
