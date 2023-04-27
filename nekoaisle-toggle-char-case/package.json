@@ -1,0 +1,52 @@
+{
+	"name": "nekoaisle-toggle-char-case",
+	"displayName": "Nekoaisle Toggle char case",
+	"description": "カーソル位置の文字の大文字/小文字を切り替える",
+	"version": "0.0.3",
+	"icon": "logo.png",
+	"license": "MIT License",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nekoaisle/vsc-extention.git"
+	},
+	"publisher": "nekoaisle",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "nekoaisle.toggleCharCase",
+				"title": "nekoaisle.toggleCharCase カーソル位置の文字の大文字/小文字切り替え"
+			},
+			{
+				"command": "nekoaisle.toggleWordCase",
+				"title": "nekoaisle.toggleWordCase カーソル位置の単語の大文字/小文字切り替え"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./",
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
+	}
+}
