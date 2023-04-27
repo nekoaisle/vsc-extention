@@ -1,8 +1,8 @@
 {
-  "name": "open-file",
-  "displayName": "Open File Assortment",
+  "name": "nekoaisle-open-file",
+  "displayName": "Nekoaisle Open file assortment",
   "description": "ファイルを開く関連詰め合わせ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "logo.png",
   "license": "MIT License",
 	"repository": {
@@ -11,23 +11,12 @@
 	},
   "publisher": "nekoaisle",
   "engines": {
-    "vscode": "^1.40.0"
+		"vscode": "^1.74.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:nekoaisle.selectOpen",
-    "onCommand:nekoaisle.openFile",
-    "onCommand:nekoaisle.openLog",
-    "onCommand:nekoaisle.openRelated",
-    "onCommand:nekoaisle.openNew",
-    "onCommand:nekoaisle.openTemp",
-    "onCommand:nekoaisle.insertFile",
-    "onCommand:nekoaisle.openHist",
-    "onCommand:nekoaisle.openHistCompensateDate",
-    "onCommand:nekoaisle.openTag",
-    "onCommand:nekoaisle.findOpen",
     "*"
   ],
   "main": "./out/extension.js",
@@ -142,22 +131,21 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
 	},
 	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.38.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"vscode-test": "^1.2.0"
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.0.2"
 	},
   "dependencies": {
     "iconv-lite": "^0.5.0",
-    "jschardet": "^2.1.1"
+    "jschardet": "^2.1.1",
+		"json-cyclic": "^1.0.2"
   }
 }
