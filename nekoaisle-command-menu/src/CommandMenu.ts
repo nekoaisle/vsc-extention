@@ -2,14 +2,6 @@
 import * as vscode from 'vscode';
 import { Util, Extension } from './nekoaisle.lib/nekoaisle';
 
-export function activate(context: vscode.ExtensionContext) {
-    let ext = new CommandMenu(context);
-}
-
-// this method is called when your extension is deactivated
-export function deactivate() {
-}
-
 interface ListItem {
 	label: string;										// メニューラベル
 	detail?: string;									// 詳細
@@ -18,6 +10,10 @@ interface ListItem {
 	args?: { [key: string]: any };	// インラインテンプレート
 	languageID?: string | string[];		// ファイルタイプ指定
 	hide?: boolean;										// メニューに表示しない
+}
+
+interface ListItems {
+	[key: string]: ListItem[]
 }
 
 interface CommandParam {
@@ -32,12 +28,14 @@ class CommandMenu extends Extension {
 	constructor(context: vscode.ExtensionContext) {
 		super(context, {
 			name: 'nekoaisle-command-menu',
-			config: 'nekoaisle-commandMenu',
+			config: 'nekoaisle-command-menu',
 			commands: [{
-				command: 'nekoaisle.commandMenu',
-				callback: (menuName?: string) => { this.entry(menuName); }
+				command: 'nekoaisle-command-menu.menu',
+				callback: (menuName?: string) => {
+					this.entry(menuName);
+				}
 			},{
-				command: 'nekoaisle.multiCommand',
+				command: 'nekoaisle-command-menu.multi',
 				callback: (commands: CommandParam | CommandParam[]) => { this.multiCommand(commands); }
 			}]
 		});
@@ -68,7 +66,7 @@ class CommandMenu extends Extension {
 		 */
 		quickPick.onDidChangeValue((value: string) => {
 			// 全角→半角に変換
-			value = this.zenToHan(value);
+			value = Util.zenToHanForSelect(value);
 			// 小文字を大文字に変換
 			value = value.toUpperCase();
 			// 実行
@@ -131,7 +129,7 @@ class CommandMenu extends Extension {
 		}
 		
 		// ユーザー設定メニューの読み込み
-		let userMenus: {[key: string]: ListItem[]} | null = this.getConfig<{[key: string]: ListItem[]} | null>('menus', null);
+		let userMenus: ListItems | null = this.getConfig<ListItems | null>('menus', null);
 		// ユーザーメニューを上書き
 		if (userMenus && userMenus[menuName]) {
 			// 拡張メニューをデフォルトにかぶせる
@@ -166,7 +164,6 @@ class CommandMenu extends Extension {
 			let editor = <vscode.TextEditor>vscode.window.activeTextEditor;
 			langID = editor.document.languageId;
 		}
-
 
 		// メニューを作成
 		let menu: vscode.QuickPickItem[] = [];
@@ -282,40 +279,6 @@ class CommandMenu extends Extension {
 		// 実行しなかった
 		return false;
 	}
-
-	/**
-	 * 全角文字を半角文字に変換（キー入力専用）
-	 * @param zen 全角文字
-	 */
-	public zenToHan(zen: string): string {
-		// 変換辞書
-		const zenHanDic: {[key: string]: string} = {
-			"０": "0", "１": "1", "２": "2", "３": "3", "４": "4",
-			"５": "5", "６": "6", "７": "7", "８": "8", "９": "9",
-			"ａ": "a", "ｂ": "b", "ｃ": "c", "ｄ": "d", "ｅ": "e", "ｆ": "f",
-			"ｇ": "g", "ｈ": "h", "ｉ": "i", "ｊ": "j", "ｋ": "k", "ｌ": "l",
-			"ｍ": "m", "ｎ": "n", "ｏ": "o", "ｐ": "p", "ｑ": "q", "ｒ": "r",
-			"ｓ": "s", "ｔ": "t", "ｕ": "u", "ｖ": "v", "ｗ": "w", "ｘ": "x",
-			"ｙ": "y", "ｚ": "z",
-			"ー": "-", "＾": "^", "￥": "\\", "＠": "@", "「": "[", "；": ";",
-			"：": ":", "」": "]", "、": ",", "。": ".", "・": "/", "＿": "_",
-			"！": "!", "”": "\"", "＃": "#", "＄": "$", "％": "%", "＆": "&", 
-			"’": "'", "（": "(", "）": ")", "＝": "=", "〜": "~", "｜": "|",
-			"｀": "`", "｛": "{", "＋": "+", "＊": "*", "｝": "}", "＜": "<",
-			"＞": ">", "？": "?",
-			"あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
-		}
-
-		let han = '';
-		for (let i = 0; i < zen.length; ++i) {
-			let c = zen.charAt(i);
-			if (zenHanDic[c]) {
-				han += zenHanDic[c];
-			} else {
-				// 辞書にないのでそのまま
-				han += c;
-			}
-		}
-		return han;
-	}
 }
+
+export default CommandMenu;

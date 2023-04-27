@@ -1,8 +1,8 @@
 {
 	"name": "nekoaisle-command-menu",
-	"displayName": "nekoaisle コマンドメニュー",
+	"displayName": "Nekoaisle Command Menu",
 	"description": "コマンドを一覧から選んで実行",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -11,7 +11,7 @@
 	},
 	"publisher": "nekoaisle",
 	"engines": {
-		"vscode": "^1.38.0"
+		"vscode": "^1.74.0"
 	},
 	"categories": [
 		"Other"
@@ -21,18 +21,19 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "nekoaisle.commandMenu",
-				"title": "nekoaisle.commandMenu コマンドを一覧から選んで実行"
-			},{
-				"command": "nekoaisle.multiCommand",
-				"title": "nekoaisle.multiCommand 複数コマンド実行"
+				"command": "nekoaisle-command-menu.menu",
+				"title": "Nekoaisle コマンドを一覧から選んで実行"
+			},
+			{
+				"command": "nekoaisle-command-menu.multi",
+				"title": "Nekoaisle 複数コマンド実行"
 			}
 		],
 		"configuration": {
 			"type": "object",
 			"title": "neko: コマンドメニュー設定",
 			"properties": {
-				"nekoaisle-commandMenu.menus": {
+				"nekoaisle-command-menu.menus": {
 					"type": "object",
 					"default": null,
 					"description": "メニューアイテム配列"
@@ -43,18 +44,23 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.38.0",
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"vscode-test": "^1.2.0"
+		"typescript": "^5.0.2"
+	},
+	"dependencies": {
+		"json-cyclic": "^1.0.2"
 	}
 }

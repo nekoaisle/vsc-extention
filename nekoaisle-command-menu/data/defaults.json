@@ -38,6 +38,11 @@
       "command": "nekoaisle.multiClipboard.menu"
     },
     {
+      "label": "+",
+      "description": "ターミナルをエディタ領域で開く",
+      "command": "workbench.action.createTerminalEditor"
+    },
+    {
       "label": "B",
       "description": "ファイルエクスプローラ折りたたみ",
       "command": "nekoaisle.multiCommand",
