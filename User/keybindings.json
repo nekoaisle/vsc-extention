@@ -190,6 +190,10 @@
 		"key": "ctrl+k t",
 		"command": "workbench.action.terminal.moveToEditor"
 	},
+	{
+		"key": "ctrl+shift+numlock",
+		"command": "workbench.action.showAllSymbols"
+	},
 
 	// 以下自動挿入（最初の1つは挿入時に壊される…）
 ]

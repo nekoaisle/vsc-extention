@@ -27,3 +27,7 @@
 
 ### nekoaisle-tab-manager.restoreTabGroup
 復元時に他のタブグループにてファイルが開かれている際に「閉じて開く」「そのまま」の選択肢を表示するようにした。
+
+## 0.0.5 2023-04-28
+### nekoaisle-tab-manager.restoreTabGroup
+「restoreTabGroup タブグループを復元」をメニュー最上部にした。

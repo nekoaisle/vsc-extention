@@ -381,8 +381,8 @@ class TabManager extends Extension {
   public async openMenu() {
     // メーニューを作成
     let menu: vscode.QuickPickItem[] = [
-      { label: 'saveTabGroup'   , description: 'タブグループを記録'               },
       { label: 'restoreTabGroup', description: 'タブグループを復元'               },
+      { label: 'saveTabGroup'   , description: 'タブグループを記録'               },
       { label: 'undoTabGroup'   , description: 'タブグループを復元前に戻す'       },
       { label: 'editSaveFile'   , description: 'タブグループ保存ファイルを編集'   },
       { label: 'reloadSaveFile' , description: 'タブグループ保存ファイルを再読込' },
