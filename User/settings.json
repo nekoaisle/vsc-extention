@@ -1,5 +1,12 @@
 // 既定の設定を上書きするには、このファイル内に設定を挿入します
 {
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true,
+  },
+
   "update.mode": "start",
 
   "window.enableMenuBarMnemonics": false,

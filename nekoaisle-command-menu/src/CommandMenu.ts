@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { Util, Extension } from './nekoaisle.lib/nekoaisle';
 
-interface ListItem {
+export interface ListItem {
 	label: string;										// メニューラベル
 	detail?: string;									// 詳細
 	description?: string;							// 説明
@@ -21,7 +21,7 @@ interface CommandParam {
 	args: any[];
 }
 
-class CommandMenu extends Extension {
+export class CommandMenu extends Extension {
 	/**
 	 * 構築
 	 */
@@ -63,6 +63,7 @@ class CommandMenu extends Extension {
 
 		/**
 		 * 入力文字列が変更された処理設定
+		 * ※1文字入力したら実行
 		 */
 		quickPick.onDidChangeValue((value: string) => {
 			// 全角→半角に変換
@@ -118,7 +119,7 @@ class CommandMenu extends Extension {
 	 * メニューを読み込む
 	 * @param menuName メニュー名もしくはメニューファイル名
 	 */
-	protected loadMenuInfo(menuName: string = 'default'): ListItem[] {
+	public loadMenuInfo(menuName: string = 'default'): ListItem[] {
 		let menu: ListItem[] = [];
 
 		// デフォルトの読み込み
@@ -216,9 +217,9 @@ class CommandMenu extends Extension {
 	 * @param label 入力された文字列
 	 * @return true 実行した
 	 */
-	protected exec(menuInfo: ListItem[], label: string): boolean;
-	protected exec(menuInfo: ListItem[], item: any): boolean;
-	protected exec(menuInfo: ListItem[], arg: string | any): boolean {
+	public exec(menuInfo: ListItem[], label: string): boolean;
+	public exec(menuInfo: ListItem[], item: any): boolean;
+	public exec(menuInfo: ListItem[], arg: string | any): boolean {
 		switch (typeof arg) {
 			// オブジェクト
 			case 'object': {
@@ -258,7 +259,7 @@ class CommandMenu extends Extension {
 						continue;
 					}
 					// 各メニューの先頭を比較
-					if (item.label.substr(0, len) === label) {
+					if (item.label.substring(0, len) === label) {
 						// 一致した
 						sels.push(item);
 					}
@@ -281,4 +282,3 @@ class CommandMenu extends Extension {
 	}
 }
 
-export default CommandMenu;

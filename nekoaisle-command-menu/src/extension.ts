@@ -1,9 +1,11 @@
 'use strict';
 import * as vscode from 'vscode';
-import CommandMenu from './CommandMenu';
+import { CommandMenu } from './CommandMenu';
+import CommandMenuView from './CommandMenuView'
 
 export function activate(context: vscode.ExtensionContext) {
-    new CommandMenu(context);
+    const commandMenu = new CommandMenu(context);
+    new CommandMenuView(context, commandMenu);
 }
 
 // this method is called when your extension is deactivated

@@ -148,7 +148,7 @@
 	{"key": "ctrl+r", "command": "kb-macro.startRecording", "when": "editorTextFocus && !kb-macro.recording"},
 	{"key": "ctrl+r", "command": "kb-macro.finishRecording", "when": "editorTextFocus && kb-macro.recording"},
 	{"key": "ctrl+t", "command": "-workbench.action.showAllSymbols"},
-	{"key": "ctrl+t","command": "nekoaisle-tab-manager.openMenu"},
+	{"key": "ctrl+t", "command": "nekoaisle-tab-manager.openMenu", "when": "editorTextFocus"},
 
 	{"key": "ctrl+numpad0","command": "editor.action.fontZoomReset"},
 

@@ -2,7 +2,7 @@
 	"name": "nekoaisle-command-menu",
 	"displayName": "Nekoaisle Command Menu",
 	"description": "コマンドを一覧から選んで実行",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -19,6 +19,23 @@
 	"activationEvents": [],
 	"main": "./out/extension.js",
 	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "nekoaisle",
+					"title": "Nekoaisle",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"nekoaisle": [
+				{
+					"id": "nekoaisle-command-menu-view",
+					"name": "コマンドメニュー"
+				}
+			]
+		},
 		"commands": [
 			{
 				"command": "nekoaisle-command-menu.menu",
@@ -27,6 +44,18 @@
 			{
 				"command": "nekoaisle-command-menu.multi",
 				"title": "Nekoaisle 複数コマンド実行"
+			},
+			{
+				"command": "nekoaisle-command-menu-view.reveal",
+				"title": "Nekoaisle コマンドメニューツリービューを表示"
+			},
+			{
+				"command": "nekoaisle-command-menu-view.changeTitle",
+				"title": "Nekoaisle コマンドメニューツリービューのタイトルを変更"
+			},
+			{
+				"command": "nekoaisle-command-menu-view.exec",
+				"title": "Nekoaisle コマンドメニューツリービュー メニューアイテムの実行"
 			}
 		],
 		"configuration": {
