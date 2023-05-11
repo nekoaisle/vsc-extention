@@ -1,9 +1,10 @@
-# Change Log
+# 変更履歴
 
-All notable changes to the "nekoaisle-multi-clipbord" extension will be documented in this file.
+## 0.0.1 
+ファーストリリース
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.2 2023-04-27
+長らくメンテナンスしていなかったためにこの時点での環境ではトランスパイルできなくなっていたのを修正
 
-## [Unreleased]
-
-- Initial release
+## 0.0.3 2023-05-11
+nekoaisle-multiClipboard.add がコマンドとして登録されておらずキーボード・ショートカットから実行できなかったのを修正

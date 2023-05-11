@@ -1,9 +1,12 @@
-# Change Log
+# 変更履歴
 
-All notable changes to the "nekoaisle-command-menu" extension will be documented in this file.
+## 0.0.1
+ファーストリリース
+それまで別々の拡張機能だったファイルを開く系を一つにまとめた。
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.2 2023-04-27
+長らくメンテナンスしていなかったためにこの時点での環境ではトランスパイルできなくなっていたのを修正。
 
-## [Unreleased]
-
-- Initial release
+## 0.0.3 2023-05-11
+open-hist のファイル登録をクリティカルセクションとして排他処理を追加した。
+open-hist ファイル選択時に description への一致も含めるようにした

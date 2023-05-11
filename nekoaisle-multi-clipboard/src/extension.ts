@@ -58,6 +58,10 @@ class MyExtention extends Extension {
 					callback: () => { this.paste(); }
 				},
 				{
+					command: 'nekoaisle-multiClipboard.add',
+					callback: () => { this.add(); }
+				},
+				{
 					command: 'nekoaisle-multiClipboard.push',
 					callback: () => { this.push(); }
 				},
@@ -152,7 +156,7 @@ class MyExtention extends Extension {
 				return;
 			}
 			// 先頭１文字を取得
-			let char = value.substr(0, 1);
+			let char = value.substring(0, 1);
 			// 全角→半角に変換
 			char = this.zenToHan(char);
 			// 実行
@@ -171,7 +175,7 @@ class MyExtention extends Extension {
 				let pick = picks[0];
 				if (pick) {
 					// 選択しているので実行
-					exec(pick.label.substr(0, 1));
+					exec(pick.label.substring(0, 1));
 				}
 			}
 			// エンター押した場合は必ず閉じる

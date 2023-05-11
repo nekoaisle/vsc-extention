@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { Util, Extension, PathInfo, DateInfo } from './nekoaisle.lib/nekoaisle';
+import { Mutex } from 'await-semaphore';
 
 interface ListItem {
   baseName: string;
@@ -23,6 +24,9 @@ interface SortFuncs {
  */
 class OpenHist extends Extension {
   protected disposable: vscode.Disposable;
+
+  // セーブ中フラグ
+  protected saveMutex = new Mutex();
 
   /**
    * デフォルトの履歴ファイル名を取得
@@ -181,7 +185,10 @@ class OpenHist extends Extension {
    * 履歴に記録
    * @param pinfo パス情報
    */
-  public registHistory(pinfo: PathInfo) {
+  public async registHistory(pinfo: PathInfo) {
+    // 排他制御取得
+    const release = await this.saveMutex.acquire();
+
     // 履歴ファイルを読み込む
     let list: ListItemDic = this.loadHistFile();
 
@@ -205,6 +212,9 @@ class OpenHist extends Extension {
 
     // 履歴を保存
     this.saveHistFile(list);
+
+    // 排他制御開放
+    release();
   }
 
   /**
@@ -301,7 +311,7 @@ class OpenHist extends Extension {
     let options: vscode.QuickPickOptions = {
       placeHolder: '選択してください。',
       matchOnDetail: false,
-      matchOnDescription: false
+      matchOnDescription: true,
     };
     vscode.window.showQuickPick(menu, options).then((sel) => {
       if (!sel) {

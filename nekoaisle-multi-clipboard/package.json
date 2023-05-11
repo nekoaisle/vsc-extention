@@ -2,7 +2,7 @@
 	"name": "nekoaisle-multi-clipboard",
 	"displayName": "Nekoaisle Pseudo multi-clipboard",
 	"description": "疑似マルチクリップボード",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
