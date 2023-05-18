@@ -4,3 +4,4 @@ node_modules
 /botu
 /.vscode
 /*/out/**/*
+src/nekoaisle.lib

@@ -282,5 +282,9 @@
   "code-eol.style": {
     "color": "#00ffff88",
   },
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "switch:command"
+  ],
 }
  

@@ -31,3 +31,7 @@
 ## 0.0.5 2023-04-28
 ### nekoaisle-tab-manager.restoreTabGroup
 「restoreTabGroup タブグループを復元」をメニュー最上部にした。
+
+## 0.0.6 2023-05-17
+### nekoaisle-tab-manager.restoreTabGroup
+タブグループを復元する際にまずすべてのタブを閉じるのだがこの処理が終わる前に復元しようとしてファイル型のタブで開かれていると勘違いしていたバグを修正

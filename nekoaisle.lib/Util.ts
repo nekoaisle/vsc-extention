@@ -1015,9 +1015,11 @@ export module Util {
    * 指定ファイルが開かれているタブを探す
    */
   export function findTab(fullpath: string): vscode.Tab | null {
+
     for (let group of vscode.window.tabGroups.all) {
       for (let tab of group.tabs) {
-        const fsPath = (<vscode.TabInputText><unknown>tab.input).uri?.fsPath;
+        let input = <vscode.TabInputText><unknown>(tab.input);
+        const fsPath = input?.uri.fsPath;
         if (fsPath === fullpath) {
           return tab;
         }

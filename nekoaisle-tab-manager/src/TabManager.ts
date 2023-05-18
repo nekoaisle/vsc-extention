@@ -1,6 +1,6 @@
 // 'use strict';
 import * as vscode from 'vscode';
-import {Extension, SelectFile, PathInfo, Util} from './nekoaisle.lib/nekoaisle';
+import {Extension, PathInfo, Util} from './nekoaisle.lib/nekoaisle';
 
 interface TabInfo {
   fullPath: string;
@@ -92,7 +92,7 @@ class TabManager extends Extension {
   /**
    * 保存されているタブグループ名配列を取得
    */
-  public getSvaeSlot(): string[] {
+  public getSaveSlot(): string[] {
       // 追加はないのでスロット数 0, 1 の特殊処理
       let slots: string[] = [];
       for (let id in this.tabGroups) {
@@ -169,8 +169,12 @@ class TabManager extends Extension {
       // { label: 'move'  , description: 'タブを移動' },
     ];
 
+    // basename を取得
+    const pi = new PathInfo(filename);
+    const basename = pi.info.base + pi.info.ext; 
+
     let options: vscode.QuickPickOptions = {
-      placeHolder: `${filename} はすでに開かれています。どうしますか？`,
+      placeHolder: `${basename} はすでに他のタブグループで開かれています。どうしますか？`,
       matchOnDetail: true,
       matchOnDescription: false
     };
@@ -212,18 +216,18 @@ class TabManager extends Extension {
          * await vscode.window.showTextDocument() しても取れないようです。
          */
 
-        // アクティブにしないとカーソル位置などが取れない？
-        await vscode.window.showTextDocument(uri, showOptions);
-        // このファイルを開いているエディタを探す
-        const editors = vscode.window.visibleTextEditors;
-        for (let editor of editors) {
-          if (editor.document.fileName === fullPath) {
-            // カーソル行とスクロール位置を取得
-            lineNo = editor.selection.start.line;
-            topNo = editor.visibleRanges[0]?.start?.line;
-            break;
-          }
-        }
+        // // アクティブにしないとカーソル位置などが取れない？
+        // await vscode.window.showTextDocument(uri, showOptions);
+        // // このファイルを開いているエディタを探す
+        // const editors = vscode.window.visibleTextEditors;
+        // for (let editor of editors) {
+        //   if (editor.document.fileName === fullPath) {
+        //     // カーソル行とスクロール位置を取得
+        //     lineNo = editor.selection.start.line;
+        //     topNo = editor.visibleRanges[0]?.start?.line;
+        //     break;
+        //   }
+        // }
 
         // グループにファイル情報を追加
         tabGroup.push({
@@ -250,7 +254,7 @@ class TabManager extends Extension {
     // 現在のタブグループの全タブを取得
     const tabs = vscode.window.tabGroups.activeTabGroup.tabs;
     // 現在のタブグループのタブを全部閉じる
-    vscode.window.tabGroups.close(tabs);
+    await vscode.window.tabGroups.close(tabs);
 
     // 記憶したファイルを開く
     for (let id in tabInfos) {
@@ -258,7 +262,7 @@ class TabManager extends Extension {
       const filename = info.fullPath;
       let open = true;
 
-      // もしファイルが開かれていたら閉じる
+      // もしファイルが(他のタブグループで)開かれていたら閉じる
       const tab = Util.findTab(filename);
       if (tab) {
         const action = await this.getActionAlreadyOpened(filename);
@@ -293,7 +297,7 @@ class TabManager extends Extension {
    */
   public async selectSaveSlot(add: boolean): Promise<string | undefined> {
     // スロット数 0, 1 の特殊処理
-    let slots = this.getSvaeSlot();
+    let slots = this.getSaveSlot();
     if (slots.length === 0) {
       // スロットなし
       if (!add) {
@@ -432,7 +436,7 @@ class TabManager extends Extension {
    */
   public async restoreTabGroup() {
     // 保存されているスロットがないときはエラー
-    let slots = this.getSvaeSlot();
+    let slots = this.getSaveSlot();
     if (!slots.length) {
       Util.putMess('タブグループ情報は保存されていません。');
       return;
@@ -452,7 +456,7 @@ class TabManager extends Extension {
     // タブグループの復元
     const tabInfos = this.tabGroups[slot];
     if (tabInfos) {
-      this.setActiveTabGroupInfos(tabInfos);
+      await this.setActiveTabGroupInfos(tabInfos);
     }
 
   }
