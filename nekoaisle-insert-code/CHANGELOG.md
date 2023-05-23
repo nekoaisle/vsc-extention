@@ -1,7 +1,11 @@
-# Change Log
-All notable changes to the "insertphpcode" extension will be documented in this file.
+# 変更履歴
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.1 2019-10-2
+ファーストリリース
 
-## [Unreleased]
-- Initial release
+## 0.0.2 2023-01-17
+vscode Ver.1.74.0 にてトランスパイルできなくなっていたのを修正
+
+## 0.0.3 2023-05-23
+tsconfig.json の compilerOptions.rootDir が '.' になっていたため起動できなかった不具合を修正。
+

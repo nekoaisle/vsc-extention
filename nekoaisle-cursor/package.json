@@ -1,0 +1,76 @@
+{
+  "name": "nekoaisle-cursor",
+  "displayName": "Nekoaisle Cursor assortment",
+  "description": "カーソル移動関連詰め合わせ",
+  "version": "0.0.1",
+  "icon": "logo.png",
+  "license": "MIT License",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nekoaisle/vsc-extention.git"
+  },
+  "publisher": "nekoaisle",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nekoaisle-cursor.selectWord",
+        "title": "単語選択"
+      },
+      {
+        "command": "nekoaisle-cursor.addCursor",
+        "title": "次の行の同じ桁にカーソルを追加"
+      },
+      {
+        "command": "nekoaisle-cursor.delCursor",
+        "title": "一番下のカーソルを削除"
+      },
+      {
+        "command": "nekoaisle-cursor.gotoLine",
+        "title": "行番号ジャンプ"
+      },
+      {
+        "command": "nekoaisle-cursor.markjumpMark",
+        "title": "カーソル位置をマーク"
+      },
+      {
+        "command": "nekoaisle-cursor.markjumpJump",
+        "title": "マークした位置にジャンプ"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "json-cyclic": "^1.0.2"
+  }
+}

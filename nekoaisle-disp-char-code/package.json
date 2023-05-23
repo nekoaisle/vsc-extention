@@ -2,7 +2,7 @@
     "name": "nekoaisle-disp-char-code",
     "displayName": "Nekoaisle Disp char code",
     "description": "カーソル位置の文字コードをステータバーに表示",
-    "version": "0.0.3",
+    "version": "0.0.4",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {

@@ -57,11 +57,11 @@
 		}
 	},
 	"scripts": {
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
-		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11.7",

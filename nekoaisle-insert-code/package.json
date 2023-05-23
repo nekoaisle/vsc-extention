@@ -2,7 +2,7 @@
 	"name": "nekoaisle-insert-code",
 	"displayName": "Nekoaisle Insert Code",
 	"description": "拡張子ごとのメニューから選択してテンプレートを挿入する",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -18,7 +18,7 @@
 	],
 	"activationEvents": [
 	],
-	"main": "./out/extension",
+	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -62,21 +62,26 @@
 		}
 	},
 	"scripts": {
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
-		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+		"watch": "tsc -watch -p ./"
 	},
-	"devDependencies": {
-		"@types/node": "^16.11.7",
-		"@types/vscode": "^1.73.0",
-		"@typescript-eslint/eslint-plugin": "^5.42.0",
-		"@typescript-eslint/parser": "^5.42.0",
-		"eslint": "^8.26.0",
-		"typescript": "^5.0.2"
-	},
-	"dependencies": {
-		"json-cyclic": "^1.0.2"
-	}
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "json-cyclic": "^1.0.2"
+  }
 }

@@ -91,16 +91,18 @@ class InsertCode extends Extension {
     super(context, {
       name: 'Insert Code',
       config: 'nekoaisle-insertCode',
-      commands: [{
-        command: 'nekoaisle.insertCode',
-        callback: () => { this.entry(); }
-      }, {
-        command: 'nekoaisle.insertCode.pinfoBase',
-        callback: () => { this.doCommandInsert('pinfo.base'); }
-      }, {
-        command: 'nekoaisle.insertCode.cmd',
-        callback: (arg: string) => { this.doCommandInsert(arg); }
-      }]
+      commands: [
+        {
+          command: 'nekoaisle.insertCode',
+          callback: () => { this.entry(); }
+        }, {
+          command: 'nekoaisle.insertCode.pinfoBase',
+          callback: () => { this.doCommandInsert('pinfo.base'); }
+        }, {
+          command: 'nekoaisle.insertCode.cmd',
+          callback: (arg: string) => { this.doCommandInsert(arg); }
+        }
+      ]
     });
   }
 

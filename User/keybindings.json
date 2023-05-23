@@ -109,14 +109,14 @@
 	{"key": "shift+f2"    ,"command": "editor.action.rename","when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"},
 	{"key": "shift+f5"    , "command": "workbench.action.debug.stop","when": "debugState == 'running'"},
 	{"key": "shift+f9"    ,"command": "-editor.debug.action.toggleInlineBreakpoint","when": "editorTextFocus"},
-	{"key": "shift+enter" ,"command": "nekoaisle.selectWord","when": "editorTextFocus"},
+	{"key": "shift+enter" ,"command": "nekoaisle-cursor.selectWord","when": "editorTextFocus"},
 	{"key": "shift+insert","command": "-editor.action.selectionClipboardPaste"},
 	{"key": "shift+insert","command": "editor.action.clipboardPasteAction", "when": "editorTextFocus && !editorReadonly"},
 
 	{"key": "ctrl+enter","command": "-editor.action.insertLineAfter","when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+enter","command": "removeSecondaryCursors", "when": "editorHasMultipleSelections && editorTextFocus"},
-	{"key": "ctrl+up"   ,"command": "nekoaisle.delCursor", "when": "editorTextFocus"},
-	{"key": "ctrl+down" ,"command": "nekoaisle.addCursor", "when": "editorTextFocus"},
+	{"key": "ctrl+up"   ,"command": "nekoaisle-cursor.delCursor", "when": "editorTextFocus"},
+	{"key": "ctrl+down" ,"command": "nekoaisle-cursor.addCursor", "when": "editorTextFocus"},
 	{"key": "ctrl+[BracketLeft]", "command": "nekoaisle.encloseInGraveAccent", "when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+[","command": "-editor.action.outdentLines","when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+[","command": "nekoaisle.encloseCurlyBracket", "when": "editorTextFocus"},
@@ -138,7 +138,11 @@
 	{"key": "ctrl+e","command": "deleteAllRight", "when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+f","command": "closeFindWidget", "when": "editorFocus && findInputFocussed && findWidgetVisible"},
 	{"key": "ctrl+i","command": "nekoaisle.insertCode", "when": "editorTextFocus && !editorReadonly"},
+	{"key": "ctrl+j","command": "-workbench.action.togglePanel"},
+	{"key": "ctrl+j","command": "nekoaisle-cursor.markjumpJump", "when": "editorTextFocus"},
 	{"key": "ctrl+l","command": "nekoaisle.insertCode.cmd", "args": "pinfo.base", "when": "editorTextFocus && !editorReadonly"},
+	{"key": "ctrl+m","command": "-editor.action.toggleTabFocusMode"},
+	{"key": "ctrl+m","command": "nekoaisle-cursor.markjumpMark", "when": "editorTextFocus"},
 	{"key": "ctrl+o", "command": "nekoaisle.selectOpen", "when": "editorTextFocus"},
 	// {"key": "ctrl+p", "command": "nekoaisle.cpssWizard", "when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+p","command": "kb-macro.playback", "when": "editorTextFocus && !kb-macro.recording"},
@@ -192,13 +196,11 @@
 		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
 	},
 	{
-		"key": "ctrl+k t",
-		"command": "workbench.action.terminal.moveToEditor"
-	},
-	{
 		"key": "ctrl+shift+numlock",
 		"command": "workbench.action.showAllSymbols"
 	},
-
-	// 以下自動挿入（最初の1つは挿入時に壊される…）
+	{
+		"key": "ctrl+k t",
+		"command": "workbench.action.createTerminalEditor"
+	}
 ]

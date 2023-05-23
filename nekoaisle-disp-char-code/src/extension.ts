@@ -44,7 +44,7 @@ class MyExtention extends Extension {
 		this.disposable = vscode.Disposable.from(...subscriptions);
 
 		// 表示フォーマット取得
-		this.format = this.getConfig('format', '%c %h (%d)');
+		this.format = this.getConfig('format', '%c %H (%d)');
 
 		// 初期表示
 		this.dispCharCode();
@@ -78,13 +78,15 @@ class MyExtention extends Extension {
 		let str: string;
 		if ( line.length > cursor.character ) {
 			const c = line.charAt(cursor.character);
-			const n = line.charCodeAt(cursor.character);
-			const h = n.toString(16);
+			const d = line.charCodeAt(cursor.character);
+			const h = d.toString(16);
+			const H = h.toLocaleUpperCase();
 
 			str = this.format;
 			str = str.replace('%c', c);
-			str = str.replace('%n', '' + n);
+			str = str.replace('%d', '' + d);
 			str = str.replace('%h', h);
+			str = str.replace('%H', H);
 		} else {
 			str = (doc.eol == vscode.EndOfLine.LF) ? 'LF' : 'CRLF';
 		}

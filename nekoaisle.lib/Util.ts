@@ -1078,5 +1078,19 @@ export module Util {
 		return han;
 	}
 
+  export function getCharWidth(code: number) : number {
+    if (code === 0x09) {
+      // タブ
+      let w = vscode.window.activeTextEditor?.options.tabSize ?? 4;
+      w = w.toString();
+      return parseInt(w);
+    } else if (code < 0x100) {
+      // 半角
+      return 1;
+    } else {
+      // 全角
+      return 2;
+    }
+  }
 
 }
