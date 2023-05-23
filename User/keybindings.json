@@ -139,10 +139,7 @@
 	{"key": "ctrl+f","command": "closeFindWidget", "when": "editorFocus && findInputFocussed && findWidgetVisible"},
 	{"key": "ctrl+i","command": "nekoaisle.insertCode", "when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+j","command": "-workbench.action.togglePanel"},
-	{"key": "ctrl+j","command": "nekoaisle-cursor.markjumpJump", "when": "editorTextFocus"},
 	{"key": "ctrl+l","command": "nekoaisle.insertCode.cmd", "args": "pinfo.base", "when": "editorTextFocus && !editorReadonly"},
-	{"key": "ctrl+m","command": "-editor.action.toggleTabFocusMode"},
-	{"key": "ctrl+m","command": "nekoaisle-cursor.markjumpMark", "when": "editorTextFocus"},
 	{"key": "ctrl+o", "command": "nekoaisle.selectOpen", "when": "editorTextFocus"},
 	// {"key": "ctrl+p", "command": "nekoaisle.cpssWizard", "when": "editorTextFocus && !editorReadonly"},
 	{"key": "ctrl+p","command": "kb-macro.playback", "when": "editorTextFocus && !kb-macro.recording"},
@@ -153,6 +150,16 @@
 	{"key": "ctrl+r","command": "kb-macro.finishRecording", "when": "editorTextFocus && kb-macro.recording"},
 	{"key": "ctrl+t","command": "-workbench.action.showAllSymbols"},
 	{"key": "ctrl+t", "command": "nekoaisle-tab-manager.restoreTabGroup"},
+	{"key": "ctrl+u","command": "-cursorUndo"},
+	{"key": "ctrl+u","command": "nekoaisle-cursor.undo", "when": "editorTextFocus"},
+
+	{"key": "ctrl+m","command": "-editor.action.toggleTabFocusMode"},
+	{"key": "ctrl+m m","command": "nekoaisle-cursor.markjumpMark", "when": "editorTextFocus"},
+	{"key": "ctrl+m j","command": "nekoaisle-cursor.markjumpJump", "when": "editorTextFocus"},
+	{"key": "ctrl+m r","command": "cursorUndo", "when": "editorTextFocus"},
+	{"key": "ctrl+m ctrl+m","command": "nekoaisle-cursor.markjumpMark", "when": "editorTextFocus"},
+	{"key": "ctrl+m ctrl+j","command": "nekoaisle-cursor.markjumpJump", "when": "editorTextFocus"},
+
 
 	{"key": "ctrl+numpad0","command": "editor.action.fontZoomReset"},
 

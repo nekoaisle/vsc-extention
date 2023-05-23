@@ -2,7 +2,7 @@
   "name": "nekoaisle-cursor",
   "displayName": "Nekoaisle Cursor assortment",
   "description": "カーソル移動関連詰め合わせ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "logo.png",
   "license": "MIT License",
   "repository": {
@@ -45,6 +45,10 @@
       {
         "command": "nekoaisle-cursor.markjumpJump",
         "title": "マークした位置にジャンプ"
+      },
+      {
+        "command": "nekoaisle-cursor.undo",
+        "title": "カーソルをもとの位置に戻す"
       }
     ]
   },
