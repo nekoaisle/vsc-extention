@@ -2,7 +2,7 @@
   "name": "nekoaisle-open-file",
   "displayName": "Nekoaisle Open file assortment",
   "description": "ファイルを開く関連詰め合わせ",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "logo.png",
   "license": "MIT License",
   "repository": {
@@ -17,7 +17,7 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -69,6 +69,10 @@
       {
         "command": "nekoaisle.findOpen",
         "title": "nekoaisle.findOpen 検索して開く"
+      },
+      {
+        "command": "nekoaisle.toggleTab",
+        "title": "nekoaisle.toggleTab 直前に開いていたタブを開く"
       }
     ],
     "configuration": {
@@ -129,11 +133,11 @@
     }
   },
   "scripts": {
+    "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "lint": "eslint \"src/**/*.ts\"",
-    "watch": "tsc -watch -p ./",
-    "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",

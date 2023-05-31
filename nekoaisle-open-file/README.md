@@ -2,7 +2,7 @@
 
 ## 機能
 
-|             コマンド             |                     機能                     |
+| コマンド                         | 機能                                         |
 | -------------------------------- | -------------------------------------------- |
 | nekoaisle.selectFile             | ファイルを選択して開く                       |
 | nekoaisle.openFile               | 選択範囲またはカーソル位置のファイルを開く   |
@@ -14,6 +14,7 @@
 | nekoaisle.openHistCompensateDate | 編集履歴からすでに存在しないファイルを除去   |
 | nekoaisle.openTag                | タグジャンプ                                 |
 | nekoaisle.findOpen               | 検索して開く                                 |
+| nekoaisle.toggleTab              | 現在のエディターを開く前に編集していたエディターに戻る |
 
 ### ■ `ファイルを選択して開く` nekoaisle.selectFile
 メニューからファイルを選択して開く
@@ -65,28 +66,29 @@ workbench.action.files.openFile は GUI にてファイルを選択できてよ�
 `2019-10-17 仕様変更`  
 InputBox に入力した glob パターンをワークスペース内で検索し見つかったものを一覧表示します。一覧からファルを選択すると開きます。
 
-
-~~入力されたパス名をディレクトリ名とベース名に分離し、ディレクトリ内に存在するすべてのファイル名を一覧表示します。また、ベース名にはワイルドカードも使用できます。~~
+### ■ `直前に開いていたタブを開く` nekoaisle.toggleTab 
+nekoaisle-open-previous-tab 拡張機能を統合
+現在のエディターを開く前に編集していたエディターに戻ります。
 
 ## 設定
 
-|           設定名           |                 機能                 | デフォルト値 |
-| -------------------------- | ------------------------------------ | ------------ |
-| nekoaisle-openTemp.dir     | 一時ファイルを格納するディレクトリ名 | ~/temp       |
-| nekoaisle-openTemp.base    | 一時ファイルのベース名               | temp         |
-| nekoaisle-openHist.hist-file | 履歴ファイル名                     | modtime      |
-| nekoaisle-openHist.sort    | ソート方法                           | modtime      |
-| nekoaisle-openHist.sortDir | ソート方向                           | desc         |
+| 設定名                       | 機能                                 | デフォルト値 |
+| ---------------------------- | ------------------------------------ | ------------ |
+| nekoaisle-openTemp.dir       | 一時ファイルを格納するディレクトリ名 | ~/temp       |
+| nekoaisle-openTemp.base      | 一時ファイルのベース名               | temp         |
+| nekoaisle-openHist.hist-file | 履歴ファイル名                       | modtime      |
+| nekoaisle-openHist.sort      | ソート方法                           | modtime      |
+| nekoaisle-openHist.sortDir   | ソート方向                           | desc         |
 
 ### ソート方法
-|    値    |  ソート方法  |
+| 値       | ソート方法   |
 | -------- | ------------ |
 | modtime  | 最終更新日時 |
 | filename | ファイル名   |
 | pathname | パス名       |
 
 ### ソート方向
-|  値  | ソート方向 |
+| 値   | ソート方向 |
 | ---- | ---------- |
 | asc  | 小さい順   |
 | desc | 大きい順   |

@@ -2,15 +2,6 @@
 import * as vscode from 'vscode';
 import {Util, Extension} from './nekoaisle.lib/nekoaisle';
 
-export function activate(context: vscode.ExtensionContext) {
-    let openPreviousTab = new OpenPreviousTab(context);
-	context.subscriptions.push(openPreviousTab);
-}
-
-// this method is called when your extension is deactivated
-export function deactivate() {
-}
-
 interface History {
 	fileName: string;
 	editor: vscode.TextEditor;
@@ -18,21 +9,19 @@ interface History {
 
 class OpenPreviousTab extends Extension {
 	private history: History[] = [];
-    private disposable: vscode.Disposable;
+	private disposable: vscode.Disposable;
 
 	/**
 	 * 構築
 	 */
 	constructor(context: vscode.ExtensionContext) {
 		super(context, {
-			name: '拡張機能名',
+			name: '直前に開いていたタブを開く',
 			config: 'nekoaisle-toggleTab',
 			commands: [
 				{
 					command: 'nekoaisle.toggleTab',
-					callback: () => {
-						this.exec()
-					}
+					callback: () => { this.exec() }
 				}
 			]
 		});
@@ -41,7 +30,7 @@ class OpenPreviousTab extends Extension {
 		let subscriptions: vscode.Disposable[] = [];
 		vscode.window.onDidChangeActiveTextEditor(this.onEvent, this, subscriptions);
 
-        // create a combined disposable from both event subscriptions
+		// create a combined disposable from both event subscriptions
 		this.disposable = vscode.Disposable.from(...subscriptions);
 
 		// 現在のアクティブタブを記憶
@@ -74,32 +63,34 @@ class OpenPreviousTab extends Extension {
 	/**
 	 * イベントハンドラ
 	 */
-	protected onEvent(e: vscode.TextEditor) {
-		if (vscode.window.activeTextEditor) {
-			// 現在のアクティブファイル名を取得
-			let editor = vscode.window.activeTextEditor;
-			let fileName = editor.document.fileName;
+	protected onEvent(editor: vscode.TextEditor | undefined) {
+    if (!editor) {
+      return;
+    }
 
-			if (this.history.length === 0) {
-				// 初
-				this.history[0] = {
-					fileName: fileName,
-					editor: editor,
-				};
-			} else if (this.history[0].fileName != fileName) {
-				// 同違っているので記憶
-				// 前回のアクティブタブを記憶
-				this.history[1] = this.history[0];
-				// 現在のアクティブタブを記憶
-				this.history[0] = {
-					fileName: fileName,
-					editor: editor,
-				};
-			}
-		}
+    let fileName = editor.document.fileName;
+
+    if (this.history.length === 0) {
+      // 初
+      this.history[0] = {
+        fileName: fileName,
+        editor: editor,
+      };
+    } else if (this.history[0].fileName != fileName) {
+      // 違っているので記憶
+      // 前回のアクティブタブを記憶
+      this.history[1] = this.history[0];
+      // 現在のアクティブタブを記憶
+      this.history[0] = {
+        fileName: fileName,
+        editor: editor,
+      };
+    }
 	}
 
 	public dispose() {
-        this.disposable.dispose();
+		this.disposable.dispose();
 	}
 }
+
+export default OpenPreviousTab;

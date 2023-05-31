@@ -9,6 +9,7 @@ import InsertFile = require('./InsertFile');
 import OpenHist = require('./OpenHist');
 import OpenTag = require('./OpenTag');
 import FindOpen = require('./FindOpen');
+import OpenPreviousTab from './OpenPreviousTab'
 
 /**
  * エクステンション起動
@@ -25,6 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
   new OpenHist(context);
   new OpenTag(context);
   new FindOpen(context);
+  new OpenPreviousTab(context);
 }
 
 // this method is called when your extension is deactivated

@@ -121,7 +121,7 @@ class OpenHist extends Extension {
 
   /**
    * カーソル位置が変わった(ファイルごとのカーソル位置を記憶するため)
-   * onWillCloseTextDocumentが無いのでカーソル父が取れない
+   * onWillCloseTextDocumentが無いのでカーソル位置が取れない
    */
   protected onDidChangeTextEditorSelection(e: vscode.TextEditorSelectionChangeEvent) {
     let name = e.textEditor.document.fileName;
@@ -135,12 +135,36 @@ class OpenHist extends Extension {
   }
 
   /**
+   * 無視するファイル?
+   */
+  protected isIgnore(fileName: string) : boolean {
+    if (fileName.match(/^Untitled-[0-9]+/)) {
+      // ファイル名が決まっていない時は何もしない
+      return true;
+    }
+    if (fileName.match(/.*\.git$/)) {
+      // .git ファイルは無視
+      return true;
+    }
+    if (!Util.isExistsFile(fileName)) {
+      // 存在しないファイルは無視
+      return true;
+    }
+    if (Util.isDirectory(fileName)) {
+      // ディレクトリは無視
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * ファイルが開かれたときのイベントハンドラ
    * @param doc テキストドキュメント 
    */
   protected onDidOpenTextDocument(doc: vscode.TextDocument) {
-    if (doc.fileName.match(/^Untitled-[0-9]+/)) {
-      // ファイル名が決まっていない時は何もしない
+    if (this.isIgnore(doc.fileName)) {
+      // 無視するファイル
       return;
     }
 
@@ -156,8 +180,8 @@ class OpenHist extends Extension {
    * @param doc テキストドキュメント
    */
   protected onDidCloseTextDocument(doc: vscode.TextDocument) {
-    if (doc.fileName.match(/^Untitled-[0-9]+/)) {
-      // ファイル名が決まっていない時は何もしない
+    if (this.isIgnore(doc.fileName)) {
+      // 無視するファイル
       return;
     }
 
@@ -179,7 +203,6 @@ class OpenHist extends Extension {
     // 履歴に登録
     this.registHistory(pinfo);
   }
-
 
   /**
    * 履歴に記録
@@ -321,6 +344,14 @@ class OpenHist extends Extension {
       // ファイル名を復元
       let file: string = `${sel.description}/${sel.label}`;
 
+      if (!Util.isExistsFile(file)) {
+        Util.putMess(`${file} が見つかりません。`);
+        return;
+      } else if (Util.isDirectory(file)) {
+        Util.putMess(`${file} はディレクトリです。`);
+        return;
+      }
+
       // ファイルを開く
       vscode.workspace.openTextDocument(file).then((doc: vscode.TextDocument) => {
         // ファイルが開いた
@@ -396,7 +427,8 @@ class OpenHist extends Extension {
     let list: ListItemDic = this.loadHistFile();
     let count = 0;
     for (let fileName in list) {
-      if (!Util.isExistsFile(fileName)) {
+      if (!Util.isExistsFile(fileName) || Util.isDirectory(fileName)) {
+        // 存在しないかディレクトリのときは削除
         delete list[fileName];
         ++count;
       }

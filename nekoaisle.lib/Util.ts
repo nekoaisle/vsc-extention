@@ -7,7 +7,6 @@ import * as url from 'url';
 // import { Extension } from './Extension';
 import { PathInfo } from './PathInfo';
 import * as crypto from 'crypto';
-import { ListItem } from '../CommandMenu';
 const { decycle, encycle } = require('json-cyclic');
 
 export module Util {
@@ -554,7 +553,24 @@ export module Util {
       return false;
     }
 
-    return fs.existsSync(path);
+    try {
+      fs.statSync(path);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  /**
+   * 指定したファイルがディレクトリか調べる
+   */
+  export function isDirectory(path: string): boolean {
+    try {
+      let stats: fs.Stats = fs.statSync(path);
+      return stats.isDirectory();
+    } catch (err) {
+      return false;
+    }
   }
 
   /**

@@ -217,10 +217,15 @@ class OpenFile extends Extension {
       }
     }
 
-    // ファイルを開く
-    vscode.workspace.openTextDocument(fileName).then((doc: vscode.TextDocument) => {
-      vscode.window.showTextDocument(doc);
-    });
+    // ファイルの存在確認
+    if (Util.isExistsFile(fileName)) {
+      // 存在するのでファイルを開く
+      vscode.workspace.openTextDocument(fileName).then((doc: vscode.TextDocument) => {
+        vscode.window.showTextDocument(doc);
+      });
+    } else {
+      Util.putMess(`${fileName} が見つかりません。`);
+    }
   }
 
   /**
