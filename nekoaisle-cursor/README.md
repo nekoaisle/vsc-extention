@@ -6,6 +6,7 @@
 | nekoaisle-cursor.addCursor      | 矩形選択カーソル追加                       |
 | nekoaisle-cursor.delCursor      | 矩形選択カーソル削除                       |
 | nekoaisle-cursor.gotoLine       | 行番号ジャンプ                             |
+| nekoaisle-cursor.markjumpMenu   | マークジャンプ メニューを表示              |
 | nekoaisle-cursor.markjumpMark   | 現在のカーソル位置をマーク                 |
 | nekoaisle-cursor.markjumpJump   | 最後にマークした位置にジャンプ             |
 | nekoaisle-cursor.markjumpReturn | 前回のカーソル位置にジャンプ               |
@@ -37,6 +38,9 @@ nekoaisle-cursor.gotoLine
 
 ※ 通常 nekoaisle.command-menu とともに使います。
 
+### nekoaisle-cursor.markjumpMenu
+マークジャンプ メニューを表示
+
 ### nekoaisle-cursor.markjumpMark markjumpJump
 現在のカーソル位置を記憶しそこにジャンプすることができます。  
 また、前回のカーソル位置に戻ることができます。操作を間違えてわけのわからないところにジャンプしてしまった後などに便利だと思います。
@@ -47,7 +51,6 @@ markjumpMark, markjumpJump は引数にスロット番号を指定すること�
 
 ### nekoaisle-cursor.markjumpReturn
 Ver.1.40 にて cursorUndo が実装されたので廃止予定
-
 
 ### nekoaisle-cursor.undo
 カーソルをもとの位置に戻す

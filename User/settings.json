@@ -16,7 +16,6 @@
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "window.newWindowDimensions": "inherit",
-  "window.zoomLevel": 1,
 
   "workbench.startupEditor": "none",
   "workbench.editor.tabSizing": "shrink",
@@ -148,7 +147,6 @@
   "debug.console.fontFamily": "Ricty Diminished",
 
   "explorer.openEditors.visible": 99,
-  "explorer.compactFolders": false,
   // "explorer.autoReveal": false,
 
   "git.enableSmartCommit": true,
@@ -286,5 +284,17 @@
     "fetch:command",
     "switch:command"
   ],
+  "window.zoomLevel": 1,
+  "explorer.autoReveal": false,
+
+  "nekoaisle-command-menu.menus": {
+    "ctrl+k": [
+      {
+        "label": "t",
+        "command": "workbench.action.createTerminalEditor",
+        "description": "ターミナル: エディター領域で新しいターミナルを作成"
+      },
+   ]
+  }
 }
  

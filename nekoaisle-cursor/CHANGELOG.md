@@ -18,3 +18,7 @@
 
 ### nekoaisle-cursor.revealRange
 カーソルが表示される位置にスクロール位置を調整
+
+## 0.0.3 2023-05-30
+nekoaisle-cursor.markjumpMenu
+マークジャンプ メニューを表示

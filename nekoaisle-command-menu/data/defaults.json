@@ -45,7 +45,7 @@
     {
       "label": "B",
       "description": "ファイルエクスプローラ折りたたみ",
-      "command": "nekoaisle.multiCommand",
+      "command": "nekoaisle-command-menu.multi",
       "args": [
         {
           "command": "workbench.files.action.focusFilesExplorer",
@@ -63,11 +63,6 @@
       "command": "nekoaisle.calc"
     },
     {
-      "label": "D",
-      "description": "ネーミング",
-      "command": "extension.codicTranslate"
-    },
-    {
       "label": "E",
       "description": "変換メニューを開く",
       "command": "nekoaisle.encode"
@@ -76,11 +71,6 @@
       "label": "F",
       "description": "検索してファイルを開く",
       "command": "nekoaisle.findOpen"
-    },
-    {
-      "label": "G",
-      "description": "英語に翻訳",
-      "command": "extension.translateTextPreferred"
     },
     {
       "label": "H",
@@ -95,7 +85,7 @@
     {
       "label": "J",
       "description": "マーク位置へジャンプ",
-      "command": "nekoaisle.markjumpJump"
+      "command": "nekoaisle-cursor.markjumpJump"
     },
     {
       "label": "K",
@@ -110,7 +100,7 @@
     {
       "label": "M",
       "description": "カーソル位置をマーク",
-      "command": "nekoaisle.markjumpMark"
+      "command": "nekoaisle-cursor.markjumpMark"
     },
     {
       "label": "N",
@@ -135,7 +125,7 @@
     {
       "label": "R",
       "description": "直前のカーソル位置にジャンプ",
-      "command": "nekoaisle.markjumpReturn"
+      "command": "nekoaisle-cursor.markjumpReturn"
     },
     {
       "label": "S",
@@ -179,65 +169,252 @@
     {
       "label": "1",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "1" },
       "hide": true
     },
     {
       "label": "2",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "2" },
       "hide": true
     },
     {
       "label": "3",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "3" },
       "hide": true
     },
     {
       "label": "4",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "4" },
       "hide": true
     },
     {
       "label": "5",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "5" },
       "hide": true
     },
     {
       "label": "6",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "6" },
       "hide": true
     },
     {
       "label": "7",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "7" },
       "hide": true
     },
     {
       "label": "8",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "8" },
       "hide": true
     },
     {
       "label": "9",
       "description": "行ジャンプ",
-      "command": "nekoaisle.jumpToLineNumber",
+      "command": "nekoaisle-cursor.gotoLine",
       "args" : { "default": "9" },
       "hide": true
+    }
+  ],
+  "ctrl+k": [
+    {
+      "label": "/",
+      "description": "ドキュメントをフォーマット",
+      "command": "editor.action.formatDocument"
+    },
+  
+    {
+      "label": "[",
+      "command": "editor.foldRecursively",
+      "description": "再帰的に折りたたむ"
+    },
+    {
+      "label": "]",
+      "command": "editor.unfoldRecursively",
+      "description": "再帰的に展開する"
+    },
+    {
+      "label": "/",
+      "command": "editor.foldAllBlockComments",
+      "description": "すべてのブロック コメントの折りたたみ"
+    },
+    {
+      "label": "\\","command": "workbench.action.splitEditorOrthogonal",
+      "description": "表示: 垂直にエディターを分割"
+    },
+    {
+      "label": "0",
+      "command": "editor.foldAll",
+      "description": "選択されたものを除くすべての領域を折りたたむ"
+    },
+    {
+      "label": "1",
+      "command": "editor.foldLevel1",
+      "description": "レベル 1 で折りたたむ"
+    },
+    {
+      "label": "2",
+      "command": "editor.foldLevel2",
+      "description": "レベル 2 で折りたたむ"
+    },
+    {
+      "label": "3",
+      "command": "editor.foldLevel3",
+      "description": "レベル 3 で折りたたむ"
+    },
+    {
+      "label": "4",
+      "command": "editor.foldLevel4",
+      "description": "レベル 4 で折りたたむ"
+    },
+    {
+      "label": "5",
+      "command": "editor.foldLevel5",
+      "description": "レベル 5 で折りたたむ"
+    },
+    {
+      "label": "6",
+      "command": "editor.foldLevel6",
+      "description": "レベル 6 で折りたたむ"
+    },
+    {
+      "label": "7",
+      "command": "editor.foldLevel7",
+      "description": "レベル 7 で折りたたむ"
+    },
+    {
+      "label": "8",
+      "command": "editor.foldAllMarkerRegions",
+      "description": "すべての領域を折りたたむ"
+    },
+    {
+      "label": "9",
+      "command": "editor.unfoldAllMarkerRegions",
+      "description": "すべての領域を展開"
+    },
+    {
+      "label": "c",
+      "command": "editor.action.addCommentLine",
+      "description": "行コメントの追加"
+    },
+    {
+      "label": "d",
+      "command": "editor.action.moveSelectionToNextFindMatch",
+      "description": "最後に選択した項目を次の一致項目に移動"
+    },
+    {
+      "label": "e",
+      "command": "keybindings.editor.defineWhenExpression",
+      "description": "keybindings.editor.defineWhenExpression"
+    },
+    {
+      "label": "f",
+      "command": "editor.action.formatSelection",
+      "description": "選択範囲をフォーマット"
+    },
+    {
+      "label": "h",
+      "command": "workbench.action.output.toggleOutput",
+      "description": "表示: 出力 の切り替え"
+    },
+    {
+      "label": "i",
+      "command": "editor.action.showHover",
+      "description": "[表示またはフォーカス] ホバー"
+    },
+    {
+      "label": "i",
+      "command": "editor.debug.action.showDebugHover",
+      "description": "デバッグ: ホバーの表示"
+    },
+    {
+      "label": "j",
+      "command": "editor.unfoldAll",
+      "description": "すべて展開"
+    },
+    {
+      "label": "k",
+      "command": "editor.action.defineKeybinding",
+      "description": "キー バインドの定義"
+    },
+    {
+      "label": "k",
+      "command": "keybindings.editor.defineKeybinding",
+      "description": "keybindings.editor.defineKeybinding"
+    },
+    {
+      "label": "l",
+      "command": "editor.toggleFold",
+      "description": "折りたたみの切り替え"
+    },
+    {
+      "label": "m",
+      "command": "workbench.extensions.action.showRecommendedKeymapExtensions",
+      "description": "基本設定: キーマップ"
+    },
+    {
+      "label": "o",
+      "command": "workbench.action.files.openFolder",
+      "description": "ファイル: フォルダーを開く..."
+    },
+    {
+      "label": "o",
+      "command": "workbench.action.files.openLocalFolder",
+      "description": "workbench.action.files.openLocalFolder"
+    },
+    {
+      "label": "p",
+      "command": "workbench.action.showAllEditors",
+      "description": "ファイル: すべてのエディターを外観別に表示"
+    },
+    {
+      "label": "q",
+      "command": "workbench.action.navigateToLastEditLocation",
+      "description": "最後の編集位置へ移動"
+    },
+    {
+      "label": "r",
+      "command": "workbench.action.keybindingsReference",
+      "description": "ヘルプ: キーボード ショートカットの参照"
+    },
+    {
+      "label": "s",
+      "command": "workbench.action.openGlobalKeybindings",
+      "description": "基本設定: キーボード ショートカットを開く"
+    },
+    {
+      "label": "t",
+      "command": "workbench.action.selectTheme",
+      "description": "基本設定: 配色テーマ"
+    },
+    {
+      "label": "u",
+      "command": "editor.action.removeCommentLine",
+      "description": "行コメントの削除"
+    },
+    {
+      "label": "w",
+      "command": "workbench.action.closeAllEditors",
+      "description": "表示: すべてのエディターを閉じる"
+    },
+    {
+      "label": "x",
+      "command": "editor.action.trimTrailingWhitespace",
+      "description": "末尾の空白のトリミング"
     }
   ]
 }

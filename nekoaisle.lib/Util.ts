@@ -7,6 +7,7 @@ import * as url from 'url';
 // import { Extension } from './Extension';
 import { PathInfo } from './PathInfo';
 import * as crypto from 'crypto';
+import { ListItem } from '../CommandMenu';
 const { decycle, encycle } = require('json-cyclic');
 
 export module Util {
@@ -613,7 +614,7 @@ export module Util {
    * JSONファイルを読み込む
    * @param fileName ファイル名
    * @param silent   ファイルが存在しないときにメッセージを出さない
-   * @return オブジェクト
+   * @return any
    */
   export function loadFileJson(fileName: string, silent: boolean = false): any {
     let source: string | null = Util.loadFile(fileName, silent);
@@ -1093,4 +1094,38 @@ export module Util {
     }
   }
 
+  /**
+   * 先頭文字の重みを返す
+   * @param str 
+   * @returns 記号:0x0xx 数字:0x1xx 英字: 0x2xx
+   */
+  export function calcLabelSortWeight(str: string) : number {
+    let code = str.charCodeAt(0);
+    if (("0" <= str) && (str <= "9")) {
+      // 数字は 0x1xx
+      return code + 0x100;
+    } else if (("A" <= str) && (str <= "Z")) {
+      // 英字は 0x2xx
+      return code + 0x200;
+    } else if (("a" <= str) && (str <= "z")) {
+      // 英字は 0x2xx
+      return code + 0x200;
+    } else {
+      return code;
+    }
+  }
+
+  /**
+   * 小さい順の並べ替え比較値を返す
+   * (引数を逆にすれば大きい順)
+   */
+  export function compareSort(a: any, b: any) {
+    if (a < b) {
+      return -1;
+    } else if (a > b) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 }

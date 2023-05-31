@@ -29,15 +29,16 @@ export class CommandMenu extends Extension {
 		super(context, {
 			name: 'nekoaisle-command-menu',
 			config: 'nekoaisle-command-menu',
-			commands: [{
-				command: 'nekoaisle-command-menu.menu',
-				callback: (menuName?: string) => {
-					this.entry(menuName);
+			commands: [
+				{
+					command: 'nekoaisle-command-menu.menu',
+					callback: (menuName?: string) => { this.entry(menuName); }
+				},
+				{
+					command: 'nekoaisle-command-menu.multi',
+					callback: (commands: CommandParam | CommandParam[]) => { this.multiCommand(commands); }
 				}
-			},{
-				command: 'nekoaisle-command-menu.multi',
-				callback: (commands: CommandParam | CommandParam[]) => { this.multiCommand(commands); }
-			}]
+			]
 		});
 	}
 
@@ -120,36 +121,48 @@ export class CommandMenu extends Extension {
 	 * @param menuName メニュー名もしくはメニューファイル名
 	 */
 	public loadMenuInfo(menuName: string = 'default'): ListItem[] {
-		let menu: ListItem[] = [];
+		let dic: { [key: string]: ListItem } = {};
+		let menus: ListItems | null;
+
+		const setDic = (menus: ListItems | null) => {
+			if (menus && menus[menuName]) {
+				let menu = menus[menuName];
+				for (let key in menu) {
+					let item = menu[key];
+					// ラベルを大文字に変換
+					let label = item.label.toLocaleUpperCase();
+					item.label = label;
+					dic[label] = item;
+				}
+			}
+		}
 
 		// デフォルトの読み込み
 		let fn = this.joinExtensionRoot("data/defaults.json");
-		let menus = Util.loadFileJson(fn);
-		if (menus && menus[menuName]) {
-			menu = menus[menuName];
-		}
+		menus = <ListItems | null>Util.loadFileJson(fn);
+		setDic(menus);
 		
 		// ユーザー設定メニューの読み込み
-		let userMenus: ListItems | null = this.getConfig<ListItems | null>('menus', null);
-		// ユーザーメニューを上書き
-		if (userMenus && userMenus[menuName]) {
-			// 拡張メニューをデフォルトにかぶせる
-			let adds = userMenus[menuName];
-			for (let key in adds) {
-				menu[key] = adds[key];
-			}
+		menus = this.getConfig<ListItems | null>('menus', null);
+		setDic(menus);
+
+		// 配列に変換
+		let menu: ListItem[] = [];
+		// for in で取れる要素の順番が変わる＞＜；
+		for (let key in dic) {
+			menu.push(dic[key]);
 		}
 
-		// 指定メニューの存在チェック
-		if (!menus || !menus[menuName]) {
-			if (!menus) {
-				// 指定メニューが見つからない
-				return [];
-			}
-		}
+		// 並べ替え
+		menu.sort((a, b) => {
+			// 記号 < 数字 < 英字 の順の先頭文字の重みを取得
+			let aw = Util.calcLabelSortWeight(a.label);
+			let bw = Util.calcLabelSortWeight(b.label);
+			return Util.compareSort(aw, bw);
+		});
 
 		// メニューを返す
-		return menus[menuName];
+		return menu;
 	}
 
 	/**
@@ -259,7 +272,8 @@ export class CommandMenu extends Extension {
 						continue;
 					}
 					// 各メニューの先頭を比較
-					if (item.label.substring(0, len) === label) {
+					let c = item.label.substring(0, len).toUpperCase();
+					if (c === label) {
 						// 一致した
 						sels.push(item);
 					}

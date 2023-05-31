@@ -85,6 +85,11 @@ class MarkJump extends Extension {
       name: 'Nekoaisle Cursor Mark jump',
       config: 'nekoaisle-cursor.markjump',
       commands: [
+        // マークジャンプメニューを表示
+        {
+          command: 'nekoaisle-cursor.markjumpMenu',
+          callback: () => { this.menu(); }
+        },
         // カーソル位置を記憶
         {
           command: 'nekoaisle-cursor.markjumpMark',
@@ -178,7 +183,95 @@ class MarkJump extends Extension {
     return this.fileDatas[filename];
   }
 
-  // カーソル位置を記憶
+  /**
+   * マークジャンプメニューを表示
+   */
+  protected async menu() {
+    // メーニューを作成
+    let menu: vscode.QuickPickItem[] = [
+      { label: 'm カーソル位置をマーク' },
+      { label: 'j マークした位置へカーソルを移動' },
+      { label: 'r カーソルをもとの位置に戻す' },
+    ];
+
+    let options: vscode.QuickPickOptions = {
+      placeHolder: '選択してください。',
+      matchOnDetail: true,
+      matchOnDescription: false
+    };
+
+		// QuickPick オブジェクトを作成
+		const quickPick = vscode.window.createQuickPick();
+		quickPick.items = menu;
+		quickPick.placeholder = '選択してください。';
+		quickPick.matchOnDetail = false;
+		quickPick.matchOnDescription = false;
+
+		/**
+		 * 入力文字列が変更された処理設定
+		 * ※1文字入力したら実行
+		 */
+		quickPick.onDidChangeValue((value: string) => {
+      switch (value.substring(0, 1)) {
+        case 'm': {
+          this.markCursor();
+          break;
+        }
+        case 'j': {
+          this.jumpMark();
+          break;
+        }
+        case 'r': {
+          return this.jumpLast();
+          break;
+        }
+      }
+
+      // 実行したのでクイックピックを閉じる
+      quickPick.hide();
+		});
+
+		/**
+		 * エンターを押した処理設定
+		 */
+		quickPick.onDidAccept(() => {
+			let picks = quickPick.selectedItems;
+			if (picks.length === 1) {
+				let pick = picks[0];
+				if (pick) {
+					// 選択しているので実行
+          switch (pick.label.substring(0, 1)) {
+            case 'm': {
+              this.markCursor();
+              break;
+            }
+            case 'j': {
+              this.jumpMark();
+              break;
+            }
+            case 'r': {
+              this.jumpLast();
+              break;
+            }
+          }
+        }
+			}
+			// エンター押した場合は必ず閉じる
+			quickPick.hide();
+		});
+
+		// 非表示にしたら破棄設定
+		quickPick.onDidHide(() => quickPick.dispose());
+
+		// 開く
+		quickPick.show();
+  }
+
+  /**
+   * カーソル位置を記憶
+   * @param slot 記憶スロット番号
+   * @returns 
+   */ 
   protected async markCursor(slot?: number) {
     if (!vscode.window.activeTextEditor) {
       return;

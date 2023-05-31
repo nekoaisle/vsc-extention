@@ -2,7 +2,7 @@
 	"name": "nekoaisle-command-menu",
 	"displayName": "Nekoaisle Command Menu",
 	"description": "コマンドを一覧から選んで実行",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -71,11 +71,11 @@
 		}
 	},
 	"scripts": {
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
-		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
