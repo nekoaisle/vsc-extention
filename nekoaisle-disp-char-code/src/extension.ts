@@ -1,6 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
-import {Util, Extension} from './nekoaisle.lib/nekoaisle';
+import { Util, Extension } from './nekoaisle.lib/nekoaisle';
 
 /**
  * エクステンション活性化
@@ -44,7 +44,7 @@ class MyExtention extends Extension {
 		this.disposable = vscode.Disposable.from(...subscriptions);
 
 		// 表示フォーマット取得
-		this.format = this.getConfig('format', '%c %H (%d)');
+		this.format = this.getConfig('format', "'%c' %HH (%d)");
 
 		// 初期表示
 		this.dispCharCode();
@@ -70,10 +70,10 @@ class MyExtention extends Extension {
 
 		let doc = editor.document;
 
-        // カーソル位置を取得
-        let cursor  = editor.selection.start;
-        // カーソルの行の内容を取得
-        let line = doc.lineAt(cursor.line).text;
+		// カーソル位置を取得
+		let cursor  = editor.selection.start;
+		// カーソルの行の内容を取得
+		let line = doc.lineAt(cursor.line).text;
 		// カーソル位置の文字コードを取得
 		let str: string;
 		if ( line.length > cursor.character ) {

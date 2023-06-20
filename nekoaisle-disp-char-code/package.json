@@ -2,7 +2,7 @@
     "name": "nekoaisle-disp-char-code",
     "displayName": "Nekoaisle Disp char code",
     "description": "カーソル位置の文字コードをステータバーに表示",
-    "version": "0.0.4",
+    "version": "0.0.5",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -40,11 +40,11 @@
         }
     },
     "scripts": {
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
-		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+		"watch": "tsc -watch -p ./"
     },
     "devDependencies": {
 		"@types/node": "^16.11.7",

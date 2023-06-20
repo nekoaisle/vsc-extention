@@ -73,6 +73,11 @@
       "command": "nekoaisle.findOpen"
     },
     {
+      "label": "G",
+      "command": "nekoaisle-tab-manager.restoreTabGroup",
+      "description": "タブグループを復元"
+    },
+    {
       "label": "H",
       "description": "過去に開いことのあるファイルを開く",
       "command": "nekoaisle.openHist"

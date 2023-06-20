@@ -324,6 +324,51 @@ export module Util {
   }
 
   /**
+   * 指定文字が英数ならば全角半角を切り替える
+   * @param c 対象となる文字
+   * @param mode toggle=切り替え zen:全角 han:半角
+   * @return string 結果
+   */
+  export function changeZenHan(c: string, mode?: string): string {
+    // 全角に変換
+    const zen = function (x: string): string {
+      let n = x.charCodeAt(0);
+      return String.fromCharCode(n + 0xFEE0);
+    };
+    // 半角に変換
+    const han = function (x: string): string {
+      let n = x.charCodeAt(0);
+      return String.fromCharCode(n - 0xFEE0)
+    };
+    // トグル
+    const toggle = function (c: string): string {
+      let n = c.charCodeAt(0);
+      if (n < 0x100) {
+        return String.fromCharCode(n + 0xFEE0);
+      } else {
+        return String.fromCharCode(n - 0xFEE0);
+      }
+    }
+
+    switch (mode) {
+      // 全角に変換
+      case 'zen':
+        c = c.replace(/[A-Za-z0-9]/g, zen);
+        break;
+      // 半角に変換
+      case 'han':
+        c = c.replace(/[Ａ-Ｚａ-ｚ０-９]/g, han);
+        break;
+      // トグル
+      default:
+        c = c.replace(/[A-Za-z0-9Ａ-Ｚａ-ｚ０-９]/g, toggle);
+        break;
+    }
+    return c;
+  }
+
+  
+  /**
    * キャメルケースに変換
    * スネークケースは _ で分解しそれぞれの単語の先頭を大文字に変換して結合
    * それ以外は文字列の先頭文字を大文字それ以外を小文字にします

@@ -35,3 +35,8 @@
 ## 0.0.6 2023-05-17
 ### nekoaisle-tab-manager.restoreTabGroup
 タブグループを復元する際にまずすべてのタブを閉じるのだがこの処理が終わる前に復元しようとしてファイル型のタブで開かれていると勘違いしていたバグを修正
+
+## 0.0.7 2023-06-20
+1. publisher を nekoaisle に変更
+2. editor/title/context に restoreTabGroup, saveTabGroup, undoTabGroup を追加
+   ※本当はエディターグループ右端のメニューに追加したかった…

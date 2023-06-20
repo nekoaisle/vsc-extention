@@ -2,7 +2,7 @@
 	"name": "nekoaisle-toggle-char-case",
 	"displayName": "Nekoaisle Toggle char case",
 	"description": "カーソル位置の文字の大文字/小文字を切り替える",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"icon": "logo.png",
 	"license": "MIT License",
 	"repository": {
@@ -28,15 +28,19 @@
 			{
 				"command": "nekoaisle.toggleWordCase",
 				"title": "nekoaisle.toggleWordCase カーソル位置の単語の大文字/小文字切り替え"
+			},
+			{
+				"command": "nekoaisle.toggleZenHan",
+				"title": "nekoaisle.toggleZenHan カーソル位置の単語の全角/半角切り替え"
 			}
 		]
 	},
 	"scripts": {
+		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -watch -p ./",
-		"package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix"
+		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11.7",

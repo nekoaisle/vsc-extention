@@ -184,7 +184,7 @@
   "[json]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[csv]": {
     "files.autoGuessEncoding": false
@@ -284,17 +284,24 @@
     "fetch:command",
     "switch:command"
   ],
-  "window.zoomLevel": 1,
   "explorer.autoReveal": false,
 
   "nekoaisle-command-menu.menus": {
+    "default": [
+      {
+        "label": "G",
+        "command": "nekoaisle-tab-manager.restoreTabGroup",
+        "description": "タブグループを復元"
+      }
+    ],
     "ctrl+k": [
       {
-        "label": "t",
+        "label": "T",
         "command": "workbench.action.createTerminalEditor",
         "description": "ターミナル: エディター領域で新しいターミナルを作成"
       },
    ]
-  }
+  },
+  "window.zoomLevel": 1
 }
  

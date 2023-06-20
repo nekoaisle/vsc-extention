@@ -20,8 +20,8 @@
 タブグループ保存ファイルを編集する
 
 ### nekoaisle-tab-manager.reload
-
 タブグループ保存ファイルを再読込
+
 ### 保存ファイル
 保存スロットに保存したスロット名やファイル名は保存ファイルに保存されます。
 デフォルトの保存ファイル名は ~/Documents/nekoaisle-tab-manager.json です。

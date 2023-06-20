@@ -32,10 +32,17 @@ class MyExtention extends Extension {
 					callback: () => {
 						this.toggleCharCase()
 					}
-				},{
+				},
+				{
 					command: 'nekoaisle.toggleWordCase',
 					callback: () => {
 						this.toggleWordCase();
+					}
+				},
+				{
+					command: 'nekoaisle.toggleZenHan',
+					callback: (mode: string = 'toggle') => {
+						this.toggleZenHan(mode);
 					}
 				}
 			]
@@ -139,4 +146,54 @@ class MyExtention extends Extension {
 		// 編集実行
 		this.syncReplace(editor, ary);
 	}
+
+	/**
+	 * カーソル位置または選択範囲の文字の全角/半角をトグル
+	 * @param mode 'zen'全角へ 'han'半角へ 'toggle'|''トグル
+	 */
+	public toggleZenHan(mode: string = 'toggle') {
+		let editor = vscode.window.activeTextEditor;
+		let doc = vscode.window.activeTextEditor.document;
+		// 現在の選択範囲を取得
+		let range: vscode.Range;
+		let text: string;
+		let move: boolean = false;
+		let ary: EditReplace[] = [];
+		for (let sel of editor.selections) {
+			if (sel.start.isEqual(sel.end)) {
+				// 範囲選択されていないので１文字変換
+				let cursor = sel.active;
+
+				let c = Util.getCharFromPos(editor, cursor);
+
+				// 大文字小文字を変換
+				c = Util.changeZenHan(c, mode);
+
+				// カーソル位置の文字範囲を作成
+				let range = new vscode.Range(cursor, cursor.translate(0, 1));
+
+				// 大文字・小文字変換した文字と置換
+				ary.push({ range: range, str: c });
+
+				// カーソル移動指示
+				move = true;
+			} else {
+				// 範囲選択されているので一括変換
+				let text = doc.getText(sel);
+
+				text = Util.changeZenHan(text, mode);
+
+				// 大文字・小文字変換した文字と置換
+				ary.push({range: sel, str: text});
+			}
+		}
+
+		this.syncReplace(editor, ary);
+
+		// カーソルを右に1文字移動
+		if (move) {
+			vscode.commands.executeCommand('cursorRight');
+		}
+	}
+
 }
