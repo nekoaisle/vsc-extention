@@ -23,7 +23,6 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.centeredLayoutAutoResize": false,
   "workbench.editor.closeEmptyGroups": false,
-  "workbench.editor.enablePreview": false,
   "workbench.list.horizontalScrolling": true,
   "workbench.tree.indent": 16,
 
@@ -164,6 +163,7 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.wordWrap": "on",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   // PHP
   "[php]": {
@@ -237,7 +237,7 @@
   "markdown.preview.fontSize": 16,
   "markdown.preview.lineHeight": 1.2,
   "markdown.preview.fontFamily": "'Noto Sans JP'",
-  "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
 
   "nekoaisle-openFiler.filer": "nautilus",
   "nekoaisle-insertCode.copyright": "Creansmaerd Co.,LTD.", 
@@ -302,6 +302,7 @@
       },
    ]
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "workbench.editor.enablePreview": false
 }
  
