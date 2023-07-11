@@ -8,7 +8,7 @@
 | nekoaisle-command-menu        | メニューから選択してコマンド実行               |
 | nekoaisle-cursor              | カーソル移動系詰め合わせ                       |
 | nekoaisle-disp-char-code      | カーソル位置の文字コード表示                   |
-| nekoaisle-encode              | 選択範囲等を各種エンコード                     |
+| nekoaisle-converter           | 選択範囲等を各種変換                           |
 | nekoaisle-exec                | シェルコマンドを実行                           |
 | nekoaisle-insert-code         | コードテンプレートを挿入                       |
 | nekoaisle-multi-clipboard     | 疑似クリップボード                             |
