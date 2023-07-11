@@ -7,7 +7,7 @@ import * as url from 'url';
 // import { Extension } from './Extension';
 import { PathInfo } from './PathInfo';
 import * as crypto from 'crypto';
-const { decycle, encycle } = require('json-cyclic');
+import { decycle, encycle } from 'json-cyclic';
 
 export module Util {
   // 言語タイプごとの拡張子一覧
@@ -1104,41 +1104,94 @@ export module Util {
     }
   }
 
-	/**
-	 * 全角文字を半角文字に変換（キー入力専用）
-	 * @param zen 全角文字
-	 */
-	export function zenToHanForSelect(zen: string): string {
-		// 変換辞書
-		const zenHanDic: {[key: string]: string} = {
-			"０": "0", "１": "1", "２": "2", "３": "3", "４": "4",
-			"５": "5", "６": "6", "７": "7", "８": "8", "９": "9",
-			"ａ": "a", "ｂ": "b", "ｃ": "c", "ｄ": "d", "ｅ": "e", "ｆ": "f",
-			"ｇ": "g", "ｈ": "h", "ｉ": "i", "ｊ": "j", "ｋ": "k", "ｌ": "l",
-			"ｍ": "m", "ｎ": "n", "ｏ": "o", "ｐ": "p", "ｑ": "q", "ｒ": "r",
-			"ｓ": "s", "ｔ": "t", "ｕ": "u", "ｖ": "v", "ｗ": "w", "ｘ": "x",
-			"ｙ": "y", "ｚ": "z",
-			"ー": "-", "＾": "^", "￥": "\\", "＠": "@", "「": "[", "；": ";",
-			"：": ":", "」": "]", "、": ",", "。": ".", "・": "/", "＿": "_",
-			"！": "!", "”": "\"", "＃": "#", "＄": "$", "％": "%", "＆": "&", 
-			"’": "'", "（": "(", "）": ")", "＝": "=", "〜": "~", "｜": "|",
-			"｀": "`", "｛": "{", "＋": "+", "＊": "*", "｝": "}", "＜": "<",
-			"＞": ">", "？": "?",
-			"あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
-		}
+  /**
+   * 全角英数を半角に変換
+   */
+  export function zenTohan(zen: string) : string {
+    return zen.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+  }
 
-		let han = '';
-		for (let i = 0; i < zen.length; ++i) {
-			let c = zen.charAt(i);
-			if (zenHanDic[c]) {
-				han += zenHanDic[c];
-			} else {
-				// 辞書にないのでそのまま
-				han += c;
-			}
-		}
-		return han;
-	}
+  const zenHanDic: {[key: string]: string} = {
+    "　": " ",  // 全角スペース
+    "￥": "\\",  // 円マーク
+    "〜": "~",  // 逆波型
+    "’": "'",   
+    "‘": "`",   
+  }
+
+  /**
+   * 全角文字を半角文字に変換
+   * @param zen 全角文字列
+   */
+  export function zenToHan(zen: string): string {
+    let han = '';
+    for (let i = 0; i < zen.length; ++i) {
+      let n = zen.charCodeAt(i);
+      if ((n >= 0xff00) && (n < 0xff60)) {
+        // 半角対応範囲
+        han += String.fromCharCode(n - 0xFF00 + 0x20);
+      } else {
+        // 半角対応範囲外なので
+        let c = zen.charAt(i);
+        if (zenHanDic[c]) {
+          // 全角辞書にあった
+          han += zenHanDic[c];
+        } else {
+          // 辞書にないのでそのまま
+          han += c;
+        }
+      }
+    }
+    return han;
+  }
+
+  /**
+   * 半角文字を全角文字に変換
+   * @param han 全角文字列
+   */
+  export function hanToZen(han: string): string {
+    let zen = han.replace(/[ -~]/g, (c) => {
+      // 文字コードをシフト
+      return String.fromCharCode(c.charCodeAt(0) - 0x20 + 0xFF00);
+    });
+    return zen;
+  }
+
+  /**
+   * 全角文字を半角文字に変換（キー入力専用）
+   * @param zen 全角文字
+   */
+  export function zenToHanForSelect(zen: string): string {
+    // 変換辞書
+    const dic: {[key: string]: string} = {
+      "あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
+    }
+
+    let han = '';
+    for (let i = 0; i < zen.length; ++i) {
+      let n = zen.charCodeAt(i);
+      if ((n >= 0xff00) && (n < 0xff60)) {
+        // 半角対応範囲
+        han += String.fromCharCode(n - 0xFF00 + 0x20);
+      } else {
+        // 半角対応範囲外なので辞書をチェック
+        let c = zen.charAt(i);
+        if (zenHanDic[c]) {
+          // 全角辞書にあった
+          han += zenHanDic[c];
+        } else if (dic[c]) {
+          // 変換されているようなので
+          han += dic[c];
+        } else {
+          // 辞書にないのでそのまま
+          han += c;
+        }
+      }
+    }
+    return han;
+  }
 
   export function getCharWidth(code: number) : number {
     if (code === 0x09) {

@@ -3,60 +3,58 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import {Util} from './Util';
 
-export interface ExtensionCallback {
-	(...args: any[]): any;
-}
+export module Extension {
 
-export interface ExtensionCommand {
-	command: string;	// コマンド
-	callback: ExtensionCallback;		// 実行する関数
-}
+  interface ExtensionCallback {
+    (...args: any[]): any;
+  }
 
-export interface ExtensionOptions {
-	name: string;
-	config?: string;
-	commands?: ExtensionCommand[];
-}
+  interface ExtensionCommand {
+    command: string;	// コマンド
+    callback: ExtensionCallback;		// 実行する関数
+  }
 
-export interface EditInsert {
-	pos: vscode.Position;
-	str: string;
-}
+  interface ExtensionOptions {
+    name: string;
+    config?: string;
+    commands?: ExtensionCommand[];
+  }
 
-export interface EditReplace {
-	range: vscode.Range;
-	str: string;
-}
+  interface EditInsert {
+    pos: vscode.Position;
+    str: string;
+  }
 
-/**
- * 拡張機能基本クラス
- */
-export class Extension {
-	protected options: ExtensionOptions;
-	protected extensionRoot: string;
+  interface EditReplace {
+    range: vscode.Range;
+    str: string;
+  }
+
+	let options: ExtensionOptions;
+	let extensionRoot: string;
 
 	/**
 	 * 構築
 	 * @param name 拡張機能名
 	 * @param cmd  contributes.commands.command
 	 */
-	constructor(context: vscode.ExtensionContext, options: ExtensionOptions) {
+	function constructor(context: vscode.ExtensionContext, options: ExtensionOptions) {
 //		console.log(`${options.name} が起動しました。`);
 
 		// この拡張機能が格納されているディレクトリ名
-		this.extensionRoot = context.extensionPath;
+		extensionRoot = context.extensionPath;
 
 		// 起動オプションを記憶
-		this.options = options;
+		options = options;
 
 		// コマンドがあれば登録
 		if (options.commands) {
-			this.registerCommands(context, options.commands);
+			registerCommands(context, options.commands);
 		}
 	}
 
-	public getConfiguration(): vscode.WorkspaceConfiguration {
-		return vscode.workspace.getConfiguration(this.options.config);
+	function getConfiguration(): vscode.WorkspaceConfiguration {
+		return vscode.workspace.getConfiguration(options.config);
 	}
 
 	/**
@@ -65,8 +63,8 @@ export class Extension {
 	 * @param def 設定されていないときに返す値
 	 * @return string 設定
 	 */
-	public getConfig<TYPE>(key: string, def: TYPE): TYPE {
-		let config = this.getConfiguration();
+	function getConfig<TYPE>(key: string, def: TYPE): TYPE {
+		let config = getConfiguration();
 		let ret = config.get(key, def);
 		if (ret) {
 			return ret;
@@ -79,7 +77,7 @@ export class Extension {
 	 * @param context 
 	 * @param ext 
 	 */
-	public registerCommand(context: vscode.ExtensionContext, command: string,callback: ExtensionCallback ) {
+	function registerCommand(context: vscode.ExtensionContext, command: string,callback: ExtensionCallback ) {
 		let disp = vscode.commands.registerCommand(command, callback);
 		context.subscriptions.push(disp);
 	}
@@ -89,7 +87,7 @@ export class Extension {
 	 * @param context 
 	 * @param ext 
 	 */
-	public registerCommands(context: vscode.ExtensionContext, commands: ExtensionCommand[]) {
+	function registerCommands(context: vscode.ExtensionContext, commands: ExtensionCommand[]) {
 		for ( let cmd of commands ) {
 			let disp = vscode.commands.registerCommand(cmd.command, cmd.callback);
 			context.subscriptions.push(disp);
@@ -100,8 +98,8 @@ export class Extension {
 	 * 拡張機能フォルダー内に格納されているファイル名をフルパスにする
 	 * @param filename ファイル名
 	 */
-	public joinExtensionRoot(filename: string): string {
-		return path.join(this.extensionRoot, filename);
+	function joinExtensionRoot(filename: string): string {
+		return path.join(extensionRoot, filename);
 	}
 
 		/**
@@ -110,12 +108,12 @@ export class Extension {
 	 * @param def 設定がないときの名前
 	 * @return ファイル名
 	 */
-	public getFilenameAccordingConfig(key: string, def: string): string {
+	function getFilenameAccordingConfig(key: string, def: string): string {
 		// デフォルトのリストファイル名
-		let fn = this.joinExtensionRoot(def);
+		let fn = joinExtensionRoot(def);
 
 		// settings.json より履歴ファイル名を取得
-		fn = this.getConfig(key, fn);
+		fn = getConfig(key, fn);
 
 		// 先頭の ~ を置換
 		fn = Util.normalizePath(fn);
@@ -131,8 +129,8 @@ export class Extension {
 	 * @param settingsKey settings.json のサブキー
      * @return string テンプレート格納ディレクトリ名
 	 */
-	protected getConfigDir(dirName: string, settingsKey: string): string {
-		return this.getFilenameAccordingConfig(settingsKey, dirName);
+	function getConfigDir(dirName: string, settingsKey: string): string {
+		return getFilenameAccordingConfig(settingsKey, dirName);
 	}
 
 	/**
@@ -142,7 +140,7 @@ export class Extension {
 	 * @param str 挿入文字列
 	 * @param ary 編集情報配列
 	 */
-	public syncInsert(editor: vscode.TextEditor, ary: EditInsert[]) {
+	function syncInsert(editor: vscode.TextEditor, ary: EditInsert[]) {
 		// 非同期編集を実行
 		let i = 0;
 		let e = (pos: vscode.Position, str: string) => {
@@ -167,7 +165,7 @@ export class Extension {
 	 * @param str 挿入文字列
 	 * @param ary 編集情報配列
 	 */
-	public syncReplace(editor: vscode.TextEditor, ary: EditReplace[]) {
+	function syncReplace(editor: vscode.TextEditor, ary: EditReplace[]) {
 		// 非同期編集を実行
 		let i = 0;
 		let e = (sel: vscode.Range, str: string) => {
