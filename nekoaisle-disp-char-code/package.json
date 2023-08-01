@@ -2,9 +2,9 @@
     "name": "nekoaisle-disp-char-code",
     "displayName": "Nekoaisle Disp char code",
     "description": "カーソル位置の文字コードをステータバーに表示",
-    "version": "0.0.5",
+    "version": "0.0.6",
 	"icon": "logo.png",
-	"license": "MIT License",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/nekoaisle/vsc-extention.git"
@@ -35,7 +35,17 @@
             "nekoaisle-disp-char-code.format": {
                 "type": "string",
                 "default": "%c %h (%d)",
-                "description": "タブグループ情報保存ファイル名"
+                "description": "表示フォーマット"
+            },
+            "nekoaisle-disp-char-code.charBefore": {
+                "type": "string",
+                "default": "'",
+                "description": "通常文字の前に置く文字"
+            },
+            "nekoaisle-disp-char-code.charAfter": {
+                "type": "string",
+                "default": "'",
+                "description": "通常文字のあとに置く文字"
             }
         }
     },

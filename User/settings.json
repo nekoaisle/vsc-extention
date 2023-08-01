@@ -151,8 +151,6 @@
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
 
-  "outline.showVariables": false,
-
   // C++
   "[cpp]": {
     "editor.tabSize": 2,
@@ -268,7 +266,6 @@
   "php.suggest.basic": false,
 
   "outline.showConstants": false,
-  "outline.showProperties": false,
 
   "security.workspace.trust.untrustedFiles": "open",
 
@@ -289,6 +286,12 @@
   "nekoaisle-command-menu.menus": {
     "default": [
       {
+        "label": "A",
+        "description": "ASCIIコード表を開く",
+        "command":"nekoaisle.exec",
+        "args": "google-chrome https://e-words.jp/p/r-ascii.html"
+      },
+      {
         "label": "G",
         "command": "nekoaisle-tab-manager.restoreTabGroup",
         "description": "タブグループを復元"
@@ -304,6 +307,8 @@
   },
   "window.zoomLevel": 1,
   "workbench.editor.enablePreview": false,
-  "editor.accessibilitySupport": "on"
+  "editor.accessibilitySupport": "on",
+  "git.confirmSync": false,
+  "outline.showVariables": false
 }
  

@@ -43,6 +43,12 @@
       "command": "workbench.action.createTerminalEditor"
     },
     {
+      "label": "A",
+      "description": "ASCIIコード表を開く",
+      "command":"nekoaisle.exec",
+      "args": "google-chrome https://e-words.jp/p/r-ascii.html"
+    },
+    {
       "label": "B",
       "description": "ファイルエクスプローラ折りたたみ",
       "command": "nekoaisle-command-menu.multi",
