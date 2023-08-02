@@ -1,8 +1,8 @@
 {
     "name": "nekoaisle-converter",
     "displayName": "Nekoaisle string converter",
-    "title": "選択範囲を各種変換",
-    "version": "0.0.6",
+	"description": "選択範囲またはカーソル位置の単語を各種変換",
+    "version": "0.0.7",
     "icon": "logo.png",
     "publisher": "nekoaisle",
     "repository": {
@@ -73,7 +73,7 @@
             },
             {
                 "command": "nekoaisle.encodeCString",
-                "title": "C 言語と同様にスラッシュで文字列をクォートする"
+                "title": "C 言語と同様にバックスラッシュで文字列をクォートする"
             },
             {
                 "command": "nekoaisle.encodePreg",
@@ -191,7 +191,187 @@
                 "command": "nekoaisle.encloseHtmlDiv",
                 "title": "<div class=\"\"></div> で単語または選択範囲を括る/外す"
             }
-        ]
+        ],
+        "submenus": [
+            {
+                "id": "nekoaisle-converter.submenu",
+                "label": "選択範囲またはカーソル位置の単語を各種変換"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "submenu": "nekoaisle-converter.submenu",
+                    "group": "nekoaisle-converter-group"
+                }
+            ],
+            "nekoaisle-converter.submenu": [
+                {
+                    "command": "nekoaisle.toUpperCase",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.toLowerCase",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.encodeCamel",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.encodeSnake",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.toZenkaku",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.toHankaku",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.encodeASCII",
+                    "group": "nekoaisle-converter-xchange"
+                },
+                {
+                    "command": "nekoaisle.encodeEval",
+                    "group": "nekoaisle-converterxchange-"
+                },
+                {
+                    "command": "nekoaisle.encodeHtml",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeUrl",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeBase64",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeCString",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodePreg",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeContentsOfSingleQuotation",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeContentsOfDoubleQuotation",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeContentsOfUnixtime",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeBr",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeHex",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.encodeBit",
+                    "group": "nekoaisle-converter-encode"
+                },
+                {
+                    "command": "nekoaisle.decodeHtml",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeUrl",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeBase64",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeCString",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodePreg",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeContentsOfSingleQuotation",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeContentsOfDoubleQuotation",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeContentsOfUnixtime",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeBr",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeHex",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.decodeBit",
+                    "group": "nekoaisle-converter-decode"
+                },
+                {
+                    "command": "nekoaisle.encloseInSingleQuotation",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseInDoubleQuotation",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseInGraveAccent",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseParenthesis",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseSquareBracket",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseAngleBracket",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseCurlyBracket",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseDoubleCurlyBracket",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseCComment",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseHtmlComment",
+                    "group": "nekoaisle-converter-enclose"
+                },
+                {
+                    "command": "nekoaisle.encloseHtmlDiv",
+                    "group": "nekoaisle-converter-enclose"
+                }
+            ]
+        }
     },
     "scripts": {
         "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",

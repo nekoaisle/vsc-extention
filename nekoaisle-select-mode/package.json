@@ -1,0 +1,67 @@
+{
+  "name": "nekoaisle-select-mode",
+  "displayName": "Nekoaisle Select Mode",
+  "description": "範囲選択モード",
+  "version": "0.0.1",
+  "icon": "logo.png",
+  "publisher": "nekoaisle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nekoaisle/vsc-extention.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nekoaisle-select-mode.toggle",
+        "title": "Nekoaisle 範囲選択の開始/終了"
+      }
+    ],
+		"configuration": {
+			"type": "object",
+			"title": "neko: 範囲選択モード",
+			"properties": {
+				"nekoaisle-select-mode.backgroundcolor": {
+					"type": "object",
+					"default": {
+            "backgroundColor": "#00FFFF44",
+            "rangeBehavior": "ClosedClosed"
+          },
+					"description": "選択範囲の背景色"
+				}
+			}
+		}
+  },
+  "scripts": {
+    "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.73.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.2",
+    "@vscode/test-electron": "^2.3.0"
+  },
+  "dependencies": {
+    "json-cyclic": "^1.0.2"
+  }
+}

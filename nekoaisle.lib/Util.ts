@@ -7,7 +7,7 @@ import * as url from 'url';
 // import { Extension } from './Extension';
 import { PathInfo } from './PathInfo';
 import * as crypto from 'crypto';
-import { decycle, encycle } from 'json-cyclic';
+// import { decycle, encycle } from 'json-cyclic';
 
 export module Util {
   // 言語タイプごとの拡張子一覧
@@ -1068,7 +1068,8 @@ export module Util {
    * @param src ハッシュ値を取得したい対象
    */
   export function md5(src: any): string {
-    const json = JSON.stringify(decycle(src));
+    // const json = JSON.stringify(decycle(src));
+    const json = JSON.stringify(src);
     const md5 = crypto.createHash('md5');
     return md5.update(json, 'binary').digest('hex');
   }
