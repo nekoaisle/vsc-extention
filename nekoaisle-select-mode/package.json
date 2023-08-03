@@ -2,7 +2,7 @@
   "name": "nekoaisle-select-mode",
   "displayName": "Nekoaisle Select Mode",
   "description": "範囲選択モード",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "logo.png",
   "publisher": "nekoaisle",
   "repository": {
@@ -22,22 +22,54 @@
       {
         "command": "nekoaisle-select-mode.toggle",
         "title": "Nekoaisle 範囲選択の開始/終了"
+      },
+      {
+        "command": "nekoaisle-select-mode.start",
+        "title": "Nekoaisle 範囲選択の開始"
+      },
+      {
+        "command": "nekoaisle-select-mode.end",
+        "title": "Nekoaisle 範囲選択の終了"
       }
     ],
 		"configuration": {
 			"type": "object",
 			"title": "neko: 範囲選択モード",
 			"properties": {
-				"nekoaisle-select-mode.backgroundcolor": {
+				"nekoaisle-select-mode.decoration": {
 					"type": "object",
 					"default": {
             "backgroundColor": "#00FFFF44",
             "rangeBehavior": "ClosedClosed"
           },
 					"description": "選択範囲の背景色"
-				}
+				},
+        "nekoaisle-select-mode.status": {
+          "type": "string",
+          "default": "範囲選択中",
+          "description": "範囲選択中にステータスバーに表示するインジケーター"
+        }
 			}
-		}
+		},
+    "keybindings": [
+      {
+        "key": "ctrl+c",
+        "command": "nekoaisle-select-mode.end",
+        "args": "editor.action.clipboardCopyAction"
+      },{
+        "key": "ctrl+x",
+        "command": "nekoaisle-select-mode.end",
+        "args": "editor.action.clipboardCutAction"
+      },{
+        "key": "ctrl+insert",
+        "command": "nekoaisle-select-mode.end",
+        "args": "editor.action.clipboardCopyAction"
+      },{
+        "key": "shift+delete",
+        "command": "nekoaisle-select-mode.end",
+        "args": "editor.action.clipboardCutAction"
+      }
+    ]
   },
   "scripts": {
     "package": "npx vsce package && mv *.vsix ../vsix && ls -ahltr ../vsix",

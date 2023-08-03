@@ -243,6 +243,10 @@
   "nekoaisle-cpssWizard.charset": "UTF-8",
   "nekoaisle-cpssWizard.php": "/usr/bin/php",
   "nekoaisle-cpssWizard.sqlDir": "/home/kiya/network/campt-kiya/var/www/ragdoll/Installer/CREATE_TABLE/ver3/custom/pbox",
+  "nekoaisle-select-mode.decoration": {
+    "backgroundColor": "#00FFFF44",
+    "rangeBehavior": "ClosedClosed"
+  },
 
   // "sync.gist": "2cb5b383f82fb5e55c6764985be413ee",
   // "sync.lastUpload": "2017-07-31T09:05:17.016Z",
