@@ -2,7 +2,7 @@
     "name": "nekoaisle-converter",
     "displayName": "Nekoaisle string converter",
 	"description": "選択範囲またはカーソル位置の単語を各種変換",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "icon": "logo.png",
     "publisher": "nekoaisle",
     "repository": {

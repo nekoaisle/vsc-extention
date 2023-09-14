@@ -29,10 +29,10 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
 }
 
-interface encloseResult {
-	range: vscode.Range;
-	str: string;
-};
+// interface encloseResult {
+// 	range: vscode.Range;
+// 	str: string;
+// };
 
 interface CommandInfo {
 	vscCommand?: string;
@@ -480,37 +480,35 @@ class MyExtention extends Extension {
 	 * すべてのカーソル位置をエンコードする
 	 * @param type 変換名
 	 */
-	protected encodeJob(type: string): void {
-		let editor = vscode.window.activeTextEditor;
+	protected async encodeJob(type: string) {
+		if (!vscode.window.activeTextEditor) {
+			return;
+		}
+		const editor = vscode.window.activeTextEditor;
 
-		let datas: EditReplace[] = [];
-		const newSels: vscode.Selection[] = [];
-		for (let i in editor.selections) {
-			let sele = editor.selections[i];
+		for (let i = 0; i < editor.selections.length; ++ i) {
+			let sel = editor.selections[i];
 			let str: string;
-			if (!sele.isEmpty) {
+			if (!sel.isEmpty) {
 				// 範囲選択されているのでそれを対象とする
-				str = editor.document.getText(sele);
+				str = editor.document.getText(sel);
 			} else {
-				// // 範囲選択されていないのでクリップボード
-				// str = Util.getClipboard();
-
 				// // 範囲選択されていないのでカーソル位置の単語
 				switch (type) {
 					// 式の時は式に使える文字列
 					case "eval": {
-						str = editor.document.lineAt(sele.anchor.line).text;
-						str = this.getExpression(str, sele.anchor.character);
+						str = editor.document.lineAt(sel.anchor.line).text;
+						str = this.getExpression(str, sel.anchor.character);
 						break;
 					}
 					// カーソル位置の単語
 					default: {
 						// カーソル位置の単語の範囲を取得
-						let wordRange = Util.getCursorWordRange(editor, sele.start);
+						let wordRange = Util.getCursorWordRange(editor, sel.start);
 						// 単語の範囲の文字列を返す
 						str = editor.document.getText(wordRange);
-						// 選択範囲を変更
-						sele = new vscode.Selection(wordRange.start, wordRange.end);
+						// // 選択範囲を変更
+						sel = new vscode.Selection(wordRange.start, wordRange.end);
 					}
 				}
 			}
@@ -518,66 +516,44 @@ class MyExtention extends Extension {
 			// エンコードする
 			str = this.encode(str, type);
 
-			// 処理を配列に保存
-			datas.push({
-				range: sele,
-				str: str,
-			});
-
-			// 新しいセレクション
-			newSels.push(sele);
+			// 置換
+			await editor.edit(edit => edit.replace(sel, str));
 		}
-
-		// 結果に置換
-		this.syncReplace(editor, datas);
 	}
-
+	
 	/**
 	 * すべてのカーソル位置をデコードする
 	 * @param type 変換名
 	 * @param editor 対象エディター
 	 */
-	protected decodeJob(type: string): void {
-		let editor = vscode.window.activeTextEditor;
-		let datas: EditReplace[] = [];
-		const newSels: vscode.Selection[] = [];
-		for (let i in editor.selections) {
-			let sele = editor.selections[i];
-			let str: string;
-			if (!sele.isEmpty) {
-				// 範囲選択されているのでそれを対象とする
-				str = editor.document.getText(sele);
-			} else {
-				// // 範囲選択されていないのでクリップボード
-				// str = Util.getClipboard();
+	protected async decodeJob(type: string) {
+		if (!vscode.window.activeTextEditor) {
+			return;
+		}
+		const editor = vscode.window.activeTextEditor;
 
-				// // 範囲選択されていないのでカーソル位置の単語
+		for (let i = 0; i < editor.selections.length; ++ i) {
+			let sel = editor.selections[i];
+			let str: string;
+			if (!sel.isEmpty) {
+				// 範囲選択されているのでそれを対象とする
+				str = editor.document.getText(sel);
+			} else {
+				// 範囲選択されていないのでカーソル位置の単語
 				// カーソル位置の単語の範囲を取得
-				let wordRange = Util.getCursorWordRange(editor, sele.start);
+				let wordRange = Util.getCursorWordRange(editor, sel.start);
 
 				// 単語の範囲の文字列を返す
 				str = editor.document.getText(wordRange);
 				// 選択範囲を変更
-				sele = new vscode.Selection(wordRange.start, wordRange.end);
+				sel = new vscode.Selection(wordRange.start, wordRange.end);
 			}
 
 			// デコードする
-			str =this.decode(str, type, editor);
-
-			// 処理を配列に保存
-			datas.push({
-				range: sele,
-				str: str,
-			});
-
-			// 新しい選択範囲を記憶
-			newSels.push(sele);
+			str = this.decode(str, type, editor);
+			// 置換
+			await editor.edit(edit => edit.replace(sel, str));
 		}
-		// 選択範囲を変更
-		editor.selections = newSels; 
-		
-		// 結果に置換
-		this.syncReplace(editor, datas);
 	}
 
 	/**
@@ -840,113 +816,70 @@ class MyExtention extends Extension {
 	 * @param start 開始文字
 	 * @param end 終了文字
 	 */
-	// protected encloseAll(start: string, end: string) {
-	// 	// カーソル位置の単語の範囲を取得
-	// 	let editor = vscode.window.activeTextEditor;
-	// 	let sels = editor.selections;
-	// 	let newSels: vscode.Selection[];
-	// 	for (let key in sels) {
-	// 		let sels = this.enclose(start, end);
-	// 		newSels.push(sels);
-	// 	}
-	// 	editor.selections = newSels;
-	// }
-	protected enclose(start: string, end: string): /*vscode.Selection*/void {
-		// 現在のカーソルを後ろから順に並べ替える
-		// 置換で文字数が変わると以降のカーソル位置がずれるので後ろから処理する
-		// @@todo 本来この処理は syncReplace() にて行うべき
-		// @@todo 上記の現象を回避するため syncReplace と syncInsert は統合する必要がある
-		const editor = vscode.window.activeTextEditor;
-		
-		// editor.selections は readonly なのでクローンしてからソート
-		let sels: vscode.Selection[] = [];
-		for (let sel of editor.selections) {
-			sels.push(sel);
+	protected async enclose(start: string, end: string) {
+		if (!vscode.window.activeTextEditor) {
+			return;
 		}
-
-		sels.sort((a: vscode.Selection, b: vscode.Selection): number => {
-			if (a.start.line < b.start.line) {
-				return 1;
-			} else if (a.start.line > b.start.line) {
-				return -1;
-			} else if (a.start.character < b.start.character) {
-				return 1;
-			} else if (a.start.character > b.start.character) {
-				return -1;
-			} else {
-				return 0;
-			}
-		});
+		const editor = vscode.window.activeTextEditor;
 
 		// 全カーソルについて処理
-		let ary: EditReplace[] = [];
-		let sel2: vscode.Selection[] = [];
-		for (let sel of sels) {
-			ary.push(this.encloseSub(sel, start, end, editor));
-			// カーソル位置を開始文字数分戻す
-			sel2.push(
-				new vscode.Selection(
-					sel.start.translate(0, - start.length),
-					sel.end.translate(0, - start.length),
-				)
-			);
-		}
-		// 編集実行
-		this.syncReplace(editor, ary);
+		for (let i = 0; i < editor.selections.length; ++i) {
+			// 選択範囲を取得
+			let sel = editor.selections.at(i);
 
-		// 選択範囲を設定
-		editor.selections = sel2;
-
-	}
-
-	protected encloseSub(sel: vscode.Selection, start: string, end: string, editor: vscode.TextEditor): encloseResult {
-		let range: vscode.Range;
-		let newSel: vscode.Selection;
-		let ret: encloseResult;
-		if (sel.start.isEqual(sel.end)) {
-			// 範囲選択されていないのでカーソル位置の単語の範囲を取得
-			range = Util.getCursorWordRange(editor, sel.active);
-		} else {
-			// 範囲選択されているのでその範囲を対象とする
-			range = new vscode.Range(sel.start, sel.end);
-		}
-
-		// 対象となる文字列取得
-		let word = editor.document.getText(range);
-
-		// まずはこの文字列がすでに括られているかチェック
-		if ((word.substr(0, start.length) == start) && (word.substr(-end.length) == end)) {
-			// 括られているので外す
-			word = word.substr(start.length, word.length - (start.length + end.length));
-			//				editor.edit(edit => edit.replace(range, word));
-			ret = {range: range, str: word};
-		} else {
-			// 括られた中身だけを選択している場合の対応
-			// １文字ずつ前後に広げる
-			let outRange: vscode.Range;
-			try {
-				outRange = new vscode.Range(range.start.translate(0, -start.length), range.end.translate(0, end.length));
-				let outWord = editor.document.getText(outRange);
-				if ((outWord.substr(0, start.length) == start) && (outWord.substr(-end.length) == end)) {
-					// すでに括られているの外す
-					//						editor.edit(edit => edit.replace(outRange, word));
-					ret = {range: outRange, str: word};
-					//				newSel = new vscode.Selection(outRange.start, outRange.end);
-				} else {
-					// 括られていないので括る
-					//						editor.edit(edit => edit.replace(range, `${start}${word}${end}`));
-					ret = {range: range, str: `${start}${word}${end}`};
-				}
-			} catch (err) {
-				// 範囲を広げられなかったということは括られていない
-				// 括られていないので括る
-				//					editor.edit(edit => edit.replace(range, `${start}${word}${end}`));
-				ret = {range: range, str: `${start}${word}${end}`};
+			// 対象範囲の特定
+			let range: vscode.Range;
+			let selected = !sel.start.isEqual(sel.end);
+			if (!selected) {
+				// 範囲選択されていないのでカーソル位置の単語の範囲を取得
+				range = Util.getCursorWordRange(editor, sel.active);
+			} else {
+				// 範囲選択されているのでその範囲を対象とする
+				range = new vscode.Range(sel.start, sel.end);
 			}
-		}
 	
-		//
-		return ret;
+			// 対象となる文字列取得
+			let word = editor.document.getText(range);
+
+			let sl = start.length;
+			let el = end.length;
+			let wl = word.length;
+			let newWord: string;
+			// まずはこの文字列がすでに括られているかチェック
+			let sw = word.substring(0, sl);
+			let ew = word.substring(sl + wl);
+			if ((sw == start) && (ew == end)) {
+				// 括られているので外す
+				newWord = word.substring(sl, sl + wl);
+			} else {
+				// 括られた中身だけを選択している場合の対応
+				// １文字ずつ前後に広げる
+				let outRange: vscode.Range;
+				try {
+					let s = range.start.translate(0, -start.length);
+					let e = range.end.translate(0, end.length);
+					outRange = new vscode.Range(s, e);
+					let outWord = editor.document.getText(outRange);
+					let ol = outWord.length;
+					let sw = outWord.substring(0, sl);
+					let ew = outWord.substring(ol - el, ol);
+					if ((sw == start) && (ew == end)) {
+						// すでに括られているの外す
+						newWord = word;
+						range = outRange;
+					} else {
+						// 括られていないので括る
+						newWord = `${start}${word}${end}`;
+					}
+				} catch (err) {
+					// 範囲を広げられなかったということは括られていない
+					// 括られていないので括る
+					newWord = `${start}${word}${end}`;
+				}
+			}
+			// 置換
+			await (editor.edit(edit => edit.replace(range, newWord)));
+		}
 	}
 
 	/**

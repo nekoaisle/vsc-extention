@@ -142,22 +142,27 @@ export class Extension {
 	 * @param str 挿入文字列
 	 * @param ary 編集情報配列
 	 */
-	public syncInsert(editor: vscode.TextEditor, ary: EditInsert[]) {
-		// 非同期編集を実行
-		let i = 0;
-		let e = (pos: vscode.Position, str: string) => {
-			// 大文字・小文字変換した文字と置換
-			editor.edit(edit => edit.insert(pos, str)).then((val: boolean) => {
-				if (val) {
-					++i;
-					if (ary[i]) {
-						e(ary[i].pos, ary[i].str);
-					}
-				}
-			});
-		};
+	public async syncInsert(editor: vscode.TextEditor, ary: EditInsert[]) {
+		// // 非同期編集を実行
+		// let i = 0;
+		// let e = (pos: vscode.Position, str: string) => {
+		// 	// 大文字・小文字変換した文字と置換
+		// 	editor.edit(edit => edit.insert(pos, str)).then((val: boolean) => {
+		// 		if (val) {
+		// 			++i;
+		// 			if (ary[i]) {
+		// 				e(ary[i].pos, ary[i].str);
+		// 			}
+		// 		}
+		// 	});
+		// };
 
-		e(ary[i].pos, ary[i].str);
+		// e(ary[i].pos, ary[i].str);
+		for (let rep of ary) {
+			let pos = rep.pos;
+			let str = rep.str;
+			await (editor.edit(edit => edit.replace(pos, str)));
+		}
 	}
 
 	/**
@@ -167,21 +172,45 @@ export class Extension {
 	 * @param str 挿入文字列
 	 * @param ary 編集情報配列
 	 */
-	public syncReplace(editor: vscode.TextEditor, ary: EditReplace[]) {
+	public async syncReplace(editor: vscode.TextEditor, ary: EditReplace[]) {
 		// 非同期編集を実行
-		let i = 0;
-		let e = (sel: vscode.Range, str: string) => {
-			// 大文字・小文字変換した文字と置換
-			editor.edit(edit => edit.replace(sel, str)).then((val: boolean) => {
-				if (val) {
-					++i;
-					if (ary[i]) {
-						e(ary[i].range, ary[i].str);
-					}
-				}
-			});
-		};
+		// let i = 0;
+		// let e = (sel: vscode.Range, str: string) => {
+		// 	// 大文字・小文字変換した文字と置換
+		// 	editor.edit(edit => edit.replace(sel, str)).then((val: boolean) => {
+		// 		if (val) {
+		// 			++ i;
+		// 			if (ary[i]) {
+		// 				e(ary[i].range, ary[i].str);
+		// 			}
+		// 		}
+		// 	});
+		// };
 
-		e(ary[i].range, ary[i].str);
+		// e(ary[i].range, ary[i].str);
+
+		for (let rep of ary) {
+			let sel = rep.range;
+			let str = rep.str;
+			await (editor.edit(edit => edit.replace(sel, str)));
+		}
 	}
+
+	/**
+	 * 選択範囲を変更
+	 */
+	public setSelection(id: number, sel: vscode.Selection, editor: vscode.TextEditor) {
+		// 現在の選択範囲を取得
+		let sels: vscode.Selection[] = [];
+		for (let i = 0; i < editor.selections.length; ++i) {
+			sels[i] = editor.selections.at(i);
+		}
+
+		// 指定IDのスロットを差し替える
+		sels[id] = sel;
+
+		// エディターに設定
+		editor.selections = sels;
+	}
+	
 }
