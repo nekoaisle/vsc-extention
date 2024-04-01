@@ -40,3 +40,9 @@
 1. publisher を nekoaisle に変更
 2. editor/title/context に restoreTabGroup, saveTabGroup, undoTabGroup を追加
    ※本当はエディターグループ右端のメニューに追加したかった…
+
+## 0.0.8 2023-09-29
+vscode.Tab.input.uri がundefinedの際の処理を追加
+
+## 0.0.9 2024-04-01
+「保存するスロット」→「保存スロット」

@@ -360,7 +360,7 @@ class TabManager extends Extension {
 
     // メニュー選択
     let options: vscode.QuickPickOptions = {
-      placeHolder: '保存するスロットを選択してください。',
+      placeHolder: '保存スロットを選択してください。',
       matchOnDetail: false,
       matchOnDescription: false
     };

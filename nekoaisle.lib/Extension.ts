@@ -203,7 +203,7 @@ export class Extension {
 		// 現在の選択範囲を取得
 		let sels: vscode.Selection[] = [];
 		for (let i = 0; i < editor.selections.length; ++i) {
-			sels[i] = editor.selections.at(i);
+			sels[i] = editor.selections[i];
 		}
 
 		// 指定IDのスロットを差し替える

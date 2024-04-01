@@ -403,6 +403,31 @@
 	{"key":"ctrl+[Semicolon] ctrl+x","command":"-testing.cancelRun"},
 
 	// alt+ 群を無効化
+	{"key":"alt+down"    ,"command":"-editor.action.moveLinesDownAction","when":"editorTextFocus && !editorReadonly"},
+	{"key":"alt+down"    ,"command":"-editor.action.pageDownHover","when":"editorHoverFocused"},
+	{"key":"alt+down"    ,"command":"-history.showNext","when":"historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"},
+	{"key":"alt+down"    ,"command":"-showNextParameterHint","when":"editorFocus && kb-macro.active && parameterHintsMultipleSignatures && parameterHintsVisible"},
+	{"key":"alt+down"    ,"command":"-showNextParameterHint","when":"editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"},
+	{"key":"alt+up"      ,"command":"-editor.action.moveLinesUpAction","when":"editorTextFocus && !editorReadonly"},
+	{"key":"alt+up"      ,"command":"-editor.action.pageUpHover","when":"editorHoverFocused"},
+	{"key":"alt+up"      ,"command":"-history.showPrevious","when":"historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"},
+	{"key":"alt+up"      ,"command":"-showPrevParameterHint","when":"editorFocus && kb-macro.active && parameterHintsMultipleSignatures && parameterHintsVisible"},
+	{"key":"alt+up"      ,"command":"-showPrevParameterHint","when":"editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"},
+	{"key":"alt+space"   ,"command":"-workbench.action.terminal.sendSequence","when":"terminalFocus && terminalShellIntegrationEnabled && !accessibilityModeEnabled && terminalShellType == 'pwsh'"},
+	{"key":"alt+enter"   ,"command":"-debug.openBreakpointToSide","when":"breakpointsFocused"},
+	{"key":"alt+enter"   ,"command":"-editor.action.selectAllMatches","when":"editorFocus && findWidgetVisible"},
+	{"key":"alt+pagedown","command":"-scrollPageDown","when":"textInputFocus"},
+	{"key":"alt+pageup"  ,"command":"-scrollPageUp","when":"textInputFocus"},
+	{"key":"alt+f1"      ,"command":"-editor.action.accessibilityHelp"},
+	{"key":"alt+f2"      ,"command":"-editor.action.accessibleView"},
+	{"key":"alt+f3"      ,"command":"-editor.action.dirtydiff.next","when":"editorTextFocus && !textCompareEditorActive"},
+	{"key":"alt+f4"      ,"command":"-workbench.action.closeWindow"},
+	{"key":"alt+f5"      ,"command":"-workbench.action.compareEditor.nextChange","when":"textCompareEditorVisible"},
+	{"key":"alt+f5"      ,"command":"-workbench.action.editor.nextChange","when":"editorTextFocus && !textCompareEditorActive"},
+	{"key":"alt+f8"      ,"command":"-editor.action.marker.next","when":"editorFocus"},
+	{"key":"alt+f9"      ,"command":"-editor.action.nextCommentThreadAction","when":"editorFocus"},
+	{"key":"alt+["       ,"command":"-editor.action.inlineSuggest.showPrevious","when":"inlineSuggestionVisible && !editorReadonly"},
+	{"key":"alt+]"       ,"command":"-editor.action.inlineSuggest.showNext","when":"inlineSuggestionVisible && !editorReadonly"},
 	{"key":"alt+1"       ,"command":"-workbench.action.openEditorAtIndex1"},
 	{"key":"alt+2"       ,"command":"-workbench.action.openEditorAtIndex2"},
 	{"key":"alt+3"       ,"command":"-workbench.action.openEditorAtIndex3"},
@@ -413,38 +438,13 @@
 	{"key":"alt+8"       ,"command":"-workbench.action.openEditorAtIndex8"},
 	{"key":"alt+9"       ,"command":"-workbench.action.openEditorAtIndex9"},
 	{"key":"alt+0"       ,"command":"-workbench.action.lastEditorInGroup"},
-	{"key":"alt+["       ,"command":"-editor.action.inlineSuggest.showPrevious","when":"inlineSuggestionVisible && !editorReadonly"},
-	{"key":"alt+]"       ,"command":"-editor.action.inlineSuggest.showNext","when":"inlineSuggestionVisible && !editorReadonly"},
 	{"key":"alt+c"       ,"command":"-toggleFindCaseSensitive","when":"editorFocus"},
 	{"key":"alt+c"       ,"command":"-toggleSearchCaseSensitive","when":"searchViewletFocus"},
-	{"key":"alt+down"    ,"command":"-editor.action.moveLinesDownAction","when":"editorTextFocus && !editorReadonly"},
-	{"key":"alt+down"    ,"command":"-editor.action.pageDownHover","when":"editorHoverFocused"},
-	{"key":"alt+down"    ,"command":"-history.showNext","when":"historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"},
-	{"key":"alt+down"    ,"command":"-showNextParameterHint","when":"editorFocus && kb-macro.active && parameterHintsMultipleSignatures && parameterHintsVisible"},
-	{"key":"alt+down"    ,"command":"-showNextParameterHint","when":"editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"},
-	{"key":"alt+enter"   ,"command":"-debug.openBreakpointToSide","when":"breakpointsFocused"},
-	{"key":"alt+enter"   ,"command":"-editor.action.selectAllMatches","when":"editorFocus && findWidgetVisible"},
-	{"key":"alt+f1"      ,"command":"-editor.action.accessibilityHelp"},
-	{"key":"alt+f2"      ,"command":"-editor.action.accessibleView"},
-	{"key":"alt+f3"      ,"command":"-editor.action.dirtydiff.next","when":"editorTextFocus && !textCompareEditorActive"},
-	{"key":"alt+f4"      ,"command":"-workbench.action.closeWindow"},
-	{"key":"alt+f5"      ,"command":"-workbench.action.compareEditor.nextChange","when":"textCompareEditorVisible"},
-	{"key":"alt+f5"      ,"command":"-workbench.action.editor.nextChange","when":"editorTextFocus && !textCompareEditorActive"},
-	{"key":"alt+f8"      ,"command":"-editor.action.marker.next","when":"editorFocus"},
-	{"key":"alt+f9"      ,"command":"-editor.action.nextCommentThreadAction","when":"editorFocus"},
 	{"key":"alt+l"       ,"command":"-toggleFindInSelection","when":"editorFocus"},
 	{"key":"alt+p"       ,"command":"-togglePreserveCase","when":"editorFocus"},
 	{"key":"alt+p"       ,"command":"-toggleSearchPreserveCase","when":"searchViewletFocus"},
-	{"key":"alt+pagedown","command":"-scrollPageDown","when":"textInputFocus"},
-	{"key":"alt+pageup"  ,"command":"-scrollPageUp","when":"textInputFocus"},
 	{"key":"alt+r"       ,"command":"-toggleFindRegex","when":"editorFocus"},
 	{"key":"alt+r"       ,"command":"-toggleSearchRegex","when":"searchViewletFocus"},
-	{"key":"alt+space"   ,"command":"-workbench.action.terminal.sendSequence","when":"terminalFocus && terminalShellIntegrationEnabled && !accessibilityModeEnabled && terminalShellType == 'pwsh'"},
-	{"key":"alt+up"      ,"command":"-editor.action.moveLinesUpAction","when":"editorTextFocus && !editorReadonly"},
-	{"key":"alt+up"      ,"command":"-editor.action.pageUpHover","when":"editorHoverFocused"},
-	{"key":"alt+up"      ,"command":"-history.showPrevious","when":"historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"},
-	{"key":"alt+up"      ,"command":"-showPrevParameterHint","when":"editorFocus && kb-macro.active && parameterHintsMultipleSignatures && parameterHintsVisible"},
-	{"key":"alt+up"      ,"command":"-showPrevParameterHint","when":"editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"},
 	{"key":"alt+w"       ,"command":"-toggleFindWholeWord","when":"editorFocus"},
 	{"key":"alt+w"       ,"command":"-toggleSearchWholeWord","when":"searchViewletFocus"},
 	{"key":"alt+z"       ,"command":"-editor.action.toggleWordWrap"},
@@ -543,18 +543,38 @@
 	{"key":"ctrl+meta+w","command":"-workbench.action.toggleTabsVisibility"},
 	{"key":"meta+enter","command":"-workbench.notebook.cell.execute","when":"inputFocus && notebookEditorFocused"},
 
+	// 不要な設定
+	{"key":"shift+delete","command":"-deleteFile","when":"explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"},
+	{"key":"ctrl+w"      ,"command":"-workbench.action.terminal.killEditor","when":"terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"},
+	{"key":"ctrl+shift+w","command":"-workbench.action.closeWindow"},
+	{"key":"ctrl+shift+w","command":"workbench.action.createTerminalEditorSide"},
+	// {"key":"ctrl+d","command":"-editor.action.addSelectionToNextFindMatch","when":"editorFocus"},
+	{"key":"ctrl+shift+d","command":"-workbench.view.debug","when":"viewContainer.workbench.view.debug.enabled"},
+
 	// 定義開始
 	{"key":"escape","command":"nekoaisle-command-menu.menu","when":"editorTextFocus && !inSnippetMode && !inQuickOpen && !findWidgetVisible && !suggestWidgetVisible && !suggestWidgetMultipleSuggestions && !renameInputVisible && !referenceSearchVisible && !inReferenceSearchEditor && !config && !quickFixWidgetVisible && !parameterHintsVisible"},
 	// {"key":"escape","command":"nekoaisle-command-menu.menu","when":"editorTextFocus && !inSnippetMode && !inQuickOpen && !findWidgetVisible && !suggestWidgetVisible && !suggestWidgetMultipleSuggestions && !renameInputVisible && !referenceSearchVisible && !inReferenceSearchEditor && !config && !quickFixWidgetVisible && !parameterHintsVisible && !parameterHintsMultipleSignatures"},
 	// {"key":"end","command":"-cursorEnd","when":"textInputFocus" },
-	{
-		"key": "f1",
-		"command": "-workbench.action.showCommands"
-	},
+	{"key":"f1","command":"-workbench.action.showCommands"},
 	{"key":"f1" ,"command":"nekoaisle.openHelp"},
 	// {"key":"f2" ,"command":"nekoaisle.exec", "args": "google-chrome https://www.k-cube.co.jp/wakaba/server/ascii_code.html"},
-	{"key":"f4" ,"command":"nekoaisle-tab-manager.openMenu","when":"editorTextFocus"},
+	// {"key":"f4" ,"command":"nekoaisle-tab-manager.openMenu","when":"editorTextFocus"},
+	{"key":"f5" ,"command":"-workbench.action.debug.start", "when":"debuggersAvailable && debugState == 'inactive'"},
+	{"key":"f5" ,"command":"-workbench.action.debug.continue", "when":"debugState == 'stopped'"},
+	{"key":"f5" ,"command":"-debug.openView", "when":"!debuggersAvailable"},
+	{"key":"f6" ,"command":"-workbench.action.focusNextPart"},
 	{"key":"f6" ,"command":"-workbench.action.debug.pause","when":"debugState == 'running'"},
+	{"key":"f7" ,"command":"-editor.action.wordHighlight.next","when":"editorTextFocus && hasWordHighlights"},
+	{"key":"f8" ,"command":"-editor.action.marker.nextInFiles","when":"editorFocus"},
+	{"key":"f8" ,"command":"-editor.action.marker.nextInFiles","when":"editorFocus"},
+
+	{"key":"f6"       ,"command":"nekoaisle-multiClipboard.copy","when":"editorFocus"},
+	{"key":"f7"       ,"command":"nekoaisle-multiClipboard.cut","when":"editorFocus && !editorReadonly"},
+	{"key":"f8"       ,"command":"nekoaisle-multiClipboard.paste","when":"editorFocus && !editorReadonly"},
+	{"key":"shift+f6" ,"command":"nekoaisle-multiClipboard.add","when":"editorFocus"},
+	{"key":"shift+f7" ,"command":"nekoaisle-multiClipboard.push","when":"editorFocus && !editorReadonly"},
+	{"key":"shift+f8" ,"command":"nekoaisle-multiClipboard.pop","when":"editorFocus && !editorReadonly"},
+
 	{"key":"f9" ,"command":"-sortLines.sortLines","when":"editorTextFocus"},
 	{"key":"f9" ,"command":"-editor.debug.action.toggleBreakpoint","when":"editorTextFocus"},
 	{"key":"f9" ,"command":"editor.action.copyLinesDownAction","when":"editorTextFocus && !editorReadonly"},
@@ -563,8 +583,22 @@
 
 	{"key":"shift+f1","command":"nekoaisle-multiClipboard.menu","when":"editorTextFocus && !editorReadonly"},
 	{"key":"shift+f2","command":"editor.action.addSelectionToNextFindMatch","when":"editorFocus"},
-	{"key":"shift+f5","command":"workbench.action.debug.stop","when":"debugState == 'running'"},
+
+	{"key":"shift+f5","command":"-cmake.launchTarget","when":"cmake:enableFullFeatureSet && !cmake:hideDebugCommand && !inDebugMode"},
+	{"key":"shift+f5","command":"-workbench.action.debug.disconnect","when":"focusedSessionIsAttach && inDebugMode"},
+	{"key":"shift+f5","command":"-workbench.action.debug.stop","when": "inDebugMode && !focusedSessionIsAttach"},
+	{"key":"shift+f5","command":"nekoaisle-select-mode.toggle"},
+	{"key":"shift+f6","command":"-workbench.action.focusPreviousPart"},
+	{"key":"shift+f7","command":"-editor.action.wordHighlight.prev","when":"editorTextFocus && hasWordHighlights"},
+	{"key":"shift+f8","command":"-editor.action.marker.prevInFiles","when":"editorFocus"},
+
 	{"key":"shift+f9","command":"-editor.debug.action.toggleInlineBreakpoint","when":"editorTextFocus"},
+
+	{"key":"ctrl+f5","command":"-cmake.debugTarget", "when":"cmake:enableFullFeatureSet && inCMakeProject && !cmake:hideDebugCommand && !inDebugMode"},
+	{"key":"ctrl+f5","command":"-workbench.action.debug.run","when":"debuggersAvailable && debugState != 'initializing'"},
+	{"key":"ctrl+f5","command":"-debug.openView","when":"!debuggersAvailable"},	{"key":"ctrl+f5","command":"-", "when":""},
+
+	{"key":"ctrl+shift+f5","command":"-workbench.action.debug.restart","when":"inDebugMode"},	{"key":"ctrl+f5","command":"-", "when":""},
 
 	{"key":"shift+enter" ,"command":"nekoaisle-cursor.selectWord","when":"editorTextFocus"},
 	{"key":"shift+insert","command":"-editor.action.selectionClipboardPaste"},
@@ -615,6 +649,7 @@
 	{"key":"ctrl+4","command":"nekoaisle.encode","when":"editorTextFocus && !editorReadonly"},
 	{"key":"ctrl+7","command":"nekoaisle.encloseInSingleQuotation","when":"editorTextFocus && !editorReadonly"},
 	{"key":"ctrl+8","command":"nekoaisle.encloseParenthesis","when":"editorTextFocus && !editorReadonly"},
+	// {"key":"ctrl+d","command":"editor.action.deleteLines"},
 	{"key":"ctrl+e","command":"deleteAllRight","when":"editorTextFocus && !editorReadonly"},
 	{"key":"ctrl+f","command":"closeFindWidget","when":"editorFocus && findInputFocussed && findWidgetVisible"},
 	{"key":"ctrl+g","command":"nekoaisle-command-menu.menu","args":"ctrl+g"},
@@ -629,7 +664,7 @@
 	{"key":"ctrl+q","command":"workbench.action.closeActiveEditor","when":"editorTextFocus"},
 	{"key":"ctrl+t","command":"nekoaisle-tab-manager.restoreTabGroup"},
 	{"key":"ctrl+u","command":"nekoaisle-cursor.undo","when":"editorTextFocus"},
-	{"key":"ctrl+w","command":"nekoaisle-command-menu.menu","args":"ctrl+w"},
+	{"key":"ctrl+w","command":"workbench.action.createTerminalEditor"},
 
 	{"key":"ctrl+numpad_divide"  ,"command":"perfview.show"},	
 	{"key":"ctrl+numpad_multiply","command":"outline.focus"},	
@@ -645,9 +680,16 @@
 	{"key":"ctrl+shift+[","command":"nekoaisle.encloseDoubleCurlyBracket","when":"editorTextFocus"},
 	{"key":"ctrl+shift+]","command":"-editor.unfold","when":"editorTextFocus"},
 	{"key":"ctrl+shift+]","command":"nekoaisle.toggleWordCase","when":"editorTextFocus"},
+	{"key":"ctrl+shift+,","command":"type","args":{"text":"&lt;"},"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
+	{"key":"ctrl+shift+.","command":"type","args":{"text":"&gt;"},"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
+	{"key":"ctrl+shift+ ","command":"type","args":{"text":"&nbsp;"},"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
+	{"key":"ctrl+shift+6","command":"type","args":{"text":"&amp;"},"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
 	{"key":"ctrl+shift+a","command":"nekoaisle-multiClipboard.add"  ,"when":"editorTextFocus"},
 	{"key":"ctrl+shift+c","command":"nekoaisle-multiClipboard.copy","when":"editorTextFocus"},
-	{"key":"ctrl+shift+r","command":"workbench.action.reloadWindow"},	{"key":"ctrl+shift+t","command":"-workbench.action.reopenClosedEditor"},
+	{
+		"key": "ctrl+shift+t",
+		"command": "-workbench.action.reopenClosedEditor"
+	},
 	{"key":"ctrl+shift+t","command":"nekoaisle-tab-manager.openMenu"},
 	{"key":"ctrl+shift+v","command":"nekoaisle-multiClipboard.paste","when":"editorTextFocus && !editorReadonly"},
 	{"key":"ctrl+shift+x","command":"nekoaisle-multiClipboard.cut"  ,"when":"editorTextFocus && !editorReadonly"},
@@ -659,32 +701,39 @@
 	{"key":"ctrl+shift+enter","command":"type","args": {"text":"<br />"},"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
 	{"key":"ctrl+shift+space","command":"type","args": {"text":"&nbsp;" },"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
 	{"key":"ctrl+shift+,"    ,"command":"type","args": {"text":"&lt;" },"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
-	{"key":"ctrl+shift+."    ,"command":"type","args": {"text":"&gt;" },"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
-	{"key":"ctrl+shift+6"    ,"command":"type","args": {"text":"&amp;" },"when":"editorTextFocus && !editorReadonly && editorLangId == 'html'"},
-
-	// 以下はエクスプローラ
 	{
-		"key": "shift+delete",
-		"command": "-deleteFile",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+		"key": "ctrl+shift+.",
+		"command": "type",
+		"args": {
+			"text": "&gt;"
+		},
+		"when": "editorTextFocus && !editorReadonly && editorLangId == 'html'"
 	},
 	{
-		"key": "ctrl+w",
-		"command": "workbench.action.createTerminalEditor"
+		"key": "ctrl+r",
+		"command": "workbench.action.navigateToLastEditLocation"
 	},
 	{
-		"key": "ctrl+w",
-		"command": "-workbench.action.terminal.killEditor",
-		"when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
+		"key": "ctrl+shift+r",
+		"command": "workbench.action.openRecent"
 	},
 	{
-		"key": "ctrl+shift+w",
-		"command": "-workbench.action.closeWindow"
+		"key": "ctrl+r",
+		"command": "-workbench.action.openRecent"
 	},
 	{
-		"key": "ctrl+shift+w",
-		"command": "workbench.action.createTerminalEditorSide"
+		"key": "ctrl+r",
+		"command": "-workbench.action.reloadWindow",
+		"when": "isDevelopment"
 	},
-
-
+	{
+		"key": "ctrl+shift+r ctrl+i",
+		"command": "-editor.action.codeAction",
+		"when": "editorTextFocus && editorLangId =~ /^(c|(cuda-)?cpp)$/ && !(config.C_Cpp.intelliSenseEngine =~ /^[dD]isabled$/)"
+	},
+	{
+		"key": "ctrl+shift+r ctrl+e",
+		"command": "-editor.action.codeAction",
+		"when": "editorTextFocus && editorLangId =~ /^(c|(cuda-)?cpp)$/ && !(config.C_Cpp.intelliSenseEngine =~ /^[dD]isabled$/)"
+	}
 ]

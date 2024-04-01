@@ -2,7 +2,7 @@
 	"name": "nekoaisle-tab-manager",
 	"displayName": "Nekoaisle Tab Group Manager",
 	"description": "現在のタブグループにて開いているファイルを記憶/復元",
-	"version": "0.0.7",
+	"version": "0.0.9",
 	"icon": "logo.png",
 	"publisher": "nekoaisle",
 	"repository": {

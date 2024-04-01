@@ -22,3 +22,6 @@
 ## 0.0.3 2023-05-30
 nekoaisle-cursor.markjumpMenu
 マークジャンプ メニューを表示
+
+## 0.0.4 2024-04-01
+nekoaisle-cursor.addCursor もっとも上のカーソルのX位置より行が短い際に次の行を処理していたが末尾にカーソルを追加するようにした。

@@ -133,7 +133,8 @@ class SelectWord extends Extension {
 		}
 
 		// 指定位置まで到達できなかった
-		return -1;
+		// return -1;
+		return i;
 	}
 
 	/**
@@ -170,7 +171,7 @@ class SelectWord extends Extension {
 
 		let y = last.line;	// Y 位置
 		let i = -1;					// 文字位置
-		do {
+		// do {
 			// 1行下の座標を取得
 			++y;
 			if (y >= editor.document.lineCount) {
@@ -182,7 +183,7 @@ class SelectWord extends Extension {
 			text = editor.document.lineAt(y).text;
 			// X座標位置に文字がない(短い)場合は -1 が戻ってくる
 			i = this.getPositionFromColumn(text, x, tabs);
-		} while (i < 0);
+		// } while (i < 0);
 
 		// カーソルを追加
 		let pos = new vscode.Position(y, i);
