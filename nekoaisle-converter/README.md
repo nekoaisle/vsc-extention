@@ -54,6 +54,7 @@
 | nekoaisle.encodeCamel                     | キャメルケースをスネークケースに変換 |
 | nekoaisle.encodeASCII                     | 文字をASCIIコードに変換              |
 | nekoaisle.encodeEval                      | 式を評価                             |
+| nekoaisle.insertSequence                  | 連番を挿入                           |
 | nekoaisle.encodeHtml                      | HTML エンコード                      |
 | nekoaisle.encodeUrl                       | URL エンコード                       |
 | nekoaisle.encodeBase64                    | BASE64 エンコード                    |
@@ -65,7 +66,6 @@
 | nekoaisle.encodeBr                        | \n を <br />\n に変換                |
 | nekoaisle.encodeHex                       | 10進数を16進数に変換                 |
 | nekoaisle.encodeBit                       | 10進数を2進数に変換                  |
-| nekoaisle.encodeEval                      | 式を評価                             |
 | nekoaisle.decodeHtml                      | HTML デコード                        |
 | nekoaisle.decodeUrl                       | URL デコード                         |
 | nekoaisle.decodeBase64                    | BASE64 デコード                      |
@@ -80,14 +80,14 @@
 | nekoaisle.encloseInSingleQuotation        | '' で括る/外す                       |
 | nekoaisle.encloseInDoubleQuotation        | "" で括る/外す                       |
 | nekoaisle.encloseInGraveAccen             | `` で括る/外す                       |
-| nekoaisle.encloseParenthesis              | () 括る/外す                         |
-| nekoaisle.encloseSquareBracket            | [] 括る/外す                         |
-| nekoaisle.encloseAngleBracket             | <> 括る/外す                         |
-| nekoaisle.encloseCurlyBracket             | {} 括る/外す                         |
-| nekoaisle.encloseDoubleCurlyBracket       | {{}} 括る/外す                       |
-| nekoaisle.encloseCComment                 | /**/ 括る/外す                       |
-| nekoaisle.encloseHtmlComment              | <!-- --> 括る/外す                   |
-| nekoaisle.encloseHtmlDiv                  | <div class=""></div> 括る/外す       |
+| nekoaisle.encloseParenthesis              | () で括る/外す                       |
+| nekoaisle.encloseSquareBracket            | [] で括る/外す                       |
+| nekoaisle.encloseAngleBracket             | <> で括る/外す                       |
+| nekoaisle.encloseCurlyBracket             | {} で括る/外す                       |
+| nekoaisle.encloseDoubleCurlyBracket       | {{}} で括る/外す                     |
+| nekoaisle.encloseCComment                 | /**/ で括る/外す                     |
+| nekoaisle.encloseHtmlComment              | <!-- --> で括る/外す                 |
+| nekoaisle.encloseHtmlDiv                  | <div class=""></div> で括る/外す     |
 
 ## nekoaisle.enclose
 キー割当することで任意の文字列で括ることができます。

@@ -2,9 +2,9 @@
   "name": "nekoaisle-open-file",
   "displayName": "Nekoaisle Open file assortment",
   "description": "ファイルを開く関連詰め合わせ",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "icon": "logo.png",
-  "license": "MIT License",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nekoaisle/vsc-extention.git"

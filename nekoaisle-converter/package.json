@@ -1,8 +1,8 @@
 {
     "name": "nekoaisle-converter",
     "displayName": "Nekoaisle string converter",
-	"description": "選択範囲またはカーソル位置の単語を各種変換",
-    "version": "0.0.8",
+    "description": "選択範囲またはカーソル位置の単語を各種変換",
+    "version": "0.0.9",
     "icon": "logo.png",
     "publisher": "nekoaisle",
     "repository": {
@@ -58,6 +58,10 @@
             {
                 "command": "nekoaisle.encodeEval",
                 "title": "式を計算結果に変換"
+            },
+            {
+                "command": "nekoaisle.insertSequence",
+                "title": "連番を挿入"
             },
             {
                 "command": "nekoaisle.encodeHtml",
@@ -236,7 +240,12 @@
                 },
                 {
                     "command": "nekoaisle.encodeEval",
-                    "group": "nekoaisle-converterxchange-"
+                    "group": "nekoaisle-converterxchange"
+                },
+                {
+                    "command": "nekoaisle.insertSequence",
+                    "group": "nekoaisle-converterxchange",
+                    "when": "editorHasSelection"
                 },
                 {
                     "command": "nekoaisle.encodeHtml",
@@ -390,6 +399,7 @@
     },
     "dependencies": {
         "expr-eval": "^2.0.2",
-        "json-cyclic": "^1.0.2"
+        "json-cyclic": "^1.0.2",
+        "printf": "^0.6.1"
     }
 }

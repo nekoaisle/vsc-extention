@@ -14,6 +14,8 @@ import * as vscode from 'vscode';
 import { Util, Extension, EditInsert, EditReplace, DateInfo, ExtensionCommand, ExtensionOptions } from './nekoaisle.lib/nekoaisle';
 import { Parser } from "expr-eval";
 import { stringify } from 'querystring';
+import { } from 'printf'
+import printf = require('printf');
 
 /**
  * エクステンション活性化
@@ -85,30 +87,37 @@ class MyExtention extends Extension {
 			// 文字をASCIIコードに変換
 			vscCommand: 'nekoaisle.encodeASCII',
 			funcName: 'encodeJob',
-			args: "ASCII",
+			args: 'ASCII',
 			label: 'ASCII',
 			description: '文字をASCIIコードに変換',
 		}, {
 			// キャメルケースに変換
 			vscCommand: 'nekoaisle.encodeCamel',
 			funcName: 'encodeJob',
-			args: "Camel",
+			args: 'Camel',
 			label: 'Camel',
 			description: 'キャメルケースに変換',
 		}, {
 			// スネークケースに変換
 			vscCommand: 'nekoaisle.encodeSnake',
 			funcName: 'encodeJob',
-			args: "Snake",
+			args: 'Snake',
 			label: 'Snake',
 			description: 'スネークケースに変換',
 		}, {
 			// 式を評価
 			vscCommand: 'nekoaisle.encodeEval',
 			funcName: 'encodeJob',
-			args: "eval",
+			args: 'eval',
 			label: 'eval',
 			description: '式を計算結果に変換',
+		}, {
+			// 連番を挿入
+			vscCommand: 'nekoaisle.insertSequence',
+			funcName: 'insertJob',
+			args: 'sequence',
+			label: 'sequence',
+			description: '連番を挿入',
 		},
 
 		// 以下エンコード
@@ -435,6 +444,14 @@ class MyExtention extends Extension {
 				}
 				break;
 			}
+			// 挿入
+			case 'insertJob': {
+				callback = () => {
+					let type = <string>data.args;
+					this.insertJob(type);
+				}
+				break;
+			}
 		}
 
 		return callback;
@@ -524,7 +541,6 @@ class MyExtention extends Extension {
 	/**
 	 * すべてのカーソル位置をデコードする
 	 * @param type 変換名
-	 * @param editor 対象エディター
 	 */
 	protected async decodeJob(type: string) {
 		if (!vscode.window.activeTextEditor) {
@@ -553,6 +569,57 @@ class MyExtention extends Extension {
 			str = this.decode(str, type, editor);
 			// 置換
 			await editor.edit(edit => edit.replace(sel, str));
+		}
+	}
+
+	/**
+	 * 連番を挿入
+	 * @param type 変換名
+	 */
+	protected async insertJob(type: string) {
+		if (!vscode.window.activeTextEditor) {
+			return;
+		}
+		const editor = vscode.window.activeTextEditor;
+		// 現在の選択範囲を記憶
+		let sels = editor.selections;
+
+		switch (type) {
+			// 連番挿入
+			case 'sequence': {
+				// パラメーター入力
+				let pattern = await vscode.window.showInputBox({
+					value: '1,1,%3d',
+					prompt: `開始,ステップ,フォーマット`
+				});
+				// 現在の選択範囲を復元
+				// showInputBox() にて文字入力するとマルチカーソルが解除される＞＜；
+				editor.selections = sels;
+				if (!pattern || (pattern.length <= 0)) {
+					return;
+				}
+				let prms = pattern.split(',');
+				let num: number, step: number;
+				let format: string;
+				if (prms.indexOf('.') < 0) {
+					// 整数
+					num = parseInt(prms[0]);
+					step = parseInt(prms[1]);
+				} else {
+					// 浮動小数点数
+					num = parseFloat(prms[0]);
+					step = parseFloat(prms[1]);
+				}
+				format = prms[2];
+
+				for (let i = 0; i < editor.selections.length; ++i, num += step) {
+					let sel = editor.selections[i];
+					let str: string = printf(format, num);
+					// 置換
+					await editor.edit(edit => edit.replace(sel, str));
+				}
+				break;
+			}
 		}
 	}
 
