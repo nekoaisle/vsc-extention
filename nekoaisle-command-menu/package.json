@@ -2,9 +2,9 @@
 	"name": "nekoaisle-command-menu",
 	"displayName": "Nekoaisle Command Menu",
 	"description": "コマンドを一覧から選んで実行",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"icon": "logo.png",
-	"license": "MIT License",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/nekoaisle/vsc-extention.git"

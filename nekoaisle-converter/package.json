@@ -240,12 +240,11 @@
                 },
                 {
                     "command": "nekoaisle.encodeEval",
-                    "group": "nekoaisle-converterxchange"
+                    "group": "nekoaisle-converter-insert"
                 },
                 {
                     "command": "nekoaisle.insertSequence",
-                    "group": "nekoaisle-converterxchange",
-                    "when": "editorHasSelection"
+                    "group": "nekoaisle-converter-insert"
                 },
                 {
                     "command": "nekoaisle.encodeHtml",

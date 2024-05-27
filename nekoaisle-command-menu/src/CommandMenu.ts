@@ -138,9 +138,11 @@ export class CommandMenu extends Extension {
 		}
 
 		// デフォルトの読み込み
-		let fn = this.joinExtensionRoot("data/defaults.json");
-		menus = <ListItems | null>Util.loadFileJson(fn);
-		setDic(menus);
+		if (menuName === 'default') {
+			let fn = this.joinExtensionRoot("data/defaults.json");
+			menus = <ListItems | null>Util.loadFileJson(fn);
+			setDic(menus);
+		}
 		
 		// ユーザー設定メニューの読み込み
 		menus = this.getConfig<ListItems | null>('menus', null);

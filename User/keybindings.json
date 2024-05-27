@@ -552,7 +552,7 @@
 	{"key":"ctrl+shift+d","command":"-workbench.view.debug","when":"viewContainer.workbench.view.debug.enabled"},
 
 	// 定義開始
-	{"key":"escape","command":"nekoaisle-command-menu.menu","when":"editorTextFocus && !inSnippetMode && !inQuickOpen && !findWidgetVisible && !suggestWidgetVisible && !suggestWidgetMultipleSuggestions && !renameInputVisible && !referenceSearchVisible && !inReferenceSearchEditor && !config && !quickFixWidgetVisible && !parameterHintsVisible"},
+	{"key":"escape","command":"nekoaisle-command-menu.menu","when":"!inSnippetMode && !inQuickOpen && !findWidgetVisible && !suggestWidgetVisible && !suggestWidgetMultipleSuggestions && !renameInputVisible && !referenceSearchVisible && !inReferenceSearchEditor && !config && !quickFixWidgetVisible && !parameterHintsVisible"},
 	// {"key":"escape","command":"nekoaisle-command-menu.menu","when":"editorTextFocus && !inSnippetMode && !inQuickOpen && !findWidgetVisible && !suggestWidgetVisible && !suggestWidgetMultipleSuggestions && !renameInputVisible && !referenceSearchVisible && !inReferenceSearchEditor && !config && !quickFixWidgetVisible && !parameterHintsVisible && !parameterHintsMultipleSignatures"},
 	// {"key":"end","command":"-cursorEnd","when":"textInputFocus" },
 	{"key":"f1","command":"-workbench.action.showCommands"},
@@ -714,10 +714,6 @@
 		"command": "workbench.action.navigateToLastEditLocation"
 	},
 	{
-		"key": "ctrl+shift+r",
-		"command": "workbench.action.openRecent"
-	},
-	{
 		"key": "ctrl+r",
 		"command": "-workbench.action.openRecent"
 	},
@@ -735,5 +731,25 @@
 		"key": "ctrl+shift+r ctrl+e",
 		"command": "-editor.action.codeAction",
 		"when": "editorTextFocus && editorLangId =~ /^(c|(cuda-)?cpp)$/ && !(config.C_Cpp.intelliSenseEngine =~ /^[dD]isabled$/)"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-kb-macro.wrap",
+		"when": "editorHasCodeActionsProvider && kb-macro.active && textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-kb-macro.wrap",
+		"when": "inSearchEditor && kb-macro.active"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "-kb-macro.wrap",
+		"when": "inQuickOpen && inRecentFilesPicker && kb-macro.active"
+	},
+	{
+		"key": "ctrl+shift+q",
+		"command": "-kb-macro.wrap",
+		"when": "false"
 	}
 ]
